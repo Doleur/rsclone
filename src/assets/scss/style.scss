@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
-  user-select: none;
-};
+  background-color: rgb(195, 252, 252);
+}
 
 :root {
   font-size: 10px;
@@ -35,40 +35,101 @@
   height: 300px;
 }
 
-.up-lvl {
-  cursor: pointer;
-  line-height: 1px;
-  user-select: none;
-};
+.logo {
+    text-align: center;
+    height: 10vh;
+    img{
+        height: 100%;
+    }
+}
+.score-swiper {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    // max-width: 120rem;
+    position: relative;
+}
+.score {
+    width: 40%;
+    text-align: center;
+    border: 2px solid rgb(238, 11, 11);
+    outline: none;
+    padding: 1rem;
+}
+.level {
+    width: 50%;
+    text-align: center;
+    border: 2px solid rgb(53, 44, 184);
+    padding: 8px;
+}
 
-.up-lvl p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
-};
+.tuning{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
 
-.up-lvl1 {
-  cursor: pointer;
-  line-height: 1px;
-  padding-top: 1%;
-  user-select: none;
-};
+.tuning-wrapper{
+    display: flex;
+    flex-direction: column;
+}
 
-.up-lvl1 p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
-};
+.main {
+    display: flex;
+    padding: 1rem;
+}
+.menu {
+    width: 40%;
+    border: 2px solid rgb(184, 170, 44);
+}
 
-.up-lvl2 {
-  cursor: pointer;
-  line-height: 1px;
-  padding-top: 1%;
-  user-select: none;
-};
+.field-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    width: 50%;
+    height: 300px;
+    .hero{
+        height: 60%;
+        img{
+            height: 100%;
+        }
+    }
+}
 
-.up-lvl2 p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
-};
+// .up-lvl {
+//     cursor: pointer;
+//     line-height: 1px;
+// }
+
+// .up-lvl p {
+//     color: rgb(0, 41, 221);
+//     font-size: 1.5rem;
+// }
+
+// .up-lvl1 {
+//     cursor: pointer;
+//     line-height: 1px;
+//     padding-top: 1%;
+// }
+
+// .up-lvl1 p {
+//     color: rgb(0, 41, 221);
+//     font-size: 1.5rem;
+// }
+
+// .up-lvl2 {
+//     cursor: pointer;
+//     line-height: 1px;
+//     padding-top: 1%;
+// }
+
+// .up-lvl2 p {
+//     color: rgb(0, 41, 221);
+//     font-size: 1.5rem;
+// }
 
 .level-wrapper {
   display: flex;
