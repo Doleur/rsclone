@@ -1,11 +1,76 @@
 * {
-  box-sizing: border-box;
-  user-select: none;
-};
+    box-sizing: border-box;    
+    user-select: none;
+}
 
 :root {
   font-size: 10px;
 };
+
+.logo {
+    text-align: center;
+    height: 10vh;
+    img{
+        height: 100%;
+    }
+}
+.score-swiper {
+    display: flex;    
+    align-items: center;    
+    padding: 1rem;
+    // max-width: 120rem;  
+    position: relative;  
+}
+.score {
+    width: 40%;
+    text-align: center;
+    border: 2px solid rgb(238, 11, 11);
+    outline: none; 
+    padding: 1rem;
+}
+.level {
+    width: 50%;
+    text-align: center;
+    border: 2px solid rgb(53, 44, 184);
+    padding: 8px;
+}
+
+.tuning{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.tuning-wrapper{    
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    padding: 1rem;
+}
+.menu {
+    width: 40%;
+    border: 2px solid rgb(184, 170, 44);
+}
+
+.field-play {    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;    
+    flex-direction: column;
+    width: 50%;
+    height: 300px; 
+    background-color: #a095b5;   
+    .hero{
+        height: 60%;
+        img{
+            height: 100%;
+        }
+    }
+}
 
 .wrapper {
   display: flex;
@@ -25,20 +90,8 @@
   float: left;
 };
 
-.mob {
-  margin-top: 2rem;
-  padding: 5px 5px;
-  cursor: pointer;
-  background-color: rgb(40, 105, 24);
-  user-select: none;
-  width: 300px;
-  height: 300px;
-}
-
 .up-lvl {
   cursor: pointer;
-  line-height: 1px;
-  user-select: none;
 };
 
 .up-lvl p {
@@ -48,9 +101,7 @@
 
 .up-lvl1 {
   cursor: pointer;
-  line-height: 1px;
   padding-top: 1%;
-  user-select: none;
 };
 
 .up-lvl1 p {
@@ -60,9 +111,7 @@
 
 .up-lvl2 {
   cursor: pointer;
-  line-height: 1px;
   padding-top: 1%;
-  user-select: none;
 };
 
 .up-lvl2 p {

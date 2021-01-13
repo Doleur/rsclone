@@ -7,43 +7,99 @@
 
   <title>Clicker</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" integrity="sha512-IJEbgDEF7OeKJRa0MY2PApnyJHRIsgzCveek4ec8VWQ+7KG3ZSKVNYa5xP/Gh0hVP0Mwb+gBsk+GwR3JQGhQNg==" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Link Swiper's CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 
-<body class="body">
-  <div class="level-wrapper">
-    <p>Level <span class="current-level">1</span></p>
+<body>
+ <header>
+   <div class="logo"><img src="assets/img/logo.png" alt="Clicker Heroes"></div>   
+ </header>
+ <section class="score-swiper">
+  <div class="score">
+    <input type="text" class="count" value="0 g" />
+   </div>
+   <nav class="level">
+     <!-- Swiper -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"> <img src="assets/img/Zone_explorer.png" alt=""></div>
+        <div class="swiper-slide">Level 2</div>
+        <div class="swiper-slide">Level 3</div>
+        <div class="swiper-slide">Level 4</div>
+        <div class="swiper-slide">Level 5</div>
+        <div class="swiper-slide">Level 6</div>
+        <div class="swiper-slide">Level 7</div>
+        <div class="swiper-slide">Level 8</div>
+        <div class="swiper-slide">Level 9</div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <div class="level-wrapper">
+      <p>Level <span class="current-level">1</span></p>
+    </div>
+   </nav>
+   <div class="tuning">  
+     <div class="tuning-wrapper">
+      <a href="#"> <i class="material-icons">build_circle</i></a>    
+      <a href="#"> <i class="material-icons">help</i></a> 
+      <a href="#"> <i class="material-icons">volume_up</i></a>
+     </div>       
+   </div>
+ </section>
+ <section class="main">
+  <div class="menu">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="up-lvl">
+          <p>Lvl 2 (20g)</p>
+          <span>Увеличит урон до 2</span>
+        </div>
+        <div class="up-lvl1">
+          <p>Lvl 3 (30g)</p>
+          <span>Увеличит урон до 3</span>
+        </div>
+        <div class="up-lvl2">
+          <p>Lvl 3 (50g)</p>
+          <span>Увеличит урон до 4</span>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile</div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact</div>
+    </div>
   </div>
-  <div class="wrapper-healthbar">
-    <div class="wrapper-healthdata">
-      <span class="current-health">220</span>
+  <div class="mob field-play">    
+    <div class="wrapper-healthbar">
+      <div class="wrapper-healthdata">
+        <span class="current-health">220</span>
+        <span> / </span>
+        <span class="total-health">220</span>
+      </div>
+      <div class="healthbar"></div>
+    </div>
+    <div class="monsters-progress-wrapper">
+      <span class="current-monster">1</span>
       <span> / </span>
-      <span class="total-health">220</span>
+      <span class="total-monsters">10</span>
     </div>
-    <div class="healthbar"></div>
+    <div class="hero"><img src="assets/img/flower-bloop.png" alt=""></div>
   </div>
-  <div class="monsters-progress-wrapper">
-    <span class="current-monster">1</span>
-    <span> / </span>
-    <span class="total-monsters">10</span>
-  </div>
-  <div class="wrapper">
-    <div>
-      <input type="text" class="count" value="0 g" />
-    </div>
-    <div class="mob"></div>
-  </div>
-  <div class="up-lvl">
-    <p>Lvl 2 (20g)</p>
-    <span>Увеличит урон до 2</span>
-  </div>
-  <div class="up-lvl1">
-    <p>Lvl 3 (30g)</p>
-    <span>Увеличит урон до 3</span>
-  </div>
-  <div class="up-lvl2">
-    <p>Lvl 3 (50g)</p>
-    <span>Увеличит урон до 4</span>
-  </div>
+ </section>
+
+ <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>
