@@ -4,21 +4,43 @@ const units = countInput.value.replace(/\d/g, '');
 const buy = document.querySelector('.up-lvl');
 const buy1 = document.querySelector('.up-lvl1');
 const buy2 = document.querySelector('.up-lvl2');
+const currentLevelNumOnPage = document.querySelector('.current-level');
 const healthBar = document.querySelector('.healthbar');
+const currentHealthNumOnPage = document.querySelector('.current-health');
+const totalHealthNumOnPage = document.querySelector('.total-health');
+const currentMonsterNumOnPage = document.querySelector('.current-monster');
+const totalMonstersNumOnPage = document.querySelector('.total-monsters');
 
-let health = 100;
+const monstersPerLevel = 10;
+let currLevel = 1;
+let health = 220;
+let currHealth = health;
+let currMonster = 1;
 let damage = 1;
 
+console.log(damage);
+// currentHealthNumOnPage.innerText = health;
+// totalHealthNumOnPage.innerText = health;
+
 mob.addEventListener('click', () => {
-  health = health - damage;
-
   console.log(damage);
-
-  if (health <= 0) {
-    health = 100;
+  currHealth = currHealth - damage;
+  if (currHealth <= 0) {
+    if (currMonster === monstersPerLevel) {
+      currMonster = 1;
+      currLevel += 1;
+      health = health + Math.random() * 100 * currLevel;
+    } else {
+      currMonster += 1;
+    }
+    currHealth = health;
     mob.classList.toggle('mob__active');
   }
-  healthBar.style.width = `${health}%`;
+  currentLevelNumOnPage.innerText = currLevel;
+  healthBar.style.width = `${currHealth / health * 100}%`;
+  currentHealthNumOnPage.innerText = currHealth.toFixed(0);
+  totalHealthNumOnPage.innerText = health.toFixed(0);
+  currentMonsterNumOnPage.innerText = currMonster;
 });
 
 buy.addEventListener('click', () => {
