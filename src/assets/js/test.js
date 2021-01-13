@@ -5,40 +5,38 @@ const buy = document.querySelector('.up-lvl');
 const buy1 = document.querySelector('.up-lvl1');
 const buy2 = document.querySelector('.up-lvl2');
 
-mob.onclick = function() {
-  countInput.value = parseInt(countInput.value) + 1 + units;
-};
+let gold = 1;
 
-buy.onclick = function() {
+mob.addEventListener('click', () => {
+  countInput.value = parseInt(countInput.value) + gold + units;
+});
+
+buy.addEventListener('click', () => {
   if (parseInt(countInput.value) < 20) {
     alert('У вас нету денег!');
   }
   if (parseInt(countInput.value) >= 20) {
+    gold += 1;
     countInput.value = parseInt(countInput.value) - 20 + units;
-    plus.onclick = function() {
-      countInput.value = parseInt(countInput.value) + 2 + units;
-    }
-  };
-};
-buy1.onclick = function() {
+  }
+});
+
+buy1.addEventListener('click', () => {
   if (parseInt(countInput.value) < 30) {
     alert('У вас нету денег!');
   }
   if (parseInt(countInput.value) >= 30) {
+    gold += 2;
     countInput.value = parseInt(countInput.value) - 30 + units;
-    plus.onclick = function() {
-      countInput.value = parseInt(countInput.value) + 3 + units;
-    }
-  };
-};
-buy2.onclick = function() {
+  }
+});
+
+buy2.addEventListener('click', () => {
   if (parseInt(countInput.value) < 50) {
     alert('У вас нету денег!');
   }
   if (parseInt(countInput.value) >= 50) {
+    gold += 3;
     countInput.value = parseInt(countInput.value) - 50 + units;
-    plus.onclick = function() {
-      countInput.value = parseInt(countInput.value) + 4 + units;
-    }
-  };
-};
+  }
+});
