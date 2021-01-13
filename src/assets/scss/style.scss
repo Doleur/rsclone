@@ -1,6 +1,5 @@
 * {
-    box-sizing: border-box;
-    background-color: rgb(195, 252, 252);
+    box-sizing: border-box;    
     user-select: none;
 }
 
@@ -59,11 +58,12 @@
 .field-play {    
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
+    justify-content: space-between;
+    cursor: pointer;    
+    flex-direction: column;
     width: 50%;
-    height: 300px;    
+    height: 300px; 
+    background-color: #a095b5;   
     .hero{
         height: 60%;
         img{
@@ -90,20 +90,8 @@
   float: left;
 };
 
-.mob {
-  margin-top: 2rem;
-  padding: 5px 5px;
-  cursor: pointer;
-  background-color: rgb(40, 105, 24);
-  user-select: none;
-  width: 300px;
-  height: 300px;
-}
-
 .up-lvl {
   cursor: pointer;
-  line-height: 1px;
-  user-select: none;
 };
 
 .up-lvl p {
@@ -113,9 +101,7 @@
 
 .up-lvl1 {
   cursor: pointer;
-  line-height: 1px;
   padding-top: 1%;
-  user-select: none;
 };
 
 .up-lvl1 p {
@@ -125,9 +111,7 @@
 
 .up-lvl2 {
   cursor: pointer;
-  line-height: 1px;
   padding-top: 1%;
-  user-select: none;
 };
 
 .up-lvl2 p {
