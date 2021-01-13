@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  user-select: none;
 };
 
 :root {
@@ -37,6 +38,7 @@
 .up-lvl {
   cursor: pointer;
   line-height: 1px;
+  user-select: none;
 };
 
 .up-lvl p {
@@ -48,6 +50,7 @@
   cursor: pointer;
   line-height: 1px;
   padding-top: 1%;
+  user-select: none;
 };
 
 .up-lvl1 p {
@@ -59,6 +62,7 @@
   cursor: pointer;
   line-height: 1px;
   padding-top: 1%;
+  user-select: none;
 };
 
 .up-lvl2 p {
@@ -66,7 +70,16 @@
   font-size: 1.5rem;
 };
 
+.level-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px auto;
+  font-size: 1.5rem;
+}
+
 .wrapper-healthbar {
+  position: relative;
   width: 100%;
   height: 25px;
   background-color: #930000;
@@ -79,6 +92,25 @@
   background-color: #ff0000;
   transition: 0.4s all ease-out;
 };
+
+.wrapper-healthdata {
+  margin: 2px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+}
+
+.monsters-progress-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px auto;
+  font-size: 1.5rem;
+}
 
 .mob__active {
   border-radius: 50%;
