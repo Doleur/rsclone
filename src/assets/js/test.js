@@ -1,5 +1,5 @@
 const countInput = document.querySelector('.count');
-const mob = document.querySelector('.mob');
+const hero = document.querySelector('.hero');
 const units = countInput.value.replace(/\d/g, '');
 const buy = document.querySelector('.up-lvl');
 const buy1 = document.querySelector('.up-lvl1');
@@ -7,7 +7,7 @@ const buy2 = document.querySelector('.up-lvl2');
 
 let gold = 1;
 
-mob.addEventListener('click', () => {
+hero.addEventListener('click', () => {
   countInput.value = parseInt(countInput.value) + gold + units;
 });
 

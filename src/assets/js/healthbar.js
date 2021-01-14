@@ -1,5 +1,5 @@
 const countInput = document.querySelector('.count');
-const mob = document.querySelector('.mob');
+const hero = document.querySelector('.hero');
 const units = countInput.value.replace(/\d/g, '');
 const buy = document.querySelector('.up-lvl');
 const buy1 = document.querySelector('.up-lvl1');
@@ -10,19 +10,19 @@ const currentHealthNumOnPage = document.querySelector('.current-health');
 const totalHealthNumOnPage = document.querySelector('.total-health');
 const currentMonsterNumOnPage = document.querySelector('.current-monster');
 const totalMonstersNumOnPage = document.querySelector('.total-monsters');
+const playField = document.querySelector('.field-play');
 
 const monstersPerLevel = 10;
 let currLevel = 1;
-let health = 220;
+let health = 20;
 let currHealth = health;
 let currMonster = 1;
 let damage = 1;
 
-console.log(damage);
 // currentHealthNumOnPage.innerText = health;
 // totalHealthNumOnPage.innerText = health;
 
-mob.addEventListener('click', () => {
+hero.addEventListener('click', () => {
   console.log(damage);
   currHealth = currHealth - damage;
   if (currHealth <= 0) {
@@ -34,7 +34,7 @@ mob.addEventListener('click', () => {
       currMonster += 1;
     }
     currHealth = health;
-    mob.classList.toggle('mob__active');
+    playField.classList.toggle('__new-monster');
   }
   currentLevelNumOnPage.innerText = currLevel;
   healthBar.style.width = `${currHealth / health * 100}%`;
