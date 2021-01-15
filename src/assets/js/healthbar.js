@@ -1,5 +1,5 @@
 const countInput = document.querySelector('.count');
-const mob = document.querySelector('.mob');
+const hero = document.querySelector('.hero');
 const units = countInput.value.replace(/\d/g, '');
 const buy = document.querySelector('.up-lvl');
 const buy1 = document.querySelector('.up-lvl1');
@@ -9,22 +9,35 @@ const healthBar = document.querySelector('.healthbar');
 const currentHealthNumOnPage = document.querySelector('.current-health');
 const totalHealthNumOnPage = document.querySelector('.total-health');
 const currentMonsterNumOnPage = document.querySelector('.current-monster');
-const totalMonstersNumOnPage = document.querySelector('.total-monsters');
+// const totalMonstersNumOnPage = document.querySelector('.total-monsters');
+const playField = document.querySelector('.field-play');
+const autoDamage = document.querySelector('.dps');
 
 const monstersPerLevel = 10;
 let currLevel = 1;
-let health = 220;
+let health = 20;
 let currHealth = health;
 let currMonster = 1;
 let damage = 1;
+let autoDPS = 0;
+let gold = 0;
+let timer = null;
+let damagePopupTimer = null;
 
-console.log(damage);
 // currentHealthNumOnPage.innerText = health;
 // totalHealthNumOnPage.innerText = health;
 
-mob.addEventListener('click', () => {
-  console.log(damage);
-  currHealth = currHealth - damage;
+function setDamage(dmg) {
+  currHealth = currHealth - dmg;
+  checkIfDead();
+  currentLevelNumOnPage.innerText = currLevel;
+  healthBar.style.width = `${currHealth / health * 100}%`;
+  currentHealthNumOnPage.innerText = currHealth.toFixed(0);
+  totalHealthNumOnPage.innerText = health.toFixed(0);
+  currentMonsterNumOnPage.innerText = currMonster;
+}
+
+function checkIfDead() {
   if (currHealth <= 0) {
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
@@ -33,30 +46,80 @@ mob.addEventListener('click', () => {
     } else {
       currMonster += 1;
     }
+    gold = gold + currLevel * 10;
+    countInput.value = gold + units;
     currHealth = health;
-    mob.classList.toggle('mob__active');
+    playField.classList.toggle('__new-monster');
   }
-  currentLevelNumOnPage.innerText = currLevel;
-  healthBar.style.width = `${currHealth / health * 100}%`;
-  currentHealthNumOnPage.innerText = currHealth.toFixed(0);
-  totalHealthNumOnPage.innerText = health.toFixed(0);
-  currentMonsterNumOnPage.innerText = currMonster;
+}
+
+function createDamagePopup(e) {
+  const damagePopup = document.createElement('div');
+  const damagePopupNumOnPage = document.createElement('div');
+  damagePopup.classList.add('damage-popup');
+  damagePopupNumOnPage.classList.add('damage-popup-number');
+  damagePopup.append(damagePopupNumOnPage);
+  damagePopupNumOnPage.innerText = '-' + damage;
+  damagePopup.style.top = e.clientY + 'px';
+  damagePopup.style.left = e.clientX + 'px';
+  document.body.append(damagePopup);
+  console.log(e);
+}
+
+function removeDamagePopup() {
+  setTimeout(() => {
+    const damagePopup = document.querySelector('.damage-popup');
+    document.body.removeChild(damagePopup);
+  }, 500);
+}
+
+hero.addEventListener('click', (e) => {
+  console.log(damage);
+  setDamage(damage);
+  createDamagePopup(e);
+  removeDamagePopup();
 });
 
 buy.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 20) {
     damage += 1;
+    gold = gold - 20;
+    countInput.value = gold + units;
+  } else {
+    alert('У вас нету денег!');
   }
 });
 
 buy1.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 30) {
     damage += 2;
+    gold = gold - 30;
+    countInput.value = gold + units;
+  } else {
+    alert('У вас нету денег!');
   }
 });
 
 buy2.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 50) {
     damage += 3;
+    gold = gold - 50;
+    countInput.value = gold + units;
+  } else {
+    alert('У вас нету денег!');
+  }
+});
+
+autoDamage.addEventListener('click', () => {
+  clearInterval(timer);
+  if (parseInt(countInput.value) >= 5) {
+    autoDPS += 1;
+    gold = gold - 5;
+    countInput.value = gold + units;
+    timer = setInterval(() => {
+      setDamage(autoDPS);
+    }, 1000);
+  } else {
+    alert('У вас нету денег!');
   }
 });
