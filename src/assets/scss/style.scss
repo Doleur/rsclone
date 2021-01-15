@@ -110,6 +110,7 @@
       background-color: rgba(255, 255, 255, 0);
       animation: pulse 1s infinite;
       transition: all 0.3s linear;
+      user-select: none;
     }
     img:active {
       height: 115%;
@@ -127,6 +128,19 @@
   .monsters-progress-wrapper span {
     background-color: rgba(255, 255, 255, 0);
   }
+}
+
+.damage-popup {
+  display: block;
+  position: absolute;
+  font-size: 3rem;
+  font-weight: 700;
+  color: darkblue;
+  transition: all 0.3s linear;
+  background-color: rgba(255, 255, 255, 0);
+}
+.damage-popup span {
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .__new-monster {
@@ -158,6 +172,16 @@
 }
 
 .up-lvl2 p {
+  color: rgb(0, 41, 221);
+  font-size: 1.5rem;
+}
+
+.dps {
+  cursor: pointer;
+  padding-top: 1%;
+}
+
+.dps p {
   color: rgb(0, 41, 221);
   font-size: 1.5rem;
 }
