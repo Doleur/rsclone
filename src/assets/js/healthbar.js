@@ -15,7 +15,7 @@ const autoDamage = document.querySelector('.dps');
 
 const monstersPerLevel = 10;
 let currLevel = 1;
-let health = 20;
+let health = 5;
 let currHealth = health;
 let currMonster = 1;
 let damage = 1;
@@ -24,8 +24,14 @@ let gold = 0;
 let timer = null;
 let damagePopupTimer = null;
 
-// currentHealthNumOnPage.innerText = health;
-// totalHealthNumOnPage.innerText = health;
+function innerValue () {
+  countInput.value = gold + units
+  currentHealthNumOnPage.innerText = health.toFixed(0);
+  totalHealthNumOnPage.innerText = health.toFixed(0);
+  currentMonsterNumOnPage.innerText = currMonster;
+  currentLevelNumOnPage.innerText = currLevel;
+}
+
 
 function setDamage(dmg) {
   currHealth = currHealth - dmg;
@@ -39,6 +45,7 @@ function setDamage(dmg) {
 
 function checkIfDead() {
   if (currHealth <= 0) {
+    setCount()
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
@@ -123,3 +130,32 @@ autoDamage.addEventListener('click', () => {
     alert('У вас нету денег!');
   }
 });
+
+function getCount () {
+  if (localStorage.getItem('saveItems') !== null) {
+    const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
+    gold = returnSaveItems.gold
+    autoDPS = returnSaveItems.autoDPS
+    // timer()
+    damage = returnSaveItems.damage
+    currLevel = returnSaveItems.currLevel
+    health = returnSaveItems.health
+    currMonster = returnSaveItems.currMonster
+    }
+}
+
+function setCount () {
+  const saveItems = { gold,
+    autoDPS,
+    damage,
+    currLevel,
+    health,
+    currMonster,
+  }
+  const serialSaveItems = JSON.stringify(saveItems)
+  localStorage.setItem('saveItems', serialSaveItems)
+}
+
+getCount()
+innerValue()
+export { countInput, hero, gold, autoDPS, damage, currLevel, health }
