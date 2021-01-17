@@ -1,0 +1,176 @@
+$gold-size: 4em;
+.wrapper-gold {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    overflow: hidden;
+    .gold {
+        position: absolute;
+        top: 100%;
+        align-items: center;
+        width: $gold-size;
+        height: $gold-size;
+        background-image: url(../img/Gold.png);
+        background-size: cover;
+        border-radius: 50%;
+        z-index: 50;
+    }
+    .goldNumber {
+        position: absolute;
+        top: 100%;
+        font-size: 2.5rem;
+        color: gold;
+        text-shadow: black 0rem 0rem 1rem;
+        background: none;
+        z-index: 50;
+    }
+}
+
+@keyframes move1 {
+    from {
+        top: calc(50% - #{$gold-size} / 2);
+        left: calc(50% - #{$gold-size} / 2);
+    }
+    30% {
+        top: 20%;
+        left: 50%;
+    }
+    to {
+        top: 80%;
+        left: 50%;
+    }
+}
+
+@keyframes move2 {
+    from {
+        top: calc(50% - #{$gold-size} / 2);
+        left: calc(50% - #{$gold-size} / 2);
+    }
+    30% {
+        top: 25%;
+        left: 45%;
+    }
+    to {
+        top: 80%;
+        left: 40%;
+    }
+}
+
+@keyframes move3 {
+    from {
+        top: calc(50% - #{$gold-size} / 2);
+        left: calc(50% - #{$gold-size} / 2);
+    }
+    30% {
+        top: 25%;
+        left: 55%;
+    }
+    to {
+        top: 80%;
+        left: 60%;
+    }
+}
+
+@keyframes move4 {
+    from {
+        top: calc(50% - #{$gold-size} / 2);
+        left: calc(50% - #{$gold-size} / 2);
+    }
+    30% {
+        top: 30%;
+        left: 60%;
+    }
+    to {
+        top: 80%;
+        left: 65%;
+    }
+}
+
+@keyframes move5 {
+    from {
+        top: calc(50% - #{$gold-size} / 2);
+        left: calc(50% - #{$gold-size} / 2);
+    }
+    30% {
+        top: 30%;
+        left: 40%;
+    }
+    to {
+        top: 80%;
+        left: 35%;
+    }
+}
+
+@keyframes moveNumber {
+    from {
+        top: 80%
+    }
+    to {
+        top: 50%;
+    }
+}
+
+.g1 {
+    animation: move1 2s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+}
+
+.g2 {
+    animation: move2 2s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: .1s;
+}
+
+.g3 {
+    animation: move3 2s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: .2s;
+}
+
+.g4 {
+    animation: move4 2s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: .3s;
+}
+
+.g5 {
+    animation: move5 2s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: .4s;
+}
+
+.gN1 {
+    left: 50%;
+    animation: moveNumber 1s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: 2s;
+}
+
+.gN2 {
+    left: 40%;
+    animation: moveNumber 1s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: 2.1s;
+}
+
+.gN3 {
+    left: 60%;
+    animation: moveNumber 1s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: 2.2s;
+}
+
+.gN4 {
+    left: 65%;
+    animation: moveNumber 1s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: 2.3s;
+}
+
+.gN5 {
+    left: 35%;
+    animation: moveNumber 1s;
+    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+    animation-delay: 2.4s;
+}
