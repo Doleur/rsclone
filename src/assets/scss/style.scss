@@ -1,20 +1,21 @@
 * {
-  box-sizing: border-box;
-  background-color: rgb(195, 252, 252);
-  user-select: none;
+    box-sizing: border-box;
+    background-color: rgb(195, 252, 252);
+    user-select: none;
 }
 
 :root {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 .logo {
     text-align: center;
     height: 10vh;
-    img{
+    img {
         height: 100%;
     }
 }
+
 .score-swiper {
     display: flex;
     align-items: center;
@@ -22,6 +23,7 @@
     // max-width: 120rem;
     position: relative;
 }
+
 .score {
     width: 40%;
     text-align: center;
@@ -29,171 +31,175 @@
     outline: none;
     padding: 1rem;
 }
+
 .level {
-  width: 50%;
-  text-align: center;
-  border: 2px solid rgb(53, 44, 184);
-  padding: 8px;
-  .level-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2px auto;
-    font-size: 1.5rem;
-  }
+    width: 50%;
+    text-align: center;
+    border: 2px solid rgb(53, 44, 184);
+    padding: 8px;
+    .level-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2px auto;
+        font-size: 1.5rem;
+    }
 }
 
-.tuning{
+.tuning {
     position: absolute;
     top: 1rem;
     right: 1rem;
 }
 
-.tuning-wrapper{
+.tuning-wrapper {
     display: flex;
     flex-direction: column;
 }
 
 .main-wrapper {
-  display: flex;
-  padding: 1rem;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
+
 .menu {
     width: 40%;
     border: 2px solid rgb(184, 170, 44);
 }
 
 .field-play {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 50%;
-  height: 500px;
-  background-color: #a095b5;
-  cursor: pointer;
-  .wrapper-healthbar {
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 35px;
-    background-color: #930000;
-    .wrapper-healthdata {
-      position: absolute;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      color: #FFFFFF;
-      background-color: rgba(255, 255, 255, 0);
+    justify-content: space-between;
+    flex-direction: column;
+    width: 50%;
+    height: 500px;
+    background-color: #a095b5;
+    cursor: pointer;
+    .wrapper-healthbar {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 35px;
+        background-color: #930000;
+        .wrapper-healthdata {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #FFFFFF;
+            background-color: rgba(255, 255, 255, 0);
+        }
+        .wrapper-healthdata span {
+            background-color: rgba(255, 255, 255, 0);
+        }
+        .healthbar {
+            width: 100%;
+            height: 100%;
+            background-color: #ff0000;
+            transition: 0.4s all ease-out;
+        }
     }
-    .wrapper-healthdata span {
-      background-color: rgba(255, 255, 255, 0);
+    .hero {
+        height: 60%;
+        background-color: rgba(255, 255, 255, 0);
+        img {
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            animation: pulse 1s infinite;
+            transition: all 0.3s linear;
+            user-select: none;
+        }
+        img:active {
+            height: 115%;
+            transition: all 0.3s linear;
+        }
     }
-    .healthbar {
-      width: 100%;
-      height: 100%;
-      background-color: #ff0000;
-      transition: 0.4s all ease-out;
+    .monsters-progress-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        font-size: 2rem;
+        background-color: rgba(255, 255, 255, 0);
     }
-  }
-  .hero {
-    height: 60%;
-    background-color: rgba(255, 255, 255, 0);
-    img {
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0);
-      animation: pulse 1s infinite;
-      transition: all 0.3s linear;
-      user-select: none;
+    .monsters-progress-wrapper span {
+        background-color: rgba(255, 255, 255, 0);
     }
-    img:active {
-      height: 115%;
-      transition: all 0.3s linear;
-    }
-  }
-  .monsters-progress-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    font-size: 2rem;
-    background-color: rgba(255, 255, 255, 0);
-  }
-  .monsters-progress-wrapper span {
-    background-color: rgba(255, 255, 255, 0);
-  }
 }
 
 .damage-popup {
-  display: block;
-  position: absolute;
-  font-size: 3rem;
-  font-weight: 700;
-  color: darkblue;
-  transition: all 0.3s linear;
-  background-color: rgba(255, 255, 255, 0);
+    display: block;
+    position: absolute;
+    font-size: 3rem;
+    font-weight: 700;
+    color: darkblue;
+    transition: all 0.3s linear;
+    background-color: rgba(255, 255, 255, 0);
 }
+
 .damage-popup span {
-  background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .__new-monster {
-  background-color: #d3db7a;
+    background-color: #d3db7a;
 }
 
 .up-lvl {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .up-lvl p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
+    color: rgb(0, 41, 221);
+    font-size: 1.5rem;
 }
 
 .up-lvl1 {
-  cursor: pointer;
-  padding-top: 1%;
+    cursor: pointer;
+    padding-top: 1%;
 }
 
 .up-lvl1 p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
+    color: rgb(0, 41, 221);
+    font-size: 1.5rem;
 }
 
 .up-lvl2 {
-  cursor: pointer;
-  padding-top: 1%;
+    cursor: pointer;
+    padding-top: 1%;
 }
 
 .up-lvl2 p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
+    color: rgb(0, 41, 221);
+    font-size: 1.5rem;
 }
 
 .dps {
-  cursor: pointer;
-  padding-top: 1%;
+    cursor: pointer;
+    padding-top: 1%;
 }
 
 .dps p {
-  color: rgb(0, 41, 221);
-  font-size: 1.5rem;
+    color: rgb(0, 41, 221);
+    font-size: 1.5rem;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1.02);
-  }
-  70% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1.02);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

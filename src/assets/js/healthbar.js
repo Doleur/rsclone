@@ -1,3 +1,5 @@
+import { dropGold } from './gold.js'
+
 const countInput = document.querySelector('.count');
 const hero = document.querySelector('.hero');
 const units = countInput.value.replace(/\d/g, '');
@@ -20,7 +22,7 @@ let currHealth = health;
 let currMonster = 1;
 let damage = 1;
 let autoDPS = 0;
-let gold = 0;
+let gold = 1000;
 let timer = null;
 let damagePopupTimer = null;
 
@@ -46,6 +48,7 @@ function setDamage(dmg) {
 function checkIfDead() {
   if (currHealth <= 0) {
     setCount()
+    dropGold()
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
