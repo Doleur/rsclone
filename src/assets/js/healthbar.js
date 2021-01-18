@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 import { dropGold } from './gold.js'
 import { setCount } from './save-game.js'
+=======
+import { dropGold } from './gold.js';
+import createTagElement from './creatElement.js';
+import { randomMonster } from './random.js'
+import { monsters } from './monster.js'
+>>>>>>> ecd70ef29528e2a6ecf07563fde380d9880a3d8f
 
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
@@ -13,19 +20,22 @@ const currentHealthNumOnPage = document.querySelector('.current-health')
 const totalHealthNumOnPage = document.querySelector('.total-health')
 const currentMonsterNumOnPage = document.querySelector('.current-monster')
 // const totalMonstersNumOnPage = document.querySelector('.total-monsters');
-const playField = document.querySelector('.field-play')
-const autoDamage = document.querySelector('.dps')
+const playField = document.querySelector('.field-play');
+const autoDamage = document.querySelector('.dps');
+const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
 
-const monstersPerLevel = 10
-let currLevel = 1
-let health = 5
-let currHealth = health
-let currMonster = 1
-let damage = 1
-let autoDPS = 0
-let gold = 1000
-let timer = null
-const damagePopupTimer = null
+
+const monstersPerLevel = 10;
+let currLevel = 1;
+let health = 20;
+let currHealth = health;
+let currMonster = 1;
+let damage = 1;
+let autoDPS = 0;
+let gold = 1000;
+let timer = null;
+let damagePopupTimer = null;
+let monstr = randomMonster(monsters)
 
 function innerValue () {
   countInput.value = gold + units
@@ -35,20 +45,30 @@ function innerValue () {
   currentLevelNumOnPage.innerText = currLevel
 }
 
-function setDamage (dmg) {
-  currHealth = currHealth - dmg
-  checkIfDead()
-  currentLevelNumOnPage.innerText = currLevel
-  healthBar.style.width = `${currHealth / health * 100}%`
-  currentHealthNumOnPage.innerText = currHealth.toFixed(0)
-  totalHealthNumOnPage.innerText = health.toFixed(0)
-  currentMonsterNumOnPage.innerText = currMonster
+hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
+
+function setDamage(dmg) {
+  currHealth = currHealth - dmg;
+  checkIfDead();
+  currentLevelNumOnPage.innerText = currLevel;
+  healthBar.style.width = `${currHealth / health * 100}%`;
+  currentHealthNumOnPage.innerText = currHealth.toFixed(0);
+  totalHealthNumOnPage.innerText = health.toFixed(0);
+  currentMonsterNumOnPage.innerText = currMonster;
 }
 
-function checkIfDead () {
+function setAutoDamage() {
+  timer = setInterval(() => {
+    setDamage(autoDPS);
+  }, 1000);
+}
+setAutoDamage();
+
+function checkIfDead() {
   if (currHealth <= 0) {
-    dropGold()
+    dropGold();
     setCount()
+    hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`
     if (currMonster === monstersPerLevel) {
       currMonster = 1
       currLevel += 1
@@ -63,6 +83,7 @@ function checkIfDead () {
   }
 }
 
+<<<<<<< HEAD
 function createDamagePopup (e) {
   const damagePopup = document.createElement('div')
   const damagePopupNumOnPage = document.createElement('div')
@@ -74,13 +95,28 @@ function createDamagePopup (e) {
   damagePopup.style.left = e.clientX + 'px'
   document.body.append(damagePopup)
   console.log(e)
+=======
+function createDamagePopup(e) {
+  const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
+  const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
+  damagePopupNumOnPage.innerText = '-' + damage;
+  // damagePopup.style.top = e.clientY + 'px';
+  // damagePopup.style.left = e.clientX + 'px';
+  wrapperDmgPopup.append(damagePopup);
+>>>>>>> ecd70ef29528e2a6ecf07563fde380d9880a3d8f
 }
 
 function removeDamagePopup () {
   setTimeout(() => {
+<<<<<<< HEAD
     const damagePopup = document.querySelector('.damage-popup')
     document.body.removeChild(damagePopup)
   }, 500)
+=======
+    const damagePopup = document.querySelector('.damage-popup');
+    wrapperDmgPopup.removeChild(damagePopup);
+  }, 1000);
+>>>>>>> ecd70ef29528e2a6ecf07563fde380d9880a3d8f
 }
 
 hero.addEventListener('click', (e) => {
@@ -121,6 +157,7 @@ buy2.addEventListener('click', () => {
 })
 
 autoDamage.addEventListener('click', () => {
+<<<<<<< HEAD
   clearInterval(timer)
   if (parseInt(countInput.value) >= 5) {
     autoDPS += 1
@@ -129,6 +166,12 @@ autoDamage.addEventListener('click', () => {
     timer = setInterval(() => {
       setDamage(autoDPS)
     }, 1000)
+=======
+  if (parseInt(countInput.value) >= 5) {
+    autoDPS += 1;
+    gold = gold - 5;
+    countInput.value = gold + units;
+>>>>>>> ecd70ef29528e2a6ecf07563fde380d9880a3d8f
   } else {
     alert('У вас нету денег!')
   }
