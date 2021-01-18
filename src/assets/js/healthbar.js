@@ -1,7 +1,8 @@
 import { dropGold } from './gold.js';
+import { setCount } from './save-game.js';
 import createTagElement from './creatElement.js';
-import { randomMonster } from './random.js'
-import { monsters } from './monster.js'
+import { randomMonster } from './random.js';
+import { monsters } from './monster.js';
 
 const countInput = document.querySelector('.count');
 const hero = document.querySelector('.hero');
@@ -29,9 +30,15 @@ let currMonster = 1;
 let damage = 1;
 let autoDPS = 0;
 let gold = 1000;
-let timer = null;
-let damagePopupTimer = null;
-let monstr = randomMonster(monsters);
+const monstr = randomMonster(monsters);
+
+function innerValue () {
+  countInput.value = gold + units;
+  currentHealthNumOnPage.innerText = health.toFixed(0);
+  totalHealthNumOnPage.innerText = health.toFixed(0);
+  currentMonsterNumOnPage.innerText = currMonster;
+  currentLevelNumOnPage.innerText = currLevel;
+}
 
 hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
 
@@ -68,17 +75,18 @@ function setAutoDamage() {
     setDamage(autoDPS);
   }, 1000);
 }
-setAutoDamage();
+setAutoDamage()
 
-function checkIfDead() {
+function checkIfDead () {
   if (currHealth <= 0) {
     dropGold();
+    setCount();
     hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`;
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
     } else {
-      currMonster += 1;
+      currMonster += 1
     }
     setMonsterHealth();
     gold = gold + currLevel * 10;
@@ -93,11 +101,11 @@ function createDamagePopup(e) {
   wrapperDmgPopup.append(damagePopup);
 }
 
-function removeDamagePopup() {
+function removeDamagePopup () {
   setTimeout(() => {
-    const damagePopup = document.querySelector('.damage-popup');
-    wrapperDmgPopup.removeChild(damagePopup);
-  }, 1000);
+    const damagePopup = document.querySelector('.damage-popup')
+    wrapperDmgPopup.removeChild(damagePopup)
+  }, 1000)
 }
 
 hero.addEventListener('click', (e) => {
@@ -108,42 +116,59 @@ hero.addEventListener('click', (e) => {
 
 buy.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 20) {
-    damage += 1;
-    gold = gold - 20;
-    countInput.value = gold + units;
+    damage += 1
+    gold = gold - 20
+    countInput.value = gold + units
   } else {
-    alert('У вас нету денег!');
+    alert('У вас нету денег!')
   }
 });
 
 buy1.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 30) {
-    damage += 2;
-    gold = gold - 30;
-    countInput.value = gold + units;
+    damage += 2
+    gold = gold - 30
+    countInput.value = gold + units
   } else {
-    alert('У вас нету денег!');
+    alert('У вас нету денег!')
   }
 });
 
 buy2.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 50) {
-    damage += 3;
-    gold = gold - 50;
-    countInput.value = gold + units;
+    damage += 3
+    gold = gold - 50
+    countInput.value = gold + units
   } else {
-    alert('У вас нету денег!');
+    alert('У вас нету денег!')
   }
 });
 
 autoDamage.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 5) {
-    autoDPS += 1;
-    gold = gold - 5;
-    countInput.value = gold + units;
+    autoDPS += 1
+    gold = gold - 5
+    countInput.value = gold + units
   } else {
-    alert('У вас нету денег!');
+    alert('У вас нету денег!')
   }
 });
 
+function getCount () {
+  if (localStorage.getItem('saveItems') !== null) {
+    const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
+    gold = returnSaveItems.gold
+    autoDPS = returnSaveItems.autoDPS
+    damage = returnSaveItems.damage
+    currLevel = returnSaveItems.currLevel
+    health = returnSaveItems.health
+    currMonster = returnSaveItems.currMonster
+  }
+}
+
+getCount();
+innerValue();
+
 document.addEventListener('DOMContentLoaded', setMonsterHealth);
+
+export { gold, autoDPS, damage, currLevel, health, currMonster }
