@@ -27,7 +27,7 @@ let health = 10;
 let isBoss = null;
 let currHealth = health;
 let currMonster = 1;
-let damage = 1;
+let damage = 50;
 let autoDPS = 0;
 let gold = 1000;
 const monstr = randomMonster(monsters);
@@ -40,7 +40,22 @@ function innerValue () {
   currentLevelNumOnPage.innerText = currLevel;
 }
 
-hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
+let timer = null;
+let damagePopupTimer = null;
+let monstr = randomMonster(monsters)
+console.log(randomMonster(monsters))
+// currentHealthNumOnPage.innerText = health;
+// totalHealthNumOnPage.innerText = health;
+
+function setMonstr(){
+ if(currMonster==2){
+    hero.innerHTML = `<img src="${monstr[currMonster-1].img}" alt=""></img>`
+    console.log(`${monstr[currMonster-1].name}`)
+ }else{
+hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
+ }
+}
+setMonstr(monstr)
 
 function setMonsterHealth() {
   if (currLevel % 5 === 0) {
@@ -81,7 +96,8 @@ function checkIfDead () {
   if (currHealth <= 0) {
     dropGold();
     setCount();
-    hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`;
+    setMonstr(monstr)
+    // hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
