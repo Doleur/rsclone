@@ -1,4 +1,4 @@
-import { dropGold } from './gold.js'
+import { dropGold } from './gold.js';
 import createTagElement from './creatElement.js';
 
 const countInput = document.querySelector('.count');
@@ -50,7 +50,7 @@ setAutoDamage();
 
 function checkIfDead() {
   if (currHealth <= 0) {
-    dropGold()
+    dropGold();
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
@@ -69,16 +69,16 @@ function createDamagePopup(e) {
   const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
   const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
   damagePopupNumOnPage.innerText = '-' + damage;
-  damagePopup.style.top = e.clientY + 'px';
-  damagePopup.style.left = e.clientX + 'px';
-  document.body.append(damagePopup);
+  // damagePopup.style.top = e.clientY + 'px';
+  // damagePopup.style.left = e.clientX + 'px';
+  wrapperDmgPopup.append(damagePopup);
 }
 
 function removeDamagePopup() {
   setTimeout(() => {
     const damagePopup = document.querySelector('.damage-popup');
-    document.body.removeChild(damagePopup);
-  }, 500);
+    wrapperDmgPopup.removeChild(damagePopup);
+  }, 1000);
 }
 
 hero.addEventListener('click', (e) => {
@@ -119,7 +119,6 @@ buy2.addEventListener('click', () => {
 });
 
 autoDamage.addEventListener('click', () => {
-  // clearInterval(timer);
   if (parseInt(countInput.value) >= 5) {
     autoDPS += 1;
     gold = gold - 5;

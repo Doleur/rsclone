@@ -152,11 +152,12 @@
     // transition: all 0.3s linear;
     animation: damage 1s;
     animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
-    background-color: rgba(255, 255, 255, 0);
+    background: none;
+    z-index: 99;
 }
 
 .damage-popup span {
-    background-color: rgba(255, 255, 255, 0);
+  background: none;
 }
 
 .__new-monster {
@@ -215,9 +216,13 @@
 }
 
 @keyframes damage {
+  from {
+    top: 45%;
+    left: 55%;
+  }
   30% {
-    top: 40%;
-    left: 85%;
+    top: 30%;
+    left: 70%;
   }
   to {
     top: 80%;
