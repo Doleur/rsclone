@@ -1,5 +1,7 @@
 import { dropGold } from './gold.js';
 import createTagElement from './creatElement.js';
+import { randomMonster } from './random.js'
+import { monsters } from './monster.js'
 
 const countInput = document.querySelector('.count');
 const hero = document.querySelector('.hero');
@@ -17,6 +19,7 @@ const playField = document.querySelector('.field-play');
 const autoDamage = document.querySelector('.dps');
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
 
+
 const monstersPerLevel = 10;
 let currLevel = 1;
 let health = 20;
@@ -27,9 +30,11 @@ let autoDPS = 0;
 let gold = 1000;
 let timer = null;
 let damagePopupTimer = null;
-
+let monstr = randomMonster(monsters)
 // currentHealthNumOnPage.innerText = health;
 // totalHealthNumOnPage.innerText = health;
+
+hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
 
 function setDamage(dmg) {
   currHealth = currHealth - dmg;
@@ -51,6 +56,7 @@ setAutoDamage();
 function checkIfDead() {
   if (currHealth <= 0) {
     dropGold();
+    hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
