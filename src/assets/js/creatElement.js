@@ -1,6 +1,6 @@
 // virtual-keyboard-live (Live Coding)
 // repository: https://github.com/xmelsky/virtual-keyboard-live
-export default function createTagElement(el, classNames, child, parent, ...dataAttr) {
+export default function createTagElement (el, classNames, child, parent, ...dataAttr) {
   let element = null
   try {
     element = document.createElement(el)
