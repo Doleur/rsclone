@@ -22,7 +22,8 @@ const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
 
 const monstersPerLevel = 10;
 let currLevel = 1;
-let health = 20;
+let health;
+let isBoss = null;
 let currHealth = health;
 let currMonster = 1;
 let damage = 1;
@@ -30,11 +31,27 @@ let autoDPS = 0;
 let gold = 1000;
 let timer = null;
 let damagePopupTimer = null;
-let monstr = randomMonster(monsters)
-// currentHealthNumOnPage.innerText = health;
-// totalHealthNumOnPage.innerText = health;
+let monstr = randomMonster(monsters);
 
 hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
+
+function setMonsterHealth() {
+  if (currLevel % 5 === 0) {
+    isBoss = 1;
+  } else {
+    isBoss = 0.1;
+  }
+  if (currLevel < 141) {
+    health = Math.ceil(10 * (currLevel - 1 + Math.pow(1.55, currLevel - 1)) * (isBoss * 10));
+  } else if (currLevel < 501) {
+    health = Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, currLevel - 140)) * (isBoss * 10));
+  } else if (currLevel < 200001) {
+    health = Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, 360) * Math.PI * (1.145 + 0.001 * Math.floor((501 - 1) / 500))) * (isBoss * 10));
+  } else {
+    health = Math.ceil((Math.pow(1.545, currLevel - 200001) * 1.24 * Math.pow(10, 25409)) + ((currLevel - 1) * 10));
+  }
+  currHealth = health;
+}
 
 function setDamage(dmg) {
   currHealth = currHealth - dmg;
@@ -47,7 +64,7 @@ function setDamage(dmg) {
 }
 
 function setAutoDamage() {
-  timer = setInterval(() => {
+  setInterval(() => {
     setDamage(autoDPS);
   }, 1000);
 }
@@ -56,18 +73,16 @@ setAutoDamage();
 function checkIfDead() {
   if (currHealth <= 0) {
     dropGold();
-    hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`
+    hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`;
     if (currMonster === monstersPerLevel) {
       currMonster = 1;
       currLevel += 1;
-      health = health + Math.random() * 100 * currLevel;
     } else {
       currMonster += 1;
     }
+    setMonsterHealth();
     gold = gold + currLevel * 10;
     countInput.value = gold + units;
-    currHealth = health;
-    playField.classList.toggle('__new-monster');
   }
 }
 
@@ -75,8 +90,6 @@ function createDamagePopup(e) {
   const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
   const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
   damagePopupNumOnPage.innerText = '-' + damage;
-  // damagePopup.style.top = e.clientY + 'px';
-  // damagePopup.style.left = e.clientX + 'px';
   wrapperDmgPopup.append(damagePopup);
 }
 
@@ -88,7 +101,6 @@ function removeDamagePopup() {
 }
 
 hero.addEventListener('click', (e) => {
-  console.log(damage);
   setDamage(damage);
   createDamagePopup(e);
   removeDamagePopup();
@@ -133,3 +145,5 @@ autoDamage.addEventListener('click', () => {
     alert('У вас нету денег!');
   }
 });
+
+document.addEventListener('DOMContentLoaded', setMonsterHealth);
