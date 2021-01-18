@@ -23,7 +23,7 @@ const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
 
 const monstersPerLevel = 10;
 let currLevel = 1;
-let health;
+let health = 10;
 let isBoss = null;
 let currHealth = health;
 let currMonster = 1;

@@ -141,23 +141,20 @@
   height: 100%;
   background: none;
   overflow: hidden;
-}
-
-.damage-popup {
+  .damage-popup {
     display: block;
     position: absolute;
     font-size: 3rem;
     font-weight: 700;
     color: darkblue;
-    // transition: all 0.3s linear;
     animation: damage 1s;
     animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
-    background: none;
+    background: transparent;
     z-index: 99;
-}
-
-.damage-popup span {
-  background: none;
+    span {
+      background: transparent;
+    }
+  }
 }
 
 .__new-monster {
