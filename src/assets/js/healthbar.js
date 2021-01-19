@@ -101,6 +101,13 @@ function setMonsterHealth() {
   currHealth = health
 }
 
+function setGoldDropped() {
+  if (currLevel > 75) {
+    gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75)) ;
+  }
+  gold = gold + Math.ceil(health / 15);
+}
+
 function setDamage(dmg) {
   currHealth = currHealth - dmg
   checkIfDead()
@@ -120,6 +127,7 @@ setAutoDamage()
 
 function checkIfDead() {
   if (currHealth <= 0) {
+    setGoldDropped();
     dropGold()
     setCount()
     hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
@@ -131,7 +139,6 @@ function checkIfDead() {
         setMonsterHealth()
         countdownInit()
 hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
-
       }
     }
     if (currMonster === monstersPerLevel) {
@@ -149,6 +156,7 @@ hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
     countInput.textContent = gold + units
     currHealth = health
     playField.classList.toggle('__new-monster')
+    setMonsterHealth();
   }
 }
 
