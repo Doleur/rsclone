@@ -38,7 +38,6 @@ const monstr = randomMonster(monsters)
 let arrLevel = [1]
 
 
-
 function innerValue() {
   countInput.textContent = gold + units
   currentHealthNumOnPage.innerText = health.toFixed(0)
@@ -135,6 +134,7 @@ hero.addEventListener('click', (e) => {
   removeDamagePopup();
 });
 
+
 shopWrapper.addEventListener('click', ({ target }) => {
   let isBuyButton = target.closest('.buyButton')
   if (!isBuyButton) return
@@ -147,7 +147,6 @@ shopWrapper.addEventListener('click', ({ target }) => {
   autoDPS = damage.DPS
   console.log(autoDPS)
 });
-
 
 function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
