@@ -7,9 +7,8 @@ import { monsters } from './monster.js';
 const countInput = document.querySelector('.count');
 const hero = document.querySelector('.hero');
 const units = countInput.value.replace(/\d/g, '');
-const buy = document.querySelector('.up-lvl');
-const buy1 = document.querySelector('.up-lvl1');
-const buy2 = document.querySelector('.up-lvl2');
+const buy = document.querySelector('.shop_hero');
+
 const currentLevelNumOnPage = document.querySelector('.current-level');
 const healthBar = document.querySelector('.healthbar');
 const currentHealthNumOnPage = document.querySelector('.current-health');
@@ -32,7 +31,7 @@ let autoDPS = 0;
 let gold = 1000;
 const monstr = randomMonster(monsters);
 
-function innerValue () {
+function innerValue() {
   countInput.value = gold + units;
   currentHealthNumOnPage.innerText = health.toFixed(0);
   totalHealthNumOnPage.innerText = health.toFixed(0);
@@ -84,7 +83,7 @@ function setAutoDamage() {
 }
 setAutoDamage()
 
-function checkIfDead () {
+function checkIfDead() {
   if (currHealth <= 0) {
     setGoldDropped();
     dropGold();
@@ -108,7 +107,7 @@ function createDamagePopup(e) {
   wrapperDmgPopup.append(damagePopup);
 }
 
-function removeDamagePopup () {
+function removeDamagePopup() {
   setTimeout(() => {
     const damagePopup = document.querySelector('.damage-popup')
     wrapperDmgPopup.removeChild(damagePopup)
@@ -131,26 +130,6 @@ buy.addEventListener('click', () => {
   }
 });
 
-buy1.addEventListener('click', () => {
-  if (parseInt(countInput.value) >= 30) {
-    damage += 2
-    gold = gold - 30
-    countInput.value = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
-buy2.addEventListener('click', () => {
-  if (parseInt(countInput.value) >= 50) {
-    damage += 3
-    gold = gold - 50
-    countInput.value = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
 autoDamage.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 5) {
     autoDPS += 1
@@ -161,7 +140,7 @@ autoDamage.addEventListener('click', () => {
   }
 });
 
-function getCount () {
+function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
     gold = returnSaveItems.gold
