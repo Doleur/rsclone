@@ -8,15 +8,12 @@ import { newItemArrSlides } from './swiper.js'
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
 const units = countInput.textContent.replace(/\d/g, '')
-const buy = document.querySelector('.up-lvl')
-const buy1 = document.querySelector('.up-lvl1')
-const buy2 = document.querySelector('.up-lvl2')
 const currentLevelNumOnPage = document.querySelector('.current-level')
 const healthBar = document.querySelector('.healthbar')
 const currentHealthNumOnPage = document.querySelector('.current-health')
 const totalHealthNumOnPage = document.querySelector('.total-health')
 const currentMonsterNumOnPage = document.querySelector('.current-monster')
-// const totalMonstersNumOnPage = document.querySelector('.total-monsters');
+  // const totalMonstersNumOnPage = document.querySelector('.total-monsters');
 const playField = document.querySelector('.field-play')
 const autoDamage = document.querySelector('.dps')
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
@@ -35,7 +32,7 @@ const monstr = randomMonster(monsters)
 let arrLevel = [1]
 
 
-function innerValue () {
+function innerValue() {
   countInput.textContent = gold + units
   currentHealthNumOnPage.innerText = health.toFixed(0)
   totalHealthNumOnPage.innerText = health.toFixed(0)
@@ -45,6 +42,7 @@ function innerValue () {
     const swiperSlide = createTagElement('div', 'swiper-slide', '', swiperWrapper, ['level', e])
     swiperSlide.textContent = `Level ${e}`
   })
+
 }
 
 hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
@@ -69,7 +67,7 @@ function setMonsterHealth() {
 
 function setGoldDropped() {
   if (currLevel > 75) {
-    gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75)) ;
+    gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75));
   }
   gold = gold + Math.ceil(health / 15);
   console.log(gold)
@@ -92,7 +90,7 @@ function setAutoDamage() {
 }
 setAutoDamage()
 
-function checkIfDead () {
+function checkIfDead() {
   if (currHealth <= 0) {
     setGoldDropped();
     dropGold();
@@ -117,7 +115,7 @@ function createDamagePopup(e) {
   wrapperDmgPopup.append(damagePopup);
 }
 
-function removeDamagePopup () {
+function removeDamagePopup() {
   setTimeout(() => {
     const damagePopup = document.querySelector('.damage-popup')
     wrapperDmgPopup.removeChild(damagePopup)
@@ -140,26 +138,6 @@ buy.addEventListener('click', () => {
   }
 });
 
-buy1.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 30) {
-    damage += 2
-    gold = gold - 30
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
-buy2.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 50) {
-    damage += 3
-    gold = gold - 50
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
 autoDamage.addEventListener('click', () => {
   if (parseInt(countInput.textContent) >= 5) {
     autoDPS += 1
@@ -170,7 +148,7 @@ autoDamage.addEventListener('click', () => {
   }
 });
 
-function getCount () {
+function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
     gold = returnSaveItems.gold
