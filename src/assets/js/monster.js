@@ -10,7 +10,6 @@ const monsters = [
     img: 'assets/img/monsters/Catra.png'
   },
   {
-<<<<<<< HEAD
     name: 'Impossumble',
     code: 'Catra-defeat',
     img: 'assets/img/monsters/Catra-defeat.png'
@@ -322,6 +321,7 @@ const monsters = [
     code: 'Zombie_Bloop',
     img: 'assets/img/monsters/Zombie_Bloop.png'
   }
+<<<<<<< HEAD
 =======
     name: 'Catra Defeat',
     code: 'Catra-defeat',
@@ -342,6 +342,8 @@ const monsters = [
   // 'Treasure_Chest-hit',
   // 'Tyrantula'
 >>>>>>> a448667 (fix: random)
+=======
+>>>>>>> e3175c0 (fix: monsters)
 ]
 
 export { monsters }

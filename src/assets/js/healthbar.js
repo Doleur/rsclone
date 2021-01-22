@@ -35,8 +35,6 @@ let autoDPS = 0
 let gold = 1000
 let countdown = new Countdown(time, 30);
 
-randomMonster(monsters)
-
 // hero.innerHTML = `<img src="${monsters[currMonster-1].img}" alt=""></img>`
 
 let timer = null
@@ -66,7 +64,7 @@ let damagePopupTimer = null
 function setMonsterHealth() {
   if (currLevel % 5 === 0) {
     isBoss = 1
-    countdownStart()
+    timerStart()
     randomMonster(bosses)
     hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
   } else {
@@ -108,37 +106,7 @@ function setGoldDropped() {
   gold = gold + Math.ceil(health / 15);
   console.log(gold)
 }
-=======
-const playField = document.querySelector('.field-play');
-const autoDamage = document.querySelector('.dps');
-const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
 
-
-const monstersPerLevel = 10;
-let currLevel = 1;
-let health = 20;
-let currHealth = health;
-let currMonster = 1;
-let damage = 50;
-let autoDPS = 0;
-let gold = 1000;
-let timer = null;
-let damagePopupTimer = null;
-let monstr = randomMonster(monsters)
-console.log(randomMonster(monsters))
-// currentHealthNumOnPage.innerText = health;
-// totalHealthNumOnPage.innerText = health;
-
-function setMonstr(){
- if(currMonster==2){
-    hero.innerHTML = `<img src="${monstr[currMonster-1].img}" alt=""></img>`
-    console.log(`${monstr[currMonster-1].name}`)
- }else{
-hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
- }
-}
-setMonstr(monstr)
->>>>>>> a448667 (fix: random)
 
 function setDamage(dmg) {
   currHealth = currHealth - dmg
@@ -191,7 +159,7 @@ hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
     setMonsterHealth();
   }
 }
-
+}
 function createDamagePopup(e) {
   const damagePopup = createTagElement(
     'div',
@@ -274,8 +242,9 @@ function getCount() {
     arrLevel = returnSaveItems.arrLevel
   }
 }
+let countdown = new setCountdown(time, 30);
 
-function Countdown(elem, seconds) {
+function setCountdown(elem, seconds) {
   var that = {};
 
   that.elem = elem;
@@ -333,7 +302,7 @@ hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
   return that;
 }
 
-function countdownStart(){
+function timerStart(){
   countdown.start();
 };
 
