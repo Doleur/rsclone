@@ -106,6 +106,7 @@ function setGoldDropped() {
     gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75)) ;
   }
   gold = gold + Math.ceil(health / 15);
+  console.log(gold)
 }
 
 function setDamage(dmg) {
@@ -321,6 +322,7 @@ swiperWrapper.addEventListener('click', (e) => {
   const isLevel = e.target.closest('.swiper-slide')
   isLevel.classList.add('swiper-slide-active')
   setCount()
+  setMonsterHealth();
 })
 
 getCount()
