@@ -1,134 +1,170 @@
-import { dropGold } from './gold.js';
-import { setCount } from './save-game.js';
-import createTagElement from './creatElement.js';
-import { randomMonster } from './random.js';
-import { monsters } from './monster.js';
+import { dropGold } from './gold.js'
+import { setCount } from './save-game.js'
+import createTagElement from './creatElement.js'
+import { randomMonster } from './random.js'
+import { monsters } from './monster.js'
+import { bosses } from './boss.js'
+// import { Countdown, that } from './countdown.js'
 
-const countInput = document.querySelector('.count');
-const hero = document.querySelector('.hero');
-const units = countInput.value.replace(/\d/g, '');
-const buy = document.querySelector('.up-lvl');
-const buy1 = document.querySelector('.up-lvl1');
-const buy2 = document.querySelector('.up-lvl2');
-const currentLevelNumOnPage = document.querySelector('.current-level');
-const healthBar = document.querySelector('.healthbar');
-const currentHealthNumOnPage = document.querySelector('.current-health');
-const totalHealthNumOnPage = document.querySelector('.total-health');
-const currentMonsterNumOnPage = document.querySelector('.current-monster');
+const countInput = document.querySelector('.count')
+const hero = document.querySelector('.hero')
+const units = countInput.value.replace(/\d/g, '')
+const buy = document.querySelector('.up-lvl')
+const buy1 = document.querySelector('.up-lvl1')
+const buy2 = document.querySelector('.up-lvl2')
+const currentLevelNumOnPage = document.querySelector('.current-level')
+const healthBar = document.querySelector('.healthbar')
+const currentHealthNumOnPage = document.querySelector('.current-health')
+const totalHealthNumOnPage = document.querySelector('.total-health')
+const currentMonsterNumOnPage = document.querySelector('.current-monster')
 // const totalMonstersNumOnPage = document.querySelector('.total-monsters');
-const playField = document.querySelector('.field-play');
-const autoDamage = document.querySelector('.dps');
-const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
+const playField = document.querySelector('.field-play')
+const autoDamage = document.querySelector('.dps')
+const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
+const time = document.querySelector('.time')
 
+const monstersPerLevel = 10
+let currLevel = 5
+let health = 10
+let isBoss = null
+let currHealth = health
+let currMonster = 1
+let damage = 50
+let autoDPS = 0
+let gold = 1000
+let countdown = new Countdown(time, 30);
 
-const monstersPerLevel = 10;
-let currLevel = 1;
-let health = 10;
-let isBoss = null;
-let currHealth = health;
-let currMonster = 1;
-let damage = 50;
-let autoDPS = 0;
-let gold = 1000;
-const monstr = randomMonster(monsters);
+randomMonster(monsters)
 
-function innerValue () {
-  countInput.value = gold + units;
-  currentHealthNumOnPage.innerText = health.toFixed(0);
-  totalHealthNumOnPage.innerText = health.toFixed(0);
+// hero.innerHTML = `<img src="${monsters[currMonster-1].img}" alt=""></img>`
+
+function innerValue() {
+  countInput.value = gold + units
+  currentHealthNumOnPage.innerText = health.toFixed(0)
+  totalHealthNumOnPage.innerText = health.toFixed(0)
   currentMonsterNumOnPage.innerText = currMonster;
-  currentLevelNumOnPage.innerText = currLevel;
+  currentLevelNumOnPage.innerText = currLevel
+  hero.innerHTML = `<img src="${monsters[currMonster - 1].img}" alt=""></img>`
 }
 
-let timer = null;
-let damagePopupTimer = null;
-let monstr = randomMonster(monsters)
-console.log(randomMonster(monsters))
+let timer = null
+let damagePopupTimer = null
 // currentHealthNumOnPage.innerText = health;
 // totalHealthNumOnPage.innerText = health;
 
-function setMonstr(){
- if(currMonster==2){
-    hero.innerHTML = `<img src="${monstr[currMonster-1].img}" alt=""></img>`
-    console.log(`${monstr[currMonster-1].name}`)
- }else{
-hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
- }
-}
-setMonstr(monstr)
-
 function setMonsterHealth() {
   if (currLevel % 5 === 0) {
-    isBoss = 1;
+    isBoss = 1
+    countdownStart()
+    randomMonster(bosses)
+    hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
   } else {
-    isBoss = 0.1;
+    isBoss = 0.1
   }
   if (currLevel < 141) {
-    health = Math.ceil(10 * (currLevel - 1 + Math.pow(1.55, currLevel - 1)) * (isBoss * 10));
+    health = Math.ceil(
+      10 * (currLevel - 1 + Math.pow(1.55, currLevel - 1)) * (isBoss * 10)
+    )
   } else if (currLevel < 501) {
-    health = Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, currLevel - 140)) * (isBoss * 10));
+    health = Math.ceil(
+      10 *
+        (139 + Math.pow(1.55, 139) * Math.pow(1.145, currLevel - 140)) *
+        (isBoss * 10)
+    )
   } else if (currLevel < 200001) {
-    health = Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, 360) * Math.PI * (1.145 + 0.001 * Math.floor((501 - 1) / 500))) * (isBoss * 10));
+    health = Math.ceil(
+      10 *
+        (139 +
+          Math.pow(1.55, 139) *
+            Math.pow(1.145, 360) *
+            Math.PI *
+            (1.145 + 0.001 * Math.floor((501 - 1) / 500))) *
+        (isBoss * 10)
+    )
   } else {
-    health = Math.ceil((Math.pow(1.545, currLevel - 200001) * 1.24 * Math.pow(10, 25409)) + ((currLevel - 1) * 10));
+    health = Math.ceil(
+      Math.pow(1.545, currLevel - 200001) * 1.24 * Math.pow(10, 25409) +
+        (currLevel - 1) * 10
+    )
   }
-  currHealth = health;
+  currHealth = health
 }
 
 function setDamage(dmg) {
-  currHealth = currHealth - dmg;
-  checkIfDead();
-  currentLevelNumOnPage.innerText = currLevel;
-  healthBar.style.width = `${currHealth / health * 100}%`;
-  currentHealthNumOnPage.innerText = currHealth.toFixed(0);
-  totalHealthNumOnPage.innerText = health.toFixed(0);
-  currentMonsterNumOnPage.innerText = currMonster;
+  currHealth = currHealth - dmg
+  checkIfDead()
+  currentLevelNumOnPage.innerText = currLevel
+  healthBar.style.width = `${(currHealth / health) * 100}%`
+  currentHealthNumOnPage.innerText = currHealth.toFixed(0)
+  totalHealthNumOnPage.innerText = health.toFixed(0)
+  currentMonsterNumOnPage.innerText = currMonster
 }
 
 function setAutoDamage() {
   setInterval(() => {
-    setDamage(autoDPS);
-  }, 1000);
+    setDamage(autoDPS)
+  }, 1000)
 }
 setAutoDamage()
 
-function checkIfDead () {
+function checkIfDead() {
   if (currHealth <= 0) {
-    dropGold();
-    setCount();
-    setMonstr(monstr)
-    // hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
+    dropGold()
+    setCount()
+    hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+    if (isBoss == 1) {
+      time.classList.add = 'on'
+      hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
+      if (currHealth <= 0) {
+        currLevel += 1;
+        setMonsterHealth()
+        countdownInit()
+hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+
+      }
+    }
     if (currMonster === monstersPerLevel) {
-      currMonster = 1;
-      currLevel += 1;
+      randomMonster(monsters)
+      currMonster = 1
+      currLevel += 1
     } else {
       currMonster += 1
     }
-    setMonsterHealth();
-    gold = gold + currLevel * 10;
-    countInput.value = gold + units;
+    setMonsterHealth()
+    gold = gold + currLevel * 10
+    countInput.value = gold + units
   }
 }
 
 function createDamagePopup(e) {
-  const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
-  const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
-  damagePopupNumOnPage.innerText = '-' + damage;
-  wrapperDmgPopup.append(damagePopup);
+  const damagePopup = createTagElement(
+    'div',
+    `damage-popup`,
+    '',
+    wrapperDmgPopup
+  )
+  const damagePopupNumOnPage = createTagElement(
+    'div',
+    `damage-popup-number`,
+    '',
+    damagePopup
+  )
+  damagePopupNumOnPage.innerText = '-' + damage
+  wrapperDmgPopup.append(damagePopup)
 }
 
-function removeDamagePopup () {
+function removeDamagePopup() {
   setTimeout(() => {
     const damagePopup = document.querySelector('.damage-popup')
     wrapperDmgPopup.removeChild(damagePopup)
   }, 1000)
 }
 
-hero.addEventListener('click', (e) => {
-  setDamage(damage);
-  createDamagePopup(e);
-  removeDamagePopup();
-});
+hero.addEventListener('click', e => {
+  setDamage(damage)
+  createDamagePopup(e)
+  removeDamagePopup()
+})
 
 buy.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 20) {
@@ -138,7 +174,7 @@ buy.addEventListener('click', () => {
   } else {
     alert('У вас нету денег!')
   }
-});
+})
 
 buy1.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 30) {
@@ -148,7 +184,7 @@ buy1.addEventListener('click', () => {
   } else {
     alert('У вас нету денег!')
   }
-});
+})
 
 buy2.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 50) {
@@ -158,7 +194,7 @@ buy2.addEventListener('click', () => {
   } else {
     alert('У вас нету денег!')
   }
-});
+})
 
 autoDamage.addEventListener('click', () => {
   if (parseInt(countInput.value) >= 5) {
@@ -168,9 +204,9 @@ autoDamage.addEventListener('click', () => {
   } else {
     alert('У вас нету денег!')
   }
-});
+})
 
-function getCount () {
+function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
     gold = returnSaveItems.gold
@@ -182,9 +218,76 @@ function getCount () {
   }
 }
 
-getCount();
-innerValue();
+function Countdown(elem, seconds) {
+  var that = {};
 
-document.addEventListener('DOMContentLoaded', setMonsterHealth);
+  that.elem = elem;
+  that.seconds = seconds;
+  that.totalTime = seconds * 100;
+  that.usedTime = 0;
+  that.startTime = +new Date();
+  that.timer = null;
 
-export { gold, autoDPS, damage, currLevel, health, currMonster }
+  that.count = function() {
+    that.usedTime = Math.floor((+new Date() - that.startTime) / 10);
+
+    var tt = that.totalTime - that.usedTime;
+    if (tt <= 0) {
+      that.elem.innerHTML = '';
+      clearInterval(that.timer);
+      currLevel -=1
+      setMonsterHealth()
+hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+    } else {
+      var mi = Math.floor(tt / (60 * 100));
+      var ss = Math.floor((tt - mi * 60 * 100) / 100);
+      var ms = tt - Math.floor(tt / 100) * 100;
+
+      that.elem.innerHTML = `${that.fillZero(ss)}.${that.fillZero(ms)}`;
+    }
+  };
+
+  that.init = function() {
+    if(that.timer){
+      clearInterval(that.timer);
+      that.elem.innerHTML = '';
+      that.totalTime = seconds * 100;
+      that.usedTime = 0;
+      that.startTime = +new Date();
+      that.timer = null;
+    }
+  };
+
+  that.start = function() {
+    if(!that.timer){
+       that.timer = setInterval(that.count, 10);
+    }
+  };
+
+  that.stop = function() {
+    console.log('usedTime = ' + countdown.usedTime);
+    if (that.timer) clearInterval(that.timer);
+  };
+
+  that.fillZero = function(num) {
+    return num < 10 ? '0' + num : num;
+  };
+
+  return that;
+}
+
+function countdownStart(){
+  countdown.start();
+};
+
+function countdownInit(){
+  countdown.init();
+};
+
+getCount()
+innerValue()
+document.addEventListener('DOMContentLoaded', setMonsterHealth)
+
+
+export { gold, autoDPS, damage, currLevel, health, currMonster, currHealth, isBoss }
+

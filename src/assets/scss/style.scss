@@ -1,9 +1,8 @@
 * {
     box-sizing: border-box;
-    background-color: rgb(195, 252, 252);
+    // background-color: rgb(195, 252, 252);
     user-select: none;
 }
-
 :root {
     font-size: 10px;
 }
@@ -228,4 +227,19 @@
     top: 80%;
     left: 95%;
   }
+}
+
+// .countdown {
+//   margin-top: 300px;
+// }
+.countdown span.time {
+  padding: 12px;
+  display: inline-block;
+  font-family: verdana;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 900;
+  color: #ff0000;
+  background: none;
+  border-radius: 10px;
 }
