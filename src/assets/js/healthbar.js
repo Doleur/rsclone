@@ -139,8 +139,6 @@ shopWrapper.addEventListener('click', ({ target }) => {
   console.log(autoDPS)
 });
 
-
-
 function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
