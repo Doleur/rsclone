@@ -1,34 +1,46 @@
 * {
     box-sizing: border-box;
-    // background-color: rgb(195, 252, 252);
     user-select: none;
 }
 :root {
     font-size: 10px;
 }
 
+body {
+  background-image: url('../img/background/2c347b51717107.58f79ab5f057c.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
 .logo {
-    text-align: center;
     height: 10vh;
     img {
         height: 100%;
     }
 }
 
-.score-swiper {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    // max-width: 120rem;
-    position: relative;
+.image {
+    width: 100%;
 }
 
-.score {
-    width: 40%;
-    text-align: center;
-    border: 2px solid rgb(238, 11, 11);
-    outline: none;
-    padding: 1rem;
+.count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+}
+
+.shop {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(50deg,rgb(125, 79, 8), rgb(187, 122, 25));
+  border-radius: 10px;
+  border: 5px solid rgb(117, 73, 6);
 }
 
 .level {
@@ -36,24 +48,25 @@
     text-align: center;
     border: 2px solid rgb(53, 44, 184);
     padding: 8px;
-    .level-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 2px auto;
-        font-size: 1.5rem;
+    position: relative;
+    img {
+      width: 100%;
     }
 }
-
-.tuning {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+.level-wrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: 2px auto;
+  font-size: 1.5rem;
 }
 
-.tuning-wrapper {
-    display: flex;
-    flex-direction: column;
+.costom-item {
+  padding: 0 10px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
 }
 
 .main-wrapper {
@@ -64,10 +77,7 @@
     width: 100%;
 }
 
-.menu {
-    width: 40%;
-    border: 2px solid rgb(184, 170, 44);
-}
+
 
 .field-play {
     position: relative;
@@ -75,10 +85,8 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    width: 50%;
     height: 500px;
-    background-color: #a095b5;
-    background-image: url('../img/background/2c347b51717107.58f79ab5f057c.png');
+    background-image: url('../img/background/Isle1.png');
     cursor: pointer;
     .wrapper-healthbar {
         position: relative;
@@ -87,6 +95,9 @@
         width: 100%;
         height: 35px;
         background-color: #930000;
+        font-size: 2rem;
+        font-weight: 800;
+        color: rgb(255, 255, 255);
         .wrapper-healthdata {
             position: absolute;
             width: 100%;
@@ -157,9 +168,8 @@
 }
 
 .__new-monster {
-    background-color: #d3db7a;
-    background:url('../img/background/39318051717107.58f79ab5ef7e1.png');
-    background-size: auto;
+    background:url('../img/background/Isle1.png');
+    background-size: contain;
     background-repeat: no-repeat;
 }
 

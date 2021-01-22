@@ -2,26 +2,35 @@
     margin: 0;
     padding: 0;
     height: 12rem;
-    font-size: 18px;
     display: flex;
     flex-direction: column;
   }
   .swiper-container {
-    width: 100%;
-    height: 80%;
+    position: absolute;
+    top: 0;
+    //left: 50%;
+    //transform:translate(-50%, -50%);
+    //width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:0 12%;
   }
   .swiper-slide {
     text-align: center;
-    font-size: 18px;    
-    height: 70%;
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    height: 100%;
     cursor: pointer;
     user-select: none;
+    &.swiper-slide-active {
+      color: red;
+    }
     img {
-        height: 100%;                
+        height: 100%;
     }
-    &:hover {
-      transform: scale(1.2);
-    }
+
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -40,3 +49,19 @@
   .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
     bottom: -5px;
   }
+
+  .swiper-button-next:after, .swiper-button-prev:after {
+    display: none;
+  }
+
+  .swiper-button-next, .swiper-button-prev{
+    outline: none;
+    width: 10%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    img {
+      max-width: 100%;
+    }
+  }
+
