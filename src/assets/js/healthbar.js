@@ -18,6 +18,7 @@ const currentHealthNumOnPage = document.querySelector('.current-health')
 const totalHealthNumOnPage = document.querySelector('.total-health')
 const currentMonsterNumOnPage = document.querySelector('.current-monster')
 // const totalMonstersNumOnPage = document.querySelector('.total-monsters');
+<<<<<<< HEAD
 const playField = document.querySelector('.field-play')
 const autoDamage = document.querySelector('.dps')
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
@@ -103,6 +104,37 @@ function setGoldDropped() {
   gold = gold + Math.ceil(health / 15);
   console.log(gold)
 }
+=======
+const playField = document.querySelector('.field-play');
+const autoDamage = document.querySelector('.dps');
+const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup');
+
+
+const monstersPerLevel = 10;
+let currLevel = 1;
+let health = 20;
+let currHealth = health;
+let currMonster = 1;
+let damage = 50;
+let autoDPS = 0;
+let gold = 1000;
+let timer = null;
+let damagePopupTimer = null;
+let monstr = randomMonster(monsters)
+console.log(randomMonster(monsters))
+// currentHealthNumOnPage.innerText = health;
+// totalHealthNumOnPage.innerText = health;
+
+function setMonstr(){
+ if(currMonster==2){
+    hero.innerHTML = `<img src="${monstr[currMonster-1].img}" alt=""></img>`
+    console.log(`${monstr[currMonster-1].name}`)
+ }else{
+hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
+ }
+}
+setMonstr(monstr)
+>>>>>>> a4486679553cc080e99b9567ee9ca474ee6a1192
 
 function setDamage(dmg) {
   currHealth = currHealth - dmg
@@ -125,6 +157,7 @@ function checkIfDead() {
   if (currHealth <= 0) {
     setGoldDropped();
     dropGold();
+<<<<<<< HEAD
     setCount();
     hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
     if (isBoss == 1) {
@@ -137,6 +170,10 @@ function checkIfDead() {
 hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
 
       }
+=======
+    setMonstr(monstr)
+    // hero.innerHTML = `<img src="${monstr[currMonster].img}" alt=""></img>`
+>>>>>>> a4486679553cc080e99b9567ee9ca474ee6a1192
     if (currMonster === monstersPerLevel) {
       randomMonster(monsters)
       currMonster = 1
