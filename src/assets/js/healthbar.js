@@ -9,21 +9,10 @@ import { shopGeneration, updateShop } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationTotalDamage } from './calculationDamage.js'
 import { bosses } from './boss.js'
-<<<<<<< HEAD
-
-=======
-import { newItemArrSlides } from './swiper.js'
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
 
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
 const units = countInput.textContent.replace(/\d/g, '')
-<<<<<<< HEAD
-=======
-const buy = document.querySelector('.up-lvl')
-const buy1 = document.querySelector('.up-lvl1')
-const buy2 = document.querySelector('.up-lvl2')
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
 const currentLevelNumOnPage = document.querySelector('.current-level')
 const healthBar = document.querySelector('.healthbar')
 const currentHealthNumOnPage = document.querySelector('.current-health')
@@ -36,11 +25,7 @@ const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
 const swiperWrapper = document.querySelector('.swiper-wrapper')
 const time = document.querySelector('.time')
 
-<<<<<<< HEAD
 shopGeneration()
-=======
-const swiperWrapper = document.querySelector('.swiper-wrapper')
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
 
 const monstersPerLevel = 10
 let currLevel = 1
@@ -48,7 +33,6 @@ let health = 20
 let isBoss = null;
 let currHealth = health
 let currMonster = 1
-<<<<<<< HEAD
 let damage = calculationTotalDamage();
 let autoDPS = damage.DPS;
 let gold = 1000
@@ -57,17 +41,6 @@ let arrLevel = [1]
 
 
 function innerValue() {
-=======
-let damage = 1
-let autoDPS = 0
-let gold = 1000
-const monstr = randomMonster(monsters)
-let arrLevel = [1]
-
-randomMonster(monsters)
-
-function innerValue () {
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
   countInput.textContent = gold + units
   currentHealthNumOnPage.innerText = health.toFixed(0)
   totalHealthNumOnPage.innerText = health.toFixed(0)
@@ -87,11 +60,7 @@ function innerValue () {
 
 function setMonsterHealth() {
   if (currLevel % 5 === 0) {
-<<<<<<< HEAD
     isBoss = 1;
-=======
-    isBoss = 1
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
     timerStart()
     randomMonster(bosses)
     hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
@@ -148,11 +117,7 @@ function checkIfDead() {
     setGoldDropped();
     dropGold();
     setCount();
-<<<<<<< HEAD
     hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`;
-=======
-    hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
     if (isBoss == 1) {
       time.classList.add = 'on'
       hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
@@ -188,7 +153,6 @@ function removeDamagePopup() {
   }, 1000)
 }
 
-<<<<<<< HEAD
 hero.addEventListener('click', (e) => {
   setDamage(damage.clickDamage);
   createDamagePopup(e);
@@ -207,53 +171,6 @@ shopWrapper.addEventListener('click', ({ target }) => {
   autoDPS = damage.DPS
   console.log(autoDPS)
 });
-=======
-hero.addEventListener('click', e => {
-  setDamage(damage)
-  createDamagePopup(e)
-  removeDamagePopup()
-})
-
-buy.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 20) {
-    damage += 1
-    gold = gold - 20
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-})
-
-buy1.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 30) {
-    damage += 2
-    gold = gold - 30
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-})
-
-buy2.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 50) {
-    damage += 3
-    gold = gold - 50
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-})
-
-autoDamage.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 5) {
-    autoDPS += 1
-    gold = gold - 5
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-})
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
 
 function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
@@ -269,7 +186,6 @@ function getCount() {
 }
 let countdown = new setCountdown(time, 30);
 
-<<<<<<< HEAD
 swiperWrapper.addEventListener('click', (e) => {
   currLevel = +e.target.dataset.level
   const activeLevel = document.querySelector('.swiper-slide-active')
@@ -282,8 +198,6 @@ swiperWrapper.addEventListener('click', (e) => {
 
 let countdown = new setCountdown(time, 30);
 
-=======
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
 function setCountdown(elem, seconds) {
   var that = {};
 
@@ -353,23 +267,7 @@ function countdownInit(){
 getCount()
 innerValue()
 
-swiperWrapper.addEventListener('click', (e) => {
-  currLevel = +e.target.dataset.level
-  const activeLevel = document.querySelector('.swiper-slide-active')
-  activeLevel.classList.remove('swiper-slide-active')
-  const isLevel = e.target.closest('.swiper-slide')
-  isLevel.classList.add('swiper-slide-active')
-  setCount()
-  setMonsterHealth();
-})
-
-<<<<<<< HEAD
 
 document.addEventListener('DOMContentLoaded', setMonsterHealth);
 
-=======
-getCount()
-innerValue()
-
->>>>>>> e3175c0377b23005f1ff9f69c77c4effe37848ee
 export { gold, autoDPS, damage, currLevel, health, currMonster, arrLevel, swiperWrapper }
