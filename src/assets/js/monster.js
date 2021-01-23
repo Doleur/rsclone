@@ -239,7 +239,7 @@ const monsters = [
   {
     name: 'Sand Bloop',
     code: 'Sand_Bloop',
-    img: 'assets/img/monsters/Sand Bloop.png'
+    img: 'assets/img/monsters/Sand_Bloop.png'
   },
   {
     name: 'Scorpinch',
@@ -321,29 +321,5 @@ const monsters = [
     code: 'Zombie_Bloop',
     img: 'assets/img/monsters/Zombie_Bloop.png'
   }
-<<<<<<< HEAD
-=======
-    name: 'Catra Defeat',
-    code: 'Catra-defeat',
-    img: 'assets/img/monsters/Catra-defeat.png'
-  }
-  // 'Catra',
-  // 'Catra-defeat',
-  // 'Finky',
-  // 'Flowers_Bloop',
-  // 'Gerbeel',
-  // 'Gerbeelpillar',
-  // 'Gloop',
-  // 'Impossumble',
-  // 'Loggernaut',
-  // 'Sasquish',
-  // 'Mushroom_Bloop',
-  // 'Spit_Flower',
-  // 'Treasure_Chest-hit',
-  // 'Tyrantula'
->>>>>>> a448667 (fix: random)
-=======
->>>>>>> e3175c0 (fix: monsters)
 ]
-
 export { monsters }
