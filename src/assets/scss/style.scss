@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    background-color: rgb(195, 252, 252);
     user-select: none;
 }
 
@@ -8,53 +7,53 @@
     font-size: 10px;
 }
 
+body {
+    background-image: url('../img/background/2c347b51717107.58f79ab5f057c.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
 .logo {
-    text-align: center;
     height: 10vh;
     img {
         height: 100%;
     }
 }
 
-.score-swiper {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    // max-width: 120rem;
-    position: relative;
+.image {
+    width: 100%;
 }
 
-.score {
-    width: 40%;
-    text-align: center;
-    border: 2px solid rgb(238, 11, 11);
-    outline: none;
-    padding: 1rem;
-}
-
-.level {
-    width: 50%;
-    text-align: center;
-    border: 2px solid rgb(53, 44, 184);
-    padding: 8px;
-    .level-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 2px auto;
-        font-size: 1.5rem;
-    }
-}
-
-.tuning {
+.count {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
 }
 
-.tuning-wrapper {
-    display: flex;
-    flex-direction: column;
+.shop {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(50deg, rgb(125, 79, 8), rgb(187, 122, 25));
+    border-radius: 10px;
+    border: 5px solid rgb(117, 73, 6);
+}
+
+.level-wrapper {
+    display: none;
+}
+
+.costom-item {
+    min-width: 20px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .main-wrapper {
@@ -65,21 +64,14 @@
     width: 100%;
 }
 
-.menu {
-    width: 40%;
-    border: 2px solid rgb(184, 170, 44);
-}
-
 .field-play {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    width: 50%;
     height: 500px;
-    background-color: #a095b5;
-    background-image: url('../img/background/2c347b51717107.58f79ab5f057c.png');
+    background-image: url('../img/background/Isle1.png');
     cursor: pointer;
     .wrapper-healthbar {
         position: relative;
@@ -88,6 +80,9 @@
         width: 100%;
         height: 35px;
         background-color: #930000;
+        font-size: 2rem;
+        font-weight: 800;
+        color: rgb(255, 255, 255);
         .wrapper-healthdata {
             position: absolute;
             width: 100%;
@@ -136,71 +131,31 @@
 }
 
 .wrapper-damage-popup {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: none;
-  overflow: hidden;
-  .damage-popup {
-    display: block;
     position: absolute;
-    font-size: 3rem;
-    font-weight: 700;
-    color: darkblue;
-    animation: damage 1s;
-    animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
-    background: transparent;
-    z-index: 99;
-    span {
-      background: transparent;
+    width: 100%;
+    height: 100%;
+    background: none;
+    overflow: hidden;
+    .damage-popup {
+        display: block;
+        position: absolute;
+        font-size: 3rem;
+        font-weight: 700;
+        color: darkblue;
+        animation: damage 1s;
+        animation-timing-function: cubic-bezier(0.29, 0.26, 0.03, 0.82);
+        background: transparent;
+        z-index: 99;
+        span {
+            background: transparent;
+        }
     }
-  }
 }
 
 .__new-monster {
-    background-color: #d3db7a;
-    background:url('../img/background/39318051717107.58f79ab5ef7e1.png');
-    background-size: auto;
+    background: url('../img/background/Isle1.png');
+    background-size: contain;
     background-repeat: no-repeat;
-}
-
-.up-lvl {
-    cursor: pointer;
-}
-
-.up-lvl p {
-    color: rgb(0, 41, 221);
-    font-size: 1.5rem;
-}
-
-.up-lvl1 {
-    cursor: pointer;
-    padding-top: 1%;
-}
-
-.up-lvl1 p {
-    color: rgb(0, 41, 221);
-    font-size: 1.5rem;
-}
-
-.up-lvl2 {
-    cursor: pointer;
-    padding-top: 1%;
-}
-
-.up-lvl2 p {
-    color: rgb(0, 41, 221);
-    font-size: 1.5rem;
-}
-
-.dps {
-    cursor: pointer;
-    padding-top: 1%;
-}
-
-.dps p {
-    color: rgb(0, 41, 221);
-    font-size: 1.5rem;
 }
 
 @keyframes pulse {
@@ -216,16 +171,16 @@
 }
 
 @keyframes damage {
-  from {
-    top: 45%;
-    left: 55%;
-  }
-  30% {
-    top: 30%;
-    left: 70%;
-  }
-  to {
-    top: 80%;
-    left: 95%;
-  }
+    from {
+        top: 45%;
+        left: 55%;
+    }
+    30% {
+        top: 30%;
+        left: 70%;
+    }
+    to {
+        top: 80%;
+        left: 95%;
+    }
 }

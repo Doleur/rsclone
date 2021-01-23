@@ -1,4 +1,4 @@
-import { gold, autoDPS, damage, currLevel, health, currMonster } from './healthbar.js'
+import { gold, autoDPS, damage, currLevel, health, currMonster, arrLevel } from './healthbar.js'
 
 function setCount () {
   const saveItems = {
@@ -7,7 +7,8 @@ function setCount () {
     damage,
     currLevel,
     health,
-    currMonster
+    currMonster,
+    arrLevel
   }
   const serialSaveItems = JSON.stringify(saveItems)
   localStorage.setItem('saveItems', serialSaveItems)
