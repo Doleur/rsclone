@@ -9,6 +9,7 @@ import { shopGeneration, updateShop } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationTotalDamage } from './calculationDamage.js'
 
+
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
 const units = countInput.textContent.replace(/\d/g, '')
@@ -48,7 +49,6 @@ function innerValue() {
     const swiperSlide = createTagElement('div', 'swiper-slide', '', swiperWrapper, ['level', e])
     swiperSlide.textContent = `Level ${e}`
   })
-
 }
 
 hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
@@ -134,7 +134,6 @@ hero.addEventListener('click', (e) => {
   removeDamagePopup();
 });
 
-
 shopWrapper.addEventListener('click', ({ target }) => {
   let isBuyButton = target.closest('.buyButton')
   if (!isBuyButton) return
@@ -173,6 +172,7 @@ swiperWrapper.addEventListener('click', (e) => {
 
 getCount()
 innerValue()
+
 
 
 document.addEventListener('DOMContentLoaded', setMonsterHealth);
