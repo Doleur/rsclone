@@ -1,5 +1,5 @@
 import { shopWrapper } from './constants.js';
-import { dropGold } from './gold.js'
+import { dropGold } from './dropGolds.js'
 import { setCount } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'

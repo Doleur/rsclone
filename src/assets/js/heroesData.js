@@ -5,7 +5,7 @@ export const heroesData = [{
     name: `Cid, the Helpful Adventurer`,
     baseCost: 5,
     baseDPS: null,
-    lvl: 0,
+    lvl: 1,
     cost() {
       if (this.lvl <= 15) return Math.trunc((5 + this.lvl) * (1.07 ** (this.lvl - 1)))
       return calculationCostHero(20, this.lvl)
