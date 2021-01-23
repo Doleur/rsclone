@@ -8,7 +8,11 @@ import { newItemArrSlides } from './swiper.js'
 import { shopGeneration, updateShop } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationTotalDamage } from './calculationDamage.js'
+<<<<<<< HEAD
 import { bosses } from './boss.js'
+=======
+
+>>>>>>> 71a42b3b1dfaec3c5460b1ceac76d6e481d46484
 
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
@@ -24,6 +28,8 @@ const playField = document.querySelector('.field-play')
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
 const swiperWrapper = document.querySelector('.swiper-wrapper')
 const time = document.querySelector('.time')
+
+shopGeneration()
 
 shopGeneration()
 
@@ -82,6 +88,7 @@ function setMonsterHealth() {
 function setGoldDropped() {
   if (currLevel > 75) {
     gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75));
+<<<<<<< HEAD
   }
   gold = gold + Math.ceil(health / 15);
   console.log(gold)
@@ -90,6 +97,8 @@ function setGoldDropped() {
 function setGoldDropped() {
   if (currLevel > 75) {
     gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75)) ;
+=======
+>>>>>>> 71a42b3b1dfaec3c5460b1ceac76d6e481d46484
   }
   gold = gold + Math.ceil(health / 15);
   console.log(gold)
@@ -268,6 +277,10 @@ getCount()
 innerValue()
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71a42b3b1dfaec3c5460b1ceac76d6e481d46484
 document.addEventListener('DOMContentLoaded', setMonsterHealth);
 
 export { gold, autoDPS, damage, currLevel, health, currMonster, arrLevel, swiperWrapper }
