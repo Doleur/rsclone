@@ -4,6 +4,7 @@ import './assets/scss/swiper.scss'
 import './assets/scss/custom.scss'
 import './assets/scss/tab.scss'
 import './assets/scss/gold.scss'
+import './assets/scss/shop.scss'
 
 import './assets/js/swiper.js'
 import './assets/js/test.js'

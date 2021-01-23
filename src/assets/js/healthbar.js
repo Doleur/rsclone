@@ -1,26 +1,30 @@
-import { dropGold } from './gold.js'
+import { shopWrapper } from './constants.js';
+import { dropGold } from './dropGolds.js'
 import { setCount } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { monsters } from './monster.js'
 import { newItemArrSlides } from './swiper.js'
+import { shopGeneration, updateShop } from './shopGeneration.js';
+import { heroesData } from './heroesData.js'
+import { calculationTotalDamage } from './calculationDamage.js'
+
 
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
 const units = countInput.textContent.replace(/\d/g, '')
-const buy = document.querySelector('.up-lvl')
-const buy1 = document.querySelector('.up-lvl1')
-const buy2 = document.querySelector('.up-lvl2')
 const currentLevelNumOnPage = document.querySelector('.current-level')
 const healthBar = document.querySelector('.healthbar')
 const currentHealthNumOnPage = document.querySelector('.current-health')
 const totalHealthNumOnPage = document.querySelector('.total-health')
 const currentMonsterNumOnPage = document.querySelector('.current-monster')
-// const totalMonstersNumOnPage = document.querySelector('.total-monsters');
+  // const totalMonstersNumOnPage = document.querySelector('.total-monsters');
 const playField = document.querySelector('.field-play')
-const autoDamage = document.querySelector('.dps')
+  // const autoDamage = document.querySelector('.dps')
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
 const swiperWrapper = document.querySelector('.swiper-wrapper')
+
+shopGeneration()
 
 const monstersPerLevel = 10
 let currLevel = 1
@@ -28,14 +32,14 @@ let health = 20
 let isBoss = null;
 let currHealth = health
 let currMonster = 1
-let damage = 1
-let autoDPS = 0
+let damage = calculationTotalDamage();
+let autoDPS = damage.DPS;
 let gold = 1000
 const monstr = randomMonster(monsters)
 let arrLevel = [1]
 
 
-function innerValue () {
+function innerValue() {
   countInput.textContent = gold + units
   currentHealthNumOnPage.innerText = health.toFixed(0)
   totalHealthNumOnPage.innerText = health.toFixed(0)
@@ -69,7 +73,7 @@ function setMonsterHealth() {
 
 function setGoldDropped() {
   if (currLevel > 75) {
-    gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75)) ;
+    gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75));
   }
   gold = gold + Math.ceil(health / 15);
   console.log(gold)
@@ -92,7 +96,7 @@ function setAutoDamage() {
 }
 setAutoDamage()
 
-function checkIfDead () {
+function checkIfDead() {
   if (currHealth <= 0) {
     setGoldDropped();
     dropGold();
@@ -113,11 +117,11 @@ function checkIfDead () {
 function createDamagePopup(e) {
   const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
   const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
-  damagePopupNumOnPage.innerText = '-' + damage;
+  damagePopupNumOnPage.innerText = '-' + damage.clickDamage;
   wrapperDmgPopup.append(damagePopup);
 }
 
-function removeDamagePopup () {
+function removeDamagePopup() {
   setTimeout(() => {
     const damagePopup = document.querySelector('.damage-popup')
     wrapperDmgPopup.removeChild(damagePopup)
@@ -125,52 +129,25 @@ function removeDamagePopup () {
 }
 
 hero.addEventListener('click', (e) => {
-  setDamage(damage);
+  setDamage(damage.clickDamage);
   createDamagePopup(e);
   removeDamagePopup();
 });
 
-buy.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 20) {
-    damage += 1
-    gold = gold - 20
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
+shopWrapper.addEventListener('click', ({ target }) => {
+  let isBuyButton = target.closest('.buyButton')
+  if (!isBuyButton) return
+  let hero = isBuyButton.classList[1].replace(/hero/, '')
+  if (gold < heroesData[hero].baseCost) return
+  gold -= heroesData[hero].baseCost
+  heroesData[hero].lvl += 1
+  updateShop(hero)
+  damage = calculationTotalDamage()
+  autoDPS = damage.DPS
+  console.log(autoDPS)
 });
 
-buy1.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 30) {
-    damage += 2
-    gold = gold - 30
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
-buy2.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 50) {
-    damage += 3
-    gold = gold - 50
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
-autoDamage.addEventListener('click', () => {
-  if (parseInt(countInput.textContent) >= 5) {
-    autoDPS += 1
-    gold = gold - 5
-    countInput.textContent = gold + units
-  } else {
-    alert('У вас нету денег!')
-  }
-});
-
-function getCount () {
+function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
     gold = returnSaveItems.gold
@@ -195,6 +172,8 @@ swiperWrapper.addEventListener('click', (e) => {
 
 getCount()
 innerValue()
+
+
 
 document.addEventListener('DOMContentLoaded', setMonsterHealth);
 
