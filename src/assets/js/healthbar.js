@@ -30,6 +30,7 @@ let currMonster = 1;
 let damage = 1;
 let autoDPS = 0;
 let gold = 1000;
+let fortunaChance = 1;
 const monstr = randomMonster(monsters);
 
 function innerValue () {
@@ -62,9 +63,9 @@ function setMonsterHealth() {
 
 function setGoldDropped() {
   if (currLevel > 75) {
-    gold = gold + Math.ceil(health / 15 * Math.pow(1.025, currLevel - 75)) ;
+    gold = gold + Math.ceil((health / 15 * Math.pow(1.025, currLevel - 75)) * (1 + 9 * fortunaChance));
   }
-  gold = gold + Math.ceil(health / 15);
+  gold = gold + Math.ceil((health / 15) * (1 + 9 * fortunaChance));
 }
 
 function setDamage(dmg) {
