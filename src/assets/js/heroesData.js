@@ -5,9 +5,22 @@ export const heroesData = [{
     name: `Cid, the Helpful Adventurer`,
     baseCost: 5,
     baseDPS: null,
-    lvl: 1,
+    lvl: 0,
     cost() {
-      if (this.lvl <= 15) return Math.trunc((5 + this.lvl) * (1.07 ** (this.lvl - 1)))
+      if (this.lvl <= 15) {
+        if (!this.lvl) {
+          return {
+            number: 5,
+            powerOfTen: 0,
+            abbreviation: ''
+          }
+        }
+        return {
+          number: Math.trunc((5 + this.lvl) * (1.07 ** (this.lvl - 1))),
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      }
       return calculationCostHero(20, this.lvl)
     },
     damage() { return calculationHeroDamage(1, this.lvl) },
