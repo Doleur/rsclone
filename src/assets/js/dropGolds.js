@@ -5,10 +5,15 @@ import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 
 const wrapperGolds = document.querySelector('.wrapper-gold')
 
-async function dropGoldAnimation() {
-  for (let i = 1; i < 6; i++) {
+async function dropGoldAnimation(goldDropped) {
+  let numberCoins = 5
+  if (goldDropped.number < 5) {
+    numberCoins = goldDropped.number
+  }
+  let costCoins = goldDropped.number / numberCoins
+  for (let i = 1; i <= numberCoins; i++) {
     const gold = createTagElement('div', `gold g${i}`, '', wrapperGolds)
-    const numberGold = createTagElement('div', `goldNumber gN${i}`, '10g', wrapperGolds)
+    const numberGold = createTagElement('div', `goldNumber gN${i}`, `${costCoins}${goldDropped.abbreviation}`, wrapperGolds)
     gold.addEventListener('animationend', function() {
       gold.parentNode.removeChild(gold)
     })
@@ -21,17 +26,27 @@ async function dropGoldAnimation() {
 function setGoldDropped() {
   let dropGolds
   let dropGoldsPowerOfTen
+
   if (gameStats.currLevel > 75) {
     let coefficientPerLvl = convertingNumbers(Math.pow(1.025, gameStats.currLevel - 75))
-    dropGolds = convertingNumbers(gameStats.gold.number + Math.ceil(gameStats.health / 15 * coefficientPerLvl.number))
-    dropGoldsPowerOfTen = coefficientPerLvl.powerOfTen + dropGolds.powerOfTen + gameStats.gold.powerOfTen
+    dropGolds = convertingNumbers(Math.ceil(gameStats.health / 15 * coefficientPerLvl.number))
+    dropGoldsPowerOfTen = coefficientPerLvl.powerOfTen + dropGolds.powerOfTen
   } else {
-    dropGolds = convertingNumbers(gameStats.gold.number + Math.ceil(gameStats.health / 15))
-    dropGoldsPowerOfTen = dropGolds.powerOfTen + gameStats.gold.powerOfTen
+    dropGolds = convertingNumbers(Math.ceil(gameStats.health / 15))
+    dropGoldsPowerOfTen = dropGolds.powerOfTen
   }
-  gameStats.gold.number = Math.trunc(dropGolds.number)
-  gameStats.gold.powerOfTen = dropGoldsPowerOfTen
+  let dropGoldAbbreviation = abbreviationBigNumber[`${dropGoldsPowerOfTen}`]
+  let newNumberGolds = convertingNumbers(gameStats.gold.number + +dropGolds.number)
+  let newGoldsPowerOfTen = dropGoldsPowerOfTen + newNumberGolds.powerOfTen + gameStats.gold.powerOfTen
+
+  gameStats.gold.number = Math.trunc(newNumberGolds.number)
+  gameStats.gold.powerOfTen = newGoldsPowerOfTen
   gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
+  return {
+    number: dropGolds.number,
+    powerOfTen: dropGoldsPowerOfTen,
+    abbreviation: dropGoldAbbreviation
+  }
 }
 
 export { dropGoldAnimation, setGoldDropped }
