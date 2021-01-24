@@ -28,7 +28,7 @@ export function calculationTotalDamage() {
   }
 
   return {
-    clickDamage: totalClickDamage.number,
+    clickDamage: totalClickDamage.number + 1,
     DPS: totalDPS
   }
 }

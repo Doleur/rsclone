@@ -46,17 +46,15 @@ export function updateShop(number) {
   heroLvl.innerHTML = 'lvl ' + heroesData[number].lvl
 }
 
-export function bueHero(numberHero) {
+export function buyHero(numberHero) {
   let costHero = heroesData[numberHero].cost()
   let differenceCost = gameStats.gold.number - costHero.number
   let differencePowerOfTen = gameStats.gold.powerOfTen - costHero.powerOfTen
   if (differencePowerOfTen < 0) return false
   if (!differencePowerOfTen && differenceCost < 0) return false
-  if (differenceCost < 100) {
+  if (differenceCost < 100 && gameStats.gold.powerOfTen) {
     gameStats.gold.number = differenceCost * 1000
-    console.log(gameStats.gold.powerOfTen)
     gameStats.gold.powerOfTen -= 3
-    console.log(gameStats.gold.powerOfTen)
     gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
   } else {
     gameStats.gold.number = differenceCost

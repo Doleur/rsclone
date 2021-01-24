@@ -4,7 +4,7 @@ import { setCount } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { newItemArrSlides } from './swiper.js'
-import { shopGeneration, updateShop, bueHero } from './shopGeneration.js';
+import { shopGeneration, updateShop, buyHero } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationTotalDamage } from './calculationDamage.js'
 import { monsters } from './monsterData.js'
@@ -34,13 +34,13 @@ function innerValue() {
   })
 }
 
-hero.innerHTML = `<img src="${monsters[currMonster - 1].img}" alt=""></img>`
+hero.innerHTML = `<img src="${monsters[gameStats.currMonster - 1].img}" alt=""></img>`
 
 function setMonsterHealth() {
   if (gameStats.currLevel % 5 === 0) {
     isBoss = 1;
     randomMonster(bosses)
-    hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
+    hero.innerHTML = `<img src="${bosses[gameStats.currMonster].img}" alt=""></img>`
     countdownStart()
   } else {
     isBoss = 0.1;
@@ -80,16 +80,16 @@ function checkIfDead() {
     setGoldDropped();
     dropGoldAnimation();
     setCount();
-    hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
-    if (currLevel % 5 == 0) {
+    hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+    if (gameStats.currLevel % 5 == 0) {
       if (currHealth <= 0) {
-        currLevel += 1
+        gameStats.currLevel += 1
         newItemArrSlides()
       }
     }
-    if (currMonster === monstersPerLevel) {
-      currMonster = 1
-      currLevel += 1
+    if (gameStats.currMonster === monstersPerLevel) {
+      gameStats.currMonster = 1
+      gameStats.currLevel += 1
       newItemArrSlides()
     } else {
       gameStats.currMonster += 1
@@ -123,7 +123,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
   let isBuyButton = target.closest('.buyButton')
   if (!isBuyButton) return
   let hero = isBuyButton.classList[1].replace(/hero/, '')
-  let ifPurchaseMade = bueHero(hero)
+  let ifPurchaseMade = buyHero(hero)
   if (!ifPurchaseMade) return
   heroesData[hero].lvl += 1
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
@@ -153,10 +153,10 @@ swiperWrapper.addEventListener('click', (e) => {
   isLevel.classList.add('swiper-slide-active')
   setCount()
   setMonsterHealth();
-  if (currLevel % 5 == 0) {
+  if (gameStats.currLevel % 5 == 0) {
     countdownStart()
   } else {
-    hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+    hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
 
   }
 })
@@ -176,9 +176,9 @@ function setCountdown(elem, seconds) {
 
     var tt = that.totalTime - that.usedTime;
     if (tt <= 0) {
-      currLevel -= 1
+      gameStats.currLevel -= 1
       setMonsterHealth()
-      hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+      hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
     } else {
       var mi = Math.floor(tt / (60 * 100));
       var ss = Math.floor((tt - mi * 60 * 100) / 100);
