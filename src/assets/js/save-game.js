@@ -3,7 +3,7 @@ import { autoDPS, damage, arrLevel } from './healthbar.js'
 
 function setCount() {
   const saveItems = {
-    gold: gameStats.gold,
+    gold: gameStats.gold.number,
     autoDPS,
     damage,
     currLevel: gameStats.currLevel,

@@ -1,8 +1,11 @@
 export const shopWrapper = document.querySelector('.shop_wrapper');
 export const numberHeroes = 40;
 export const gameStats = {
-  gold: 1000,
-  goldPowerOfTen: 0,
+  gold: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: '',
+  },
   currLevel: 1,
   health: 20,
   isBoss: null,

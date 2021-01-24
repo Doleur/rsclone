@@ -7,7 +7,13 @@ export const heroesData = [{
     baseDPS: null,
     lvl: 1,
     cost() {
-      if (this.lvl <= 15) return Math.trunc((5 + this.lvl) * (1.07 ** (this.lvl - 1)))
+      if (this.lvl <= 15) {
+        return {
+          number: Math.trunc((5 + this.lvl) * (1.07 ** (this.lvl - 1))),
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      }
       return calculationCostHero(20, this.lvl)
     },
     damage() { return calculationHeroDamage(1, this.lvl) },
