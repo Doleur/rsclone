@@ -7,6 +7,5 @@ import './assets/scss/gold.scss'
 import './assets/scss/shop.scss'
 
 import './assets/js/swiper.js'
-import './assets/js/test.js'
 import './assets/js/healthbar.js'
 import './assets/js/save-game.js'

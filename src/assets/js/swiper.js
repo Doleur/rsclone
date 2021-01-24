@@ -1,11 +1,12 @@
-import { arrLevel, currLevel } from './healthbar.js'
+import { gameStats } from './constants.js'
+import { arrLevel } from './healthbar.js'
 
 const swiper = new Swiper('.swiper-container', {
   slidesPerView: 3,
   spaceBetween: 0,
   loop: false,
   centeredSlides: true,
-  initialSlide: (currLevel - 1),
+  initialSlide: (gameStats.currLevel - 1),
   observer: true,
   observerParents: true,
   observeSlideChildren: true,
@@ -15,16 +16,15 @@ const swiper = new Swiper('.swiper-container', {
   }
 })
 
-function newLevelSlide () {
+function newLevelSlide() {
   swiper.appendSlide(`<div class="swiper-slide" data-level=${arrLevel[arrLevel.length - 1]} >Level ${arrLevel[arrLevel.length - 1]} </div>`)
   swiper.update()
 }
 
-function newItemArrSlides () {
-  const isCurrLevel = arrLevel.includes(currLevel)
+function newItemArrSlides() {
+  const isCurrLevel = arrLevel.includes(gameStats.currLevel)
   if (!isCurrLevel) {
-    arrLevel.push(currLevel)
-    console.log(arrLevel)
+    arrLevel.push(gameStats.currLevel)
     newLevelSlide()
   }
 }
