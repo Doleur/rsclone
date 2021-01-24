@@ -24,6 +24,7 @@ const playField = document.querySelector('.field-play')
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
 const swiperWrapper = document.querySelector('.swiper-wrapper')
 const time = document.querySelector('.time')
+const monstersProgressWrapper = document.querySelector('.monsters-progress-wrapper')
 
 shopGeneration()
 
@@ -61,9 +62,12 @@ function setMonsterHealth() {
     randomMonster(bosses)
     hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
     countdownStart()
+    monstersProgressWrapper.classList.add('disabled')
   } else {
     isBoss = 0.1;
     countdownStop()
+    monstersProgressWrapper.classList.remove('disabled')
+    currMonster = 1
   }
   if (currLevel < 141) {
     health = Math.ceil(10 * (currLevel - 1 + Math.pow(1.55, currLevel - 1)) * (isBoss * 10));
@@ -108,7 +112,7 @@ function checkIfDead() {
     dropGold();
     setCount();
     hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
-    if(currLevel %5 == 0){
+    if(currLevel % 5 === 0){
       if (currHealth <= 0){
         currLevel += 1
         newItemArrSlides()
@@ -180,7 +184,7 @@ swiperWrapper.addEventListener('click', (e) => {
   isLevel.classList.add('swiper-slide-active')
   setCount()
   setMonsterHealth();
-  if(currLevel %5 ==0){
+  if(currLevel % 5 === 0){
     countdownStart()
   } else{
 hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
