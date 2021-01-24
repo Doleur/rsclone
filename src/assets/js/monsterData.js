@@ -1,5 +1,4 @@
-const monsters = [
-  {
+export const monsters = [{
     name: 'Angry Potato',
     code: 'Angry_Potato',
     img: 'assets/img/monsters/Angry_Potato.png'
@@ -150,7 +149,7 @@ const monsters = [
     name: 'Foomgus',
     code: 'Foomgus',
     img: 'assets/img/monsters/Foomgus.png'
-  },  {
+  }, {
     name: 'Ghost Bloop',
     code: 'Ghost_Bloop',
     img: 'assets/img/monsters/Ghost_Bloop.png'
@@ -181,7 +180,7 @@ const monsters = [
     code: 'Mage_Shroom',
     img: 'assets/img/monsters/Mage_Shroom.png'
   },
-    {
+  {
     name: 'Mouseketeer',
     code: 'Mouseketeer',
     img: 'assets/img/monsters/Mouseketeer.png'
@@ -196,17 +195,17 @@ const monsters = [
     code: 'Mud_Golem',
     img: 'assets/img/monsters/Mud_Golem.png'
   },
-    {
+  {
     name: 'Mudball',
     code: 'Mudball',
     img: 'assets/img/monsters/Mudball.png'
-  },  {
+  }, {
     name: 'Mushrimp',
     code: 'Mushrimp',
     img: 'assets/img/monsters/Mushrimp.png'
   },
 
-    {
+  {
     name: 'Polaburrr',
     code: 'Polaburrr',
     img: 'assets/img/monsters/Polaburrr.png'
@@ -322,4 +321,3 @@ const monsters = [
     img: 'assets/img/monsters/Zombie_Bloop.png'
   }
 ]
-export { monsters }

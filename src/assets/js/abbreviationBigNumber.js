@@ -1,4 +1,4 @@
-export const decimalSystemExponent = {
+export const abbreviationBigNumber = {
   '0': '',
   '3': 'K',
   '6': 'M',
