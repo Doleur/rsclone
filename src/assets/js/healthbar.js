@@ -8,7 +8,7 @@ import { newItemArrSlides } from './swiper.js'
 import { shopGeneration, updateShop } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationTotalDamage } from './calculationDamage.js'
-
+import { bosses } from './boss.js'
 
 const countInput = document.querySelector('.count')
 const hero = document.querySelector('.hero')
@@ -23,6 +23,7 @@ const playField = document.querySelector('.field-play')
   // const autoDamage = document.querySelector('.dps')
 const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
 const swiperWrapper = document.querySelector('.swiper-wrapper')
+const time = document.querySelector('.time')
 
 shopGeneration()
 
@@ -37,6 +38,7 @@ let autoDPS = damage.DPS;
 let gold = 1000
 const monstr = randomMonster(monsters)
 let arrLevel = [1]
+var countdown = new setCountdown(time,30);
 
 
 function innerValue() {
@@ -51,13 +53,17 @@ function innerValue() {
   })
 }
 
-hero.innerHTML = `<img src="assets/img/monsters/${monstr[0]}.png" alt=""></img>`
+hero.innerHTML = `<img src="${monsters[currMonster - 1].img}" alt=""></img>`
 
 function setMonsterHealth() {
   if (currLevel % 5 === 0) {
     isBoss = 1;
+    randomMonster(bosses)
+    hero.innerHTML = `<img src="${bosses[currMonster].img}" alt=""></img>`
+    countdownStart()
   } else {
     isBoss = 0.1;
+    countdownStop()
   }
   if (currLevel < 141) {
     health = Math.ceil(10 * (currLevel - 1 + Math.pow(1.55, currLevel - 1)) * (isBoss * 10));
@@ -101,7 +107,13 @@ function checkIfDead() {
     setGoldDropped();
     dropGold();
     setCount();
-    hero.innerHTML = `<img src="assets/img/monsters/${monstr[currMonster]}.png" alt=""></img>`;
+    hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+    if(currLevel %5 == 0){
+      if (currHealth <= 0){
+        currLevel += 1
+        newItemArrSlides()
+      }
+    }
     if (currMonster === monstersPerLevel) {
       currMonster = 1
       currLevel += 1
@@ -168,7 +180,84 @@ swiperWrapper.addEventListener('click', (e) => {
   isLevel.classList.add('swiper-slide-active')
   setCount()
   setMonsterHealth();
+  if(currLevel %5 ==0){
+    countdownStart()
+  } else{
+hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+
+  }
 })
+
+function setCountdown(elem, seconds) {
+  var that = {};
+
+  that.elem = elem;
+  that.seconds = seconds;
+  that.totalTime = seconds * 100;
+  that.usedTime = 0;
+  that.startTime = +new Date();
+  that.timer = null;
+
+  that.count = function() {
+    that.usedTime = Math.floor((+new Date() - that.startTime) / 10);
+
+    var tt = that.totalTime - that.usedTime;
+    if (tt <= 0) {
+      currLevel -=1
+      setMonsterHealth()
+hero.innerHTML = `<img src="${monsters[currMonster].img}" alt=""></img>`
+    } else {
+      var mi = Math.floor(tt / (60 * 100));
+      var ss = Math.floor((tt - mi * 60 * 100) / 100);
+      var ms = tt - Math.floor(tt / 100) * 100;
+
+      that.elem.innerHTML = `${that.fillZero(ss)}.${that.fillZero(ms)}`;
+    }
+  };
+
+  that.init = function() {
+    if(that.timer){
+      clearInterval(that.timer);
+      that.elem.innerHTML = '';
+      that.totalTime = seconds * 100;
+      that.usedTime = 0;
+      that.startTime = +new Date();
+      that.timer = null;
+    }
+  };
+
+  that.start = function() {
+    if(!that.timer){
+       that.timer = setInterval(that.count, 10);
+    }
+  };
+
+  that.stop = function() {
+    console.log('usedTime = ' + countdown.usedTime);
+    if (that.timer) clearInterval(that.timer);
+  };
+
+  that.fillZero = function(num) {
+    return num < 10 ? '0' + num : num;
+  };
+
+  return that;
+}
+
+function countdownStart(){
+  countdownStop()
+  countdown.init();
+  countdown.start();
+  time.classList.add('active')
+};
+
+function countdownInit(){
+  countdown.init();
+};
+function countdownStop(){
+  countdown.stop();
+  time.classList.remove('active')
+};
 
 getCount()
 innerValue()
