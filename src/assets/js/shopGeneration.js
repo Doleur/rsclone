@@ -46,6 +46,7 @@ export function updateShop(number) {
   heroLvl.innerHTML = 'lvl ' + heroesData[number].lvl
 }
 
+
 export function buyHero(numberHero) {
   let costHero = heroesData[numberHero].cost()
   let differenceCost = gameStats.gold.number - costHero.number

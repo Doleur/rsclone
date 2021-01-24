@@ -17,10 +17,9 @@ let isBoss = gameStats.isBoss
 let currHealth = gameStats.health
 let damage = calculationTotalDamage();
 let autoDPS = damage.DPS;
-let monstr = randomMonster(monsters)
+const monstr = randomMonster(monsters)
 let arrLevel = [1]
 var countdown = new setCountdown(time, 30);
-
 
 function innerValue() {
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
@@ -90,6 +89,7 @@ function checkIfDead() {
     if (gameStats.currMonster === monstersPerLevel) {
       gameStats.currMonster = 1
       gameStats.currLevel += 1
+
       newItemArrSlides()
     } else {
       gameStats.currMonster += 1
