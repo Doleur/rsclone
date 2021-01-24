@@ -1,13 +1,14 @@
-import { gold, autoDPS, damage, currLevel, health, currMonster, arrLevel } from './healthbar.js'
+import { gameStats } from './constants.js'
+import { autoDPS, damage, arrLevel } from './healthbar.js'
 
-function setCount () {
+function setCount() {
   const saveItems = {
-    gold,
+    gold: gameStats.gold,
     autoDPS,
     damage,
-    currLevel,
-    health,
-    currMonster,
+    currLevel: gameStats.currLevel,
+    health: gameStats.health,
+    currMonster: gameStats.currMonster,
     arrLevel
   }
   const serialSaveItems = JSON.stringify(saveItems)

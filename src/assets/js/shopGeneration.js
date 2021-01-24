@@ -1,7 +1,7 @@
 import createTagElement from './creatElement.js'
 import { shopWrapper, numberHeroes } from './constants.js'
 import { heroesData } from './heroesData.js'
-import { decimalSystemExponent } from './decimalSystemExponent.js'
+
 
 export function shopGeneration() {
   for (let hero = 0; hero < numberHeroes; hero++) {
