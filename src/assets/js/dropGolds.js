@@ -1,5 +1,7 @@
 import createTagElement from './creatElement.js'
 import { gameStats } from './constants.js'
+import { convertingNumbers } from './convertingNumbers.js'
+import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 
 const wrapperGolds = document.querySelector('.wrapper-gold')
 
@@ -17,12 +19,19 @@ async function dropGoldAnimation() {
 }
 
 function setGoldDropped() {
+  let dropGolds
+  let dropGoldsPowerOfTen
   if (gameStats.currLevel > 75) {
-    gameStats.gold += Math.ceil(gameStats.health / 15 * Math.pow(1.025, gameStats.currLevel - 75));
+    let coefficientPerLvl = convertingNumbers(Math.pow(1.025, gameStats.currLevel - 75))
+    dropGolds = convertingNumbers(gameStats.gold.number + Math.ceil(gameStats.health / 15 * coefficientPerLvl.number))
+    dropGoldsPowerOfTen = coefficientPerLvl.powerOfTen + dropGolds.powerOfTen + gameStats.gold.powerOfTen
   } else {
-    gameStats.gold += Math.ceil(gameStats.health / 15);
+    dropGolds = convertingNumbers(gameStats.gold.number + Math.ceil(gameStats.health / 15))
+    dropGoldsPowerOfTen = dropGolds.powerOfTen + gameStats.gold.powerOfTen
   }
-  console.log(gameStats.gold)
+  gameStats.gold.number = Math.trunc(dropGolds.number)
+  gameStats.gold.powerOfTen = dropGoldsPowerOfTen
+  gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
 }
 
 export { dropGoldAnimation, setGoldDropped }

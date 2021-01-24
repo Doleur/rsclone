@@ -4,11 +4,12 @@ import { setCount } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { newItemArrSlides } from './swiper.js'
-import { shopGeneration, updateShop } from './shopGeneration.js';
+import { shopGeneration, updateShop, bueHero } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationTotalDamage } from './calculationDamage.js'
 import { monsters } from './monsterData.js'
 import { bosses } from './boss.js'
+
 
 shopGeneration()
 
@@ -22,7 +23,7 @@ var countdown = new setCountdown(time, 30);
 
 
 function innerValue() {
-  countInput.textContent = gameStats.gold
+  countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
   currentHealthNumOnPage.innerText = gameStats.health.toFixed(0)
   totalHealthNumOnPage.innerText = gameStats.health.toFixed(0)
   currentMonsterNumOnPage.innerText = gameStats.currMonster
@@ -94,7 +95,7 @@ function checkIfDead() {
       gameStats.currMonster += 1
     }
     setMonsterHealth();
-    countInput.textContent = gameStats.gold;
+    countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`;
   }
 }
 
@@ -122,10 +123,10 @@ shopWrapper.addEventListener('click', ({ target }) => {
   let isBuyButton = target.closest('.buyButton')
   if (!isBuyButton) return
   let hero = isBuyButton.classList[1].replace(/hero/, '')
-  if (gameStats.gold < heroesData[hero].baseCost) return
-  gameStats.gold -= heroesData[hero].baseCost
+  let ifPurchaseMade = bueHero(hero)
+  if (!ifPurchaseMade) return
   heroesData[hero].lvl += 1
-  countInput.textContent = gameStats.gold
+  countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
   updateShop(hero)
   damage = calculationTotalDamage()
   autoDPS = damage.DPS
@@ -134,7 +135,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
 function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
-    gameStats.gold = returnSaveItems.gold
+    gameStats.gold.number = returnSaveItems.gold
     autoDPS = returnSaveItems.autoDPS
     damage = returnSaveItems.damage
     gameStats.currLevel = returnSaveItems.currLevel

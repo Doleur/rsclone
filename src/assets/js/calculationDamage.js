@@ -11,7 +11,7 @@ export function calculationHeroDamage(baseDPS, lvl) {
   return {
     number: Math.trunc(resultHeroDamage.number),
     powerOfTen: resultPowerOfTen,
-    numberName: abbreviationBigNumber[`${resultPowerOfTen}`]
+    abbreviation: abbreviationBigNumber[`${resultPowerOfTen}`]
   }
 }
 
