@@ -76,11 +76,11 @@ setAutoDamage()
 
 function checkIfDead() {
   if (currHealth <= 0) {
-    setGoldDropped();
-    dropGoldAnimation();
+    let goldDropped = setGoldDropped();
+    dropGoldAnimation(goldDropped);
     setCount();
     hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
-    if (gameStats.currLevel % 5 == 0) {
+    if (gameStats.currLevel % 5 === 0) {
       if (currHealth <= 0) {
         gameStats.currLevel += 1
         newItemArrSlides()
@@ -89,7 +89,6 @@ function checkIfDead() {
     if (gameStats.currMonster === monstersPerLevel) {
       gameStats.currMonster = 1
       gameStats.currLevel += 1
-
       newItemArrSlides()
     } else {
       gameStats.currMonster += 1
