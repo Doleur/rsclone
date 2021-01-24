@@ -1,132 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clicker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css"
+      integrity="sha512-IJEbgDEF7OeKJRa0MY2PApnyJHRIsgzCveek4ec8VWQ+7KG3ZSKVNYa5xP/Gh0hVP0Mwb+gBsk+GwR3JQGhQNg=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clicker</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" integrity="sha512-IJEbgDEF7OeKJRa0MY2PApnyJHRIsgzCveek4ec8VWQ+7KG3ZSKVNYa5xP/Gh0hVP0Mwb+gBsk+GwR3JQGhQNg==" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-</head>
-
-<body>
-  <header>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-10 text-center">
-          <div class="logo">
-            <img src="assets/img/logo.png" class="rounded" alt="Clicker Heroes">
-          </div>
-        </div>
-        <div class="col-sm-2 d-flex align-items-center">
-          <a class="col-4" href="#">
-            <div class="costom-item"><img src="assets/img/icon/costom.svg" alt="costom"></div>
-            <!-- <i class="material-icons">build_circle</i> -->
-          </a>
-          <a class="col-4" href="#">
-            <div class="costom-item"><img src="assets/img/icon/diskort.svg" alt="diskord"></div>
-            <!-- <i class="material-icons">help</i> -->
-          </a>
-          <a class="col-4" href="#">
-            <div class="costom-item"><img src="assets/img/icon/music.svg" alt="diskord"></div>
-            <!-- <i class="material-icons">volume_up</i> -->
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-  <section class="container-fluid">
-    <div class="row">
-      <div class="col-sm-5 d-flex align-items-center justify-content-center">
-        <img src="assets/img/icon/gold.svg" class="image" alt="Score">
-        <!-- заменить на див -->
-        <div class="count"> 0 g </div>
-        <!-- <input type="text" class="count" value="" /> -->
-      </div>
-      <nav class="col-sm-7 d-flex align-items-center justify-content-center flex-column">
-        <img src="assets/img/icon/level-wrapper.svg" class="image" alt="Level bg">
-        <!-- Swiper -->
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <!-- <div class="swiper-slide">Level 1</div> -->
-          </div>
-          <!-- Add Pagination -->
-          <!-- <div class="swiper-pagination"></div> -->
-          <!-- Add Arrows -->
-        </div>
-        <div class="swiper-button-next">
-          <!-- <img src="assets/img/icon/Chevron.svg" alt="Chevron"> -->
-        </div>
-        <div class="swiper-button-prev">
-          <!-- <img src="assets/img/icon/Chevron.svg" alt="Chevron"> -->
-        </div>
-        <div class="level-wrapper">
-          <p>Level <span class="current-level"></span></p>
-        </div>
-      </nav>
-
-    </div>
-
-  </section>
-  <section class="container-fluid">
-    <div class="row">
-      <div class="col-sm-5">
-        <div class="shop">
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+  <body>
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-10 text-center">
+            <div class="logo">
+              <img
+                src="assets/img/logo.png"
+                class="rounded"
+                alt="Clicker Heroes"
+              />
             </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-              <div class="shop_wrapper">
-
+          </div>
+          <div class="col-sm-2 d-flex align-items-center">
+            <a class="col-4" href="#">
+              <div class="costom-item">
+                <img src="assets/img/icon/costom.svg" alt="costom" />
               </div>
-
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact</div>
+              <!-- <i class="material-icons">build_circle</i> -->
+            </a>
+            <a class="col-4" href="#">
+              <div class="costom-item">
+                <img src="assets/img/icon/diskort.svg" alt="diskord" />
+              </div>
+              <!-- <i class="material-icons">help</i> -->
+            </a>
+            <a class="col-4" href="#">
+              <div class="costom-item">
+                <img src="assets/img/icon/music.svg" alt="diskord" />
+              </div>
+              <!-- <i class="material-icons">volume_up</i> -->
+            </a>
           </div>
         </div>
-
       </div>
-      <div class="col-sm-7">
-        <div class="field-play">
-          <div class="wrapper-healthbar">
-            <div class="wrapper-healthdata">
-              <span class="current-health">20</span>
+    </header>
+    <section class="container-fluid">
+      <div class="row">
+        <div class="col-sm-5 d-flex align-items-center justify-content-center">
+          <img src="assets/img/icon/gold.svg" class="image" alt="Score" />
+          <!-- заменить на див -->
+          <div class="count">0 g</div>
+          <!-- <input type="text" class="count" value="" /> -->
+        </div>
+        <nav
+          class="col-sm-7 d-flex align-items-center justify-content-center flex-column"
+        >
+          <img
+            src="assets/img/icon/level-wrapper.svg"
+            class="image"
+            alt="Level bg"
+          />
+          <!-- Swiper -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <!-- <div class="swiper-slide">Level 1</div> -->
+            </div>
+            <!-- Add Pagination -->
+            <!-- <div class="swiper-pagination"></div> -->
+            <!-- Add Arrows -->
+          </div>
+          <div class="swiper-button-next">
+            <!-- <img src="assets/img/icon/Chevron.svg" alt="Chevron"> -->
+          </div>
+          <div class="swiper-button-prev">
+            <!-- <img src="assets/img/icon/Chevron.svg" alt="Chevron"> -->
+          </div>
+          <div class="level-wrapper">
+            <p>Level <span class="current-level"></span></p>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <section class="container-fluid">
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="shop">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a
+                  class="nav-item nav-link active"
+                  id="nav-home-tab"
+                  data-toggle="tab"
+                  href="#nav-home"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                  >Home</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="nav-profile-tab"
+                  data-toggle="tab"
+                  href="#nav-profile"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                  >Profile</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="nav-contact-tab"
+                  data-toggle="tab"
+                  href="#nav-contact"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false"
+                  >Contact</a
+                >
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+              >
+                <div class="shop_wrapper"></div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-profile"
+                role="tabpanel"
+                aria-labelledby="nav-profile-tab"
+              >
+                Profile
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-contact"
+                role="tabpanel"
+                aria-labelledby="nav-contact-tab"
+              >
+                Contact
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="field-play">
+            <div class="wrapper-healthbar">
+              <div class="wrapper-healthdata">
+                <span class="current-health">20</span>
+                <span> / </span>
+                <span class="total-health">20</span>
+              </div>
+              <div class="healthbar"></div>
+            </div>
+            <div class="isle"></div>
+            <div class="wrapper-gold"></div>
+            <div class="wrapper-damage-popup"></div>
+            <div class="countdown">
+              <span id="time" class="time"></span>
+            </div>
+            <div class="hero"></div>
+            <div class="monsters-progress-wrapper">
+              <span class="current-monster">1</span>
               <span> / </span>
-              <span class="total-health">20</span>
+              <span class="total-monsters">10</span>
             </div>
             <div class="healthbar"></div>
           </div>
-          <div class="isle">
-
-          </div>
-          <div class="wrapper-gold">
-
-          </div>
-          <div class="wrapper-damage-popup"></div>
-          <div class="hero"></div>
-          <div class="monsters-progress-wrapper">
-            <span class="current-monster">1</span>
-            <span> / </span>
-            <span class="total-monsters">10</span>
-          </div>
-          <div class="healthbar"></div>
-
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-</body>
-
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </body>
 </html>
