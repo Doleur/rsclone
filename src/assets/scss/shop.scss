@@ -1,3 +1,13 @@
+.display_damage {
+    display: flex;
+    margin-left: 1rem;
+    flex-direction: column;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+}
+
 .shop_wrapper {
     height: 60vh;
     overflow: scroll;

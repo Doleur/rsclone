@@ -6,6 +6,16 @@ export const gameStats = {
     powerOfTen: 0,
     abbreviation: '',
   },
+  clickDamage: {
+    number: 1,
+    powerOfTen: 0,
+    abbreviation: '',
+  },
+  DPS: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: '',
+  },
   currLevel: 1,
   health: 20,
   isBoss: null,
@@ -22,3 +32,5 @@ export const currentMonsterNumOnPage = document.querySelector('.current-monster'
 export const playField = document.querySelector('.field-play')
 export const wrapperDmgPopup = document.querySelector('.wrapper-damage-popup')
 export const swiperWrapper = document.querySelector('.swiper-wrapper')
+export const displayClickDamage = document.querySelector('.display_click_damage')
+export const displayDPS = document.querySelector('.display_DPS')

@@ -6,7 +6,8 @@ import { randomMonster } from './random.js'
 import { newItemArrSlides } from './swiper.js'
 import { shopGeneration, updateShop, buyHero } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
-import { calculationTotalDamage } from './calculationDamage.js'
+import { calculationHeroDamage, calculationTotalDamage, displayDamage } from './calculationDamage.js'
+import { calculationCostHero } from './calculationCostHero.js'
 import { monsters } from './monsterData.js'
 import { bosses } from './boss.js'
 
@@ -15,9 +16,6 @@ shopGeneration()
 
 let isBoss = gameStats.isBoss
 let currHealth = gameStats.health
-let damage = calculationTotalDamage();
-let autoDPS = damage.DPS;
-const monstr = randomMonster(monsters)
 let arrLevel = [1]
 var countdown = new setCountdown(time, 30);
 
@@ -69,7 +67,7 @@ function setDamage(dmg) {
 
 function setAutoDamage() {
   setInterval(() => {
-    setDamage(autoDPS);
+    setDamage(gameStats.DPS.number);
   }, 1000);
 }
 setAutoDamage()
@@ -101,7 +99,7 @@ function checkIfDead() {
 function createDamagePopup(e) {
   const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
   const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
-  damagePopupNumOnPage.innerText = '-' + damage.clickDamage;
+  damagePopupNumOnPage.innerText = '-' + gameStats.clickDamage.number;
   wrapperDmgPopup.append(damagePopup);
 }
 
@@ -113,7 +111,7 @@ function removeDamagePopup() {
 }
 
 hero.addEventListener('click', (e) => {
-  setDamage(damage.clickDamage);
+  setDamage(gameStats.clickDamage.number);
   createDamagePopup(e);
   removeDamagePopup();
 });
@@ -126,17 +124,19 @@ shopWrapper.addEventListener('click', ({ target }) => {
   if (!ifPurchaseMade) return
   heroesData[hero].lvl += 1
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
+  calculationHeroDamage(hero)
+  calculationCostHero(hero)
   updateShop(hero)
-  damage = calculationTotalDamage()
-  autoDPS = damage.DPS
+  calculationTotalDamage()
+  displayDamage()
 });
 
 function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
     gameStats.gold.number = returnSaveItems.gold
-    autoDPS = returnSaveItems.autoDPS
-    damage = returnSaveItems.damage
+    gameStats.DPS.number = returnSaveItems.autoDPS
+    gameStats.clickDamage.number = returnSaveItems.damage
     gameStats.currLevel = returnSaveItems.currLevel
     gameStats.health = returnSaveItems.health
     gameStats.currMonster = returnSaveItems.currMonster
@@ -239,4 +239,4 @@ innerValue()
 
 document.addEventListener('DOMContentLoaded', setMonsterHealth);
 
-export { autoDPS, damage, arrLevel, swiperWrapper }
+export { arrLevel, swiperWrapper }
