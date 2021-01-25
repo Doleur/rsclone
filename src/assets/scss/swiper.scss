@@ -24,6 +24,16 @@
     height: 100%;
     cursor: pointer;
     user-select: none;
+    .swiper-slide-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70%;
+      height: 55%;
+      background-color: rgb(241, 220, 161);
+      border-radius: 1rem;
+      text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+    }
     &.swiper-slide-active {
       color: red;
     }

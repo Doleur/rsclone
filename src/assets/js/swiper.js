@@ -17,8 +17,11 @@ const swiper = new Swiper('.swiper-container', {
 })
 
 function newLevelSlide() {
-  swiper.appendSlide(`<div class="swiper-slide" data-level=${arrLevel[arrLevel.length - 1]} >Level ${arrLevel[arrLevel.length - 1]} </div>`)
-  swiper.update()
+  swiper.appendSlide(`<div class="swiper-slide" data-level=${arrLevel[arrLevel.length - 1]} >
+                        <div class = "swiper-slide-container">
+                          <span class = "swiper-slide-text"> Level ${arrLevel[arrLevel.length - 1]} </span>
+                        </div>
+                      </div>`)
 }
 
 function newItemArrSlides() {
@@ -27,6 +30,12 @@ function newItemArrSlides() {
     arrLevel.push(gameStats.currLevel)
     newLevelSlide()
   }
+  setTimeout(clickNextButton, 50)
+}
+
+function clickNextButton () {
+  const buttonNext = document.querySelector('.swiper-button-next')
+  buttonNext.click()
 }
 
 export { newLevelSlide, newItemArrSlides }

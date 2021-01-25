@@ -27,7 +27,9 @@ function innerValue() {
   currentLevelNumOnPage.innerText = gameStats.currLevel
   arrLevel.forEach((e) => {
     const swiperSlide = createTagElement('div', 'swiper-slide', '', swiperWrapper, ['level', e])
-    swiperSlide.textContent = `Level ${e}`
+    const swiperSlideContainer = createTagElement('div', 'swiper-slide-container', '', swiperSlide)
+    const swiperSlideText = createTagElement('span', 'swiper-slide-text', '', swiperSlideContainer)
+    swiperSlideText.textContent = `Level ${e}`
   })
 }
 
@@ -145,7 +147,8 @@ function getCount() {
 }
 
 swiperWrapper.addEventListener('click', (e) => {
-  gameStats.currLevel = +e.target.dataset.level
+  const levelData = e.target.closest('.swiper-slide')
+  gameStats.currLevel = +levelData.dataset.level
   const activeLevel = document.querySelector('.swiper-slide-active')
   activeLevel.classList.remove('swiper-slide-active')
   const isLevel = e.target.closest('.swiper-slide')
