@@ -5,6 +5,7 @@ import { gameStats } from './constants.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { displayDamage } from './calculationDamage.js'
 import { calculationCostHero } from './calculationCostHero.js'
+import { convertingNumbers } from './convertingNumbers.js'
 
 export function shopGeneration() {
   for (let hero = 0; hero < numberHeroes; hero++) {
@@ -50,12 +51,14 @@ export function buyHero(numberHero) {
   let differencePowerOfTen = gameStats.gold.powerOfTen - costHero.powerOfTen
   if (differencePowerOfTen < 0) return false
   if (!differencePowerOfTen && differenceCost < 0) return false
-  if (differenceCost < 100 && gameStats.gold.powerOfTen) {
-    gameStats.gold.number = differenceCost * 1000
+  let newGoldsNumber = convertingNumbers(gameStats.gold.number * (10 ** differencePowerOfTen) - costHero.number)
+  gameStats.gold.powerOfTen = costHero.powerOfTen + newGoldsNumber.powerOfTen
+  if (newGoldsNumber.number < 100 && gameStats.gold.powerOfTen) {
+    gameStats.gold.number = Math.trunc(newGoldsNumber.number) * 1000
     gameStats.gold.powerOfTen -= 3
-    gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
   } else {
-    gameStats.gold.number = differenceCost
+    gameStats.gold.number = Math.trunc(newGoldsNumber.number)
   }
+  gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
   return true
 }

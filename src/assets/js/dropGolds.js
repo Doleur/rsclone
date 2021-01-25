@@ -29,11 +29,11 @@ function setGoldDropped() {
 
   if (gameStats.currLevel > 75) {
     let coefficientPerLvl = convertingNumbers(Math.pow(1.025, gameStats.currLevel - 75))
-    dropGolds = convertingNumbers(Math.ceil(gameStats.health / 15 * coefficientPerLvl.number))
-    dropGoldsPowerOfTen = coefficientPerLvl.powerOfTen + dropGolds.powerOfTen
+    dropGolds = convertingNumbers(Math.ceil(gameStats.health.number / 15 * coefficientPerLvl.number))
+    dropGoldsPowerOfTen = coefficientPerLvl.powerOfTen + dropGolds.powerOfTen + gameStats.health.powerOfTen
   } else {
-    dropGolds = convertingNumbers(Math.ceil(gameStats.health / 15))
-    dropGoldsPowerOfTen = dropGolds.powerOfTen
+    dropGolds = convertingNumbers(Math.ceil(gameStats.health.number / 15))
+    dropGoldsPowerOfTen = dropGolds.powerOfTen + gameStats.health.powerOfTen
   }
   let dropGoldAbbreviation = abbreviationBigNumber[`${dropGoldsPowerOfTen}`]
   let newNumberGolds = convertingNumbers(gameStats.gold.number + +dropGolds.number)

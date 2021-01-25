@@ -4,20 +4,24 @@ export const gameStats = {
   gold: {
     number: 1000,
     powerOfTen: 0,
-    abbreviation: '',
+    abbreviation: ''
   },
   clickDamage: {
     number: 1,
     powerOfTen: 0,
-    abbreviation: '',
+    abbreviation: ''
   },
   DPS: {
     number: 0,
     powerOfTen: 0,
-    abbreviation: '',
+    abbreviation: ''
   },
   currLevel: 1,
-  health: 20,
+  health: {
+    number: 20,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
   isBoss: null,
   currMonster: 1
 };

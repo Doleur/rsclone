@@ -10,19 +10,21 @@ import { calculationHeroDamage, calculationTotalDamage, displayDamage } from './
 import { calculationCostHero } from './calculationCostHero.js'
 import { monsters } from './monsterData.js'
 import { bosses } from './boss.js'
+import { convertingNumbers } from './convertingNumbers.js'
+import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 
 
 shopGeneration()
 
 let isBoss = gameStats.isBoss
-let currHealth = gameStats.health
+let currHealth = {...gameStats.health }
 let arrLevel = [1]
 var countdown = new setCountdown(time, 30);
 
 function innerValue() {
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
-  currentHealthNumOnPage.innerText = gameStats.health.toFixed(0)
-  totalHealthNumOnPage.innerText = gameStats.health.toFixed(0)
+  currentHealthNumOnPage.innerText = gameStats.health.number
+  totalHealthNumOnPage.innerText = gameStats.health.number
   currentMonsterNumOnPage.innerText = gameStats.currMonster
   currentLevelNumOnPage.innerText = gameStats.currLevel
   arrLevel.forEach((e) => {
@@ -44,42 +46,58 @@ function setMonsterHealth() {
     countdownStop()
   }
   if (gameStats.currLevel < 141) {
-    gameStats.health = Math.ceil(10 * (gameStats.currLevel - 1 + Math.pow(1.55, gameStats.currLevel - 1)) * (isBoss * 10));
+    let newHealth = convertingNumbers(Math.ceil(10 * (gameStats.currLevel - 1 + Math.pow(1.55, gameStats.currLevel - 1)) * (isBoss * 10)))
+    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.powerOfTen = newHealth.powerOfTen
+    gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   } else if (gameStats.currLevel < 501) {
-    gameStats.health = Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, gameStats.currLevel - 140)) * (isBoss * 10));
+    let newHealth = convertingNumbers(Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, gameStats.currLevel - 140)) * (isBoss * 10)))
+    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.powerOfTen = newHealth.powerOfTen
+    gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   } else if (gameStats.currLevel < 200001) {
-    gameStats.health = Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, 360) * Math.PI * (1.145 + 0.001 * Math.floor((501 - 1) / 500))) * (isBoss * 10));
+    let newHealth = convertingNumbers(Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, 360) * Math.PI * (1.145 + 0.001 * Math.floor((501 - 1) / 500))) * (isBoss * 10)))
+    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.powerOfTen = newHealth.powerOfTen
+    gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   } else {
-    gameStats.health = Math.ceil((Math.pow(1.545, gameStats.currLevel - 200001) * 1.24 * Math.pow(10, 25409)) + ((gameStats.currLevel - 1) * 10));
+    let newHealth = convertingNumbers(Math.ceil((Math.pow(1.545, gameStats.currLevel - 200001) * 1.24 * Math.pow(10, 25409)) + ((gameStats.currLevel - 1) * 10)))
+    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.powerOfTen = newHealth.powerOfTen
+    gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   }
-  currHealth = gameStats.health;
+  currHealth = {...gameStats.health }
 }
 
-function setDamage(dmg) {
-  currHealth = currHealth - dmg;
+function setDamage(damage) {
+  let differencePowerOfTen = currHealth.powerOfTen - damage.powerOfTen
+  let newCurrHealth = convertingNumbers(currHealth.number * (10 ** differencePowerOfTen) - damage.number)
+  currHealth.number = newCurrHealth.number
+  currHealth.powerOfTen = damage.powerOfTen + newCurrHealth.powerOfTen
+  currHealth.abbreviation = abbreviationBigNumber[`${currHealth.powerOfTen}`]
   checkIfDead();
-  currentLevelNumOnPage.innerText = gameStats.currLevel;
-  healthBar.style.width = `${currHealth / gameStats.health * 100}%`;
-  currentHealthNumOnPage.innerText = currHealth.toFixed(0);
-  totalHealthNumOnPage.innerText = gameStats.health.toFixed(0);
-  currentMonsterNumOnPage.innerText = gameStats.currMonster;
+  currentLevelNumOnPage.innerText = gameStats.currLevel
+  healthBar.style.width = `${currHealth.number / gameStats.health.number * 100}%`
+  currentHealthNumOnPage.innerText = `${Math.trunc(currHealth.number)}${currHealth.abbreviation}`
+  totalHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
+  currentMonsterNumOnPage.innerText = gameStats.currMonster
 }
 
 function setAutoDamage() {
   setInterval(() => {
-    setDamage(gameStats.DPS.number);
+    setDamage(gameStats.DPS);
   }, 1000);
 }
 setAutoDamage()
 
 function checkIfDead() {
-  if (currHealth <= 0) {
+  if (currHealth.number <= 0) {
     let goldDropped = setGoldDropped();
     dropGoldAnimation(goldDropped);
     setCount();
     hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
     if (gameStats.currLevel % 5 === 0) {
-      if (currHealth <= 0) {
+      if (currHealth.number <= 0) {
         gameStats.currLevel += 1
         newItemArrSlides()
       }
@@ -99,7 +117,7 @@ function checkIfDead() {
 function createDamagePopup(e) {
   const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
   const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
-  damagePopupNumOnPage.innerText = '-' + gameStats.clickDamage.number;
+  damagePopupNumOnPage.innerText = '-' + gameStats.clickDamage.number + gameStats.clickDamage.abbreviation;
   wrapperDmgPopup.append(damagePopup);
 }
 
@@ -111,7 +129,7 @@ function removeDamagePopup() {
 }
 
 hero.addEventListener('click', (e) => {
-  setDamage(gameStats.clickDamage.number);
+  setDamage(gameStats.clickDamage);
   createDamagePopup(e);
   removeDamagePopup();
 });
@@ -138,7 +156,7 @@ function getCount() {
     gameStats.DPS.number = returnSaveItems.autoDPS
     gameStats.clickDamage.number = returnSaveItems.damage
     gameStats.currLevel = returnSaveItems.currLevel
-    gameStats.health = returnSaveItems.health
+    gameStats.health.number = returnSaveItems.health
     gameStats.currMonster = returnSaveItems.currMonster
     arrLevel = returnSaveItems.arrLevel
   }
