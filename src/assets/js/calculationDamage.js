@@ -1,34 +1,42 @@
-import { numberHeroes } from './constants.js'
+import { gameStats, displayClickDamage, displayDPS, numberHeroes } from './constants.js'
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { heroesData } from './heroesData.js'
 
-export function calculationHeroDamage(baseDPS, lvl) {
-  let convertBaseDPS = convertingNumbers(baseDPS)
+export function calculationHeroDamage(numberHero) {
+  let convertBaseDPS = convertingNumbers(heroesData[numberHero].baseDPS)
   let numberBaseDPS = convertBaseDPS.number
-  let resultHeroDamage = convertingNumbers(numberBaseDPS * (1.07 * lvl))
+  let resultHeroDamage = convertingNumbers(numberBaseDPS * (1.07 * heroesData[numberHero].lvl))
   let resultPowerOfTen = convertBaseDPS.powerOfTen + resultHeroDamage.powerOfTen
-  return {
-    number: Math.trunc(resultHeroDamage.number),
-    powerOfTen: resultPowerOfTen,
-    abbreviation: abbreviationBigNumber[`${resultPowerOfTen}`]
-  }
+
+
+  heroesData[numberHero].damage.number = Math.trunc(resultHeroDamage.number)
+  heroesData[numberHero].damage.powerOfTen = resultPowerOfTen
+  heroesData[numberHero].damage.abbreviation = abbreviationBigNumber[`${resultPowerOfTen}`]
 }
 
 
 export function calculationTotalDamage() {
-  let totalClickDamage = heroesData[0].damage()
+  gameStats.clickDamage.number = heroesData[0].damage.number + 1
+  gameStats.clickDamage.powerOfTen = heroesData[0].damage.powerOfTen
+  gameStats.clickDamage.abbreviation = heroesData[0].damage.abbreviation
+
   let totalDPS = 0
-
-  for (let hero = 1; hero < numberHeroes; hero++) {
-    let heroDamage = heroesData[hero].damage()
-    let numberHeroDamage = heroDamage.number
-    let powerOfTenHeroDamage = heroDamage.powerOfTen
-    totalDPS += numberHeroDamage * (10 ** powerOfTenHeroDamage)
+  let totalPowerOfTen = 0
+  for (let numberHero = 1; numberHero < numberHeroes; numberHero++) {
+    let numberHeroDamage = heroesData[numberHero].damage.number
+    let powerOfTenHeroDamage = heroesData[numberHero].damage.powerOfTen
+    totalDPS += numberHeroDamage
+    totalPowerOfTen += powerOfTenHeroDamage
   }
+  let convertTotalDPS = convertingNumbers(totalDPS)
 
-  return {
-    clickDamage: totalClickDamage.number + 1,
-    DPS: totalDPS
-  }
+  gameStats.DPS.number = Math.trunc(convertTotalDPS.number)
+  gameStats.DPS.powerOfTen = totalPowerOfTen + convertTotalDPS.powerOfTen
+  gameStats.DPS.abbreviation = abbreviationBigNumber[`${gameStats.DPS.powerOfTen}`]
+}
+
+export function displayDamage() {
+  displayClickDamage.innerHTML = `${gameStats.clickDamage.number}${gameStats.clickDamage.abbreviation} Click Damage`
+  displayDPS.innerHTML = `${gameStats.DPS.number}${gameStats.DPS.abbreviation} DPS`
 }

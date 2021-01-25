@@ -3,52 +3,49 @@ import { shopWrapper, numberHeroes } from './constants.js'
 import { heroesData } from './heroesData.js'
 import { gameStats } from './constants.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
-
+import { displayDamage } from './calculationDamage.js'
+import { calculationCostHero } from './calculationCostHero.js'
 
 export function shopGeneration() {
   for (let hero = 0; hero < numberHeroes; hero++) {
     let shopHero = createTagElement('div', `shop_hero hero${hero}`, '', shopWrapper)
 
-    let costHero = heroesData[hero].cost()
-    let damageHero = heroesData[hero].damage()
-
-
+    calculationCostHero(hero)
 
     createTagElement('div', `buyButton hero${hero}`, [
       createTagElement('div', `buyButton__header`, 'LVL UP', ''),
       createTagElement('div', `wrapper-buyButton__cost`, [
         createTagElement('img', `buyButton__imgGold`, '', '', ['src', `assets/img/Gold.png`]),
-        createTagElement('div', `buyButton__cost hero${hero}`, `${costHero.number}${costHero.abbreviation}`, '')
+        createTagElement('div', `buyButton__cost hero${hero}`, `${heroesData[hero].cost.number}${heroesData[hero].cost.abbreviation}`, '')
       ], '')
     ], shopHero)
 
     createTagElement('div', `hero_info`, [
       createTagElement('div', `hero_name hero${hero}`, `${heroesData[hero].name}`, ''),
       createTagElement('div', `hero_stats`, [
-        createTagElement('span', `hero_stats__damage hero${hero}`, `${damageHero.number}${damageHero.abbreviation}`, ''),
+        createTagElement('span', `hero_stats__damage hero${hero}`, `${heroesData[hero].damage.number}${heroesData[hero].damage.abbreviation}`, ''),
         createTagElement('span', `hero_stats__lvl hero${hero}`, `lvl ${heroesData[hero].lvl}`, '')
       ], '')
     ], shopHero)
 
     createTagElement('div', `hero_img hero${hero}`, '', shopHero, ['style', `background-image: url("${heroesData[hero].image}");`])
   }
+  displayDamage();
 }
 
-export function updateShop(number) {
-  const costHero = document.querySelector(`.buyButton__cost.hero${number}`)
-  const heroDamage = document.querySelector(`.hero_stats__damage.hero${number}`)
-  const heroLvl = document.querySelector(`.hero_stats__lvl.hero${number}`)
-  let newDamageHero = heroesData[number].damage()
-  let newCostHero = heroesData[number].cost()
+export function updateShop(numberHero) {
+  const costHero = document.querySelector(`.buyButton__cost.hero${numberHero}`)
+  const heroDamage = document.querySelector(`.hero_stats__damage.hero${numberHero}`)
+  const heroLvl = document.querySelector(`.hero_stats__lvl.hero${numberHero}`)
 
-  costHero.innerHTML = `${newCostHero.number}${newCostHero.abbreviation}`
-  heroDamage.innerHTML = `${newDamageHero.number}${newDamageHero.abbreviation}`
-  heroLvl.innerHTML = 'lvl ' + heroesData[number].lvl
+  costHero.innerHTML = `${heroesData[numberHero].cost.number}${heroesData[numberHero].cost.abbreviation}`
+  heroDamage.innerHTML = `${heroesData[numberHero].damage.number}${heroesData[numberHero].damage.abbreviation}`
+  heroLvl.innerHTML = 'lvl ' + heroesData[numberHero].lvl
 }
 
 
 export function buyHero(numberHero) {
-  let costHero = heroesData[numberHero].cost()
+  let costHero = heroesData[numberHero].cost
   let differenceCost = gameStats.gold.number - costHero.number
   let differencePowerOfTen = gameStats.gold.powerOfTen - costHero.powerOfTen
   if (differencePowerOfTen < 0) return false

@@ -1,11 +1,11 @@
 import { gameStats } from './constants.js'
-import { autoDPS, damage, arrLevel } from './healthbar.js'
+import { arrLevel } from './healthbar.js'
 
 function setCount() {
   const saveItems = {
     gold: gameStats.gold.number,
-    autoDPS,
-    damage,
+    autoDPS: gameStats.DPS.number,
+    damage: gameStats.clickDamage.number,
     currLevel: gameStats.currLevel,
     health: gameStats.health,
     currMonster: gameStats.currMonster,
