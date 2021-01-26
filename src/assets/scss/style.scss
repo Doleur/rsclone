@@ -70,8 +70,8 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    height: 500px;
-    background-image: url('../img/background/Isle1.png');
+    height: 100%;
+    // background-image: url('../img/background/Isle1.png');
     cursor: pointer;
     .wrapper-healthbar {
         position: relative;
@@ -104,18 +104,33 @@ body {
         }
     }
     .hero {
-        height: 60%;
-        background-color: rgba(255, 255, 255, 0);
-        img {
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0);
-            animation: pulse 1s infinite;
-            transition: all 0.3s linear;
-        }
-        img:active {
-            height: 115%;
-            transition: all 0.3s linear;
-        }
+      position: absolute;
+      top: 25%;
+      height: 40%;
+      background-color: rgba(255, 255, 255, 0);
+      z-index: 5;
+      img {
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0);
+          animation: pulse 1s infinite;
+          transition: all 0.3s linear;
+      }
+      img:active {
+          height: 115%;
+          transition: all 0.3s linear;
+      }
+    }
+    .isle {
+      margin: 0 auto;
+      top: 22%;
+      width: 65%;
+      position: absolute;
+      display: block;
+      z-index: 4;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
     .monsters-progress-wrapper {
         display: flex;
@@ -158,6 +173,10 @@ body {
     background-repeat: no-repeat;
 }
 
+.countdown {
+  position: absolute;
+  top: 6%;
+}
 .countdown span.time.active {
   padding: 12px;
   display: inline-block;
