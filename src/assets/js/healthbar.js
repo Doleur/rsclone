@@ -1,6 +1,6 @@
 import { shopWrapper, gameStats, countInput, hero, currentLevelNumOnPage, healthBar, currentHealthNumOnPage, totalHealthNumOnPage, currentMonsterNumOnPage, wrapperDmgPopup, swiperWrapper, monstersPerLevel } from './constants.js';
 import { dropGoldAnimation, setGoldDropped } from './dropGolds.js'
-import { setCount } from './save-game.js'
+import { setCount, setLevelHeros } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { newItemArrSlides } from './swiper.js'
@@ -14,7 +14,7 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 
 
-shopGeneration()
+
 
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
@@ -149,6 +149,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
   updateShop(hero)
   calculationTotalDamage()
   displayDamage()
+  setLevelHeros()
 });
 
 function getCount() {
@@ -159,14 +160,19 @@ function getCount() {
     gameStats.clickDamage.number = returnSaveItems.damage
     gameStats.currLevel = returnSaveItems.currLevel
     gameStats.health.number = returnSaveItems.health
-    gameStats.currMonster = returnSaveItems.currMonster
     arrLevel = returnSaveItems.arrLevel
+
+    const returnSaveLvl = JSON.parse(localStorage.getItem('saveLvl'))
+    heroesData.forEach((item, index) => {
+      item.lvl = returnSaveLvl[index]
+    })
   }
 }
 
 swiperWrapper.addEventListener('click', (e) => {
   const levelData = e.target.closest('.swiper-slide')
   gameStats.currLevel = +levelData.dataset.level
+  gameStats.currMonster = 1
   const activeLevel = document.querySelector('.swiper-slide-active')
   activeLevel.classList.remove('swiper-slide-active')
   const isLevel = e.target.closest('.swiper-slide')
@@ -255,6 +261,7 @@ function countdownStop() {
 
 getCount()
 innerValue()
+shopGeneration()
 
 
 
