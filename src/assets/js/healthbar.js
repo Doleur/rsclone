@@ -3,7 +3,7 @@ import { dropGoldAnimation, setGoldDropped } from './dropGolds.js'
 import { setCount, setLevelHeros } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
-import { newItemArrSlides } from './swiper.js'
+import { newItemArrSlides, clickPrevButton } from './swiper.js'
 import { shopGeneration, updateShop, buyHero } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationHeroDamage, calculationTotalDamage, displayDamage } from './calculationDamage.js'
@@ -206,6 +206,7 @@ function setCountdown(elem, seconds) {
       gameStats.currLevel -= 1
       setMonsterHealth()
       hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+    setTimeout(clickPrevButton, 50)
     } else {
       var mi = Math.floor(tt / (60 * 100));
       var ss = Math.floor((tt - mi * 60 * 100) / 100);

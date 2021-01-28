@@ -38,4 +38,9 @@ function clickNextButton () {
   buttonNext.click()
 }
 
-export { newLevelSlide, newItemArrSlides }
+function clickPrevButton () {
+  const buttonPrev = document.querySelector('.swiper-button-prev')
+  buttonPrev.click()
+}
+
+export { newLevelSlide, newItemArrSlides, clickPrevButton }
