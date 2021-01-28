@@ -171,6 +171,7 @@ function getCount() {
 
 swiperWrapper.addEventListener('click', (e) => {
   const levelData = e.target.closest('.swiper-slide')
+  if (gameStats.currLevel === +levelData.dataset.level) return
   gameStats.currLevel = +levelData.dataset.level
   gameStats.currMonster = 1
   const activeLevel = document.querySelector('.swiper-slide-active')
