@@ -7,6 +7,10 @@
     font-size: 10px;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 body {
     background-image: url('../img/background/2c347b51717107.58f79ab5f057c.png');
     background-size: cover;

@@ -1,0 +1,24 @@
+.stats_wrapper {
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(241, 220, 161);
+  border-radius: 0.7rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+  overflow: scroll;
+  ul {
+    width: 60%;
+    li {
+      margin: 2%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .stats_number {
+        font-size: 2.2rem;
+        color: yellow;
+      }
+    }
+  }
+}

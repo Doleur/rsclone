@@ -12,6 +12,7 @@ import { monsters } from './monsterData.js'
 import { bosses } from './boss.js'
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
+import { statistics, checkStats } from './stats.js'
 
 
 
@@ -64,15 +65,15 @@ function setMonsterHealth() {
     gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   } else {
     let newHealth = convertingNumbers(Math.ceil((Math.pow(1.545, gameStats.currLevel - 200001) * 1.24 * Math.pow(10, 25409)) + ((gameStats.currLevel - 1) * 10)))
-    gameStats.health.number = Math.trunc(newHealth.number)
-    gameStats.health.powerOfTen = newHealth.powerOfTen
-    gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
+    gameStats.health.number = Math.trunc(newHealth.number);
+    gameStats.health.powerOfTen = newHealth.powerOfTen;
+    gameStats.health.abbreviation = abbreviationBigNumber[`${gameStats.health.powerOfTen}`];
   }
   currHealth = {...gameStats.health }
 }
 
 function setDamage(damage) {
-  let differencePowerOfTen = currHealth.powerOfTen - damage.powerOfTen
+  let differencePowerOfTen = currHealth.powerOfTen - damage.powerOfTen;
   let newCurrHealth = convertingNumbers(currHealth.number * (10 ** differencePowerOfTen) - damage.number)
   currHealth.number = newCurrHealth.number
   currHealth.powerOfTen = damage.powerOfTen + newCurrHealth.powerOfTen
@@ -88,13 +89,17 @@ function setDamage(damage) {
 function setAutoDamage() {
   setInterval(() => {
     setDamage(gameStats.DPS);
+    statistics.totalDPS += gameStats.DPS.number;
   }, 1000);
 }
 setAutoDamage()
 
 function checkIfDead() {
   if (currHealth.number <= 0) {
+    statistics.monstersKilled += 1;
     let goldDropped = setGoldDropped();
+    statistics.totalGold += +goldDropped.number;
+    console.log(goldDropped.number);
     dropGoldAnimation(goldDropped);
     setCount();
     hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
@@ -102,6 +107,7 @@ function checkIfDead() {
       if (currHealth.number <= 0) {
         gameStats.currLevel += 1
         newItemArrSlides()
+        statistics.bossesKilled += 1;
       }
     }
     if (gameStats.currMonster === monstersPerLevel) {
@@ -116,7 +122,7 @@ function checkIfDead() {
   }
 }
 
-function createDamagePopup(e) {
+function createDamagePopup() {
   const damagePopup = createTagElement('div', `damage-popup`, '', wrapperDmgPopup);
   const damagePopupNumOnPage = createTagElement('div', `damage-popup-number`, '', damagePopup);
   damagePopupNumOnPage.innerText = '-' + gameStats.clickDamage.number + gameStats.clickDamage.abbreviation;
@@ -131,6 +137,8 @@ function removeDamagePopup() {
 }
 
 hero.addEventListener('click', (e) => {
+  statistics.clicksMade += 1;
+  statistics.totalClicksDamage += gameStats.clickDamage.number;
   setDamage(gameStats.clickDamage);
   createDamagePopup(e);
   removeDamagePopup();
@@ -183,7 +191,6 @@ swiperWrapper.addEventListener('click', (e) => {
     countdownStart()
   } else {
     hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
-
   }
 })
 
@@ -265,6 +272,12 @@ shopGeneration()
 
 
 
-document.addEventListener('DOMContentLoaded', setMonsterHealth);
+document.addEventListener('DOMContentLoaded', () => {
+  setMonsterHealth();
+  checkStats();
+  const savedStats = JSON.parse(localStorage.getItem('statsSaved'));
+  (localStorage.getItem('statsSaved')) ? statistics.gameStartTime = savedStats.gameStartTime : statistics.gameStartTime = Date.parse(new Date());
+  console.log(statistics.gameStartTime);
+});
 
 export { arrLevel, swiperWrapper }
