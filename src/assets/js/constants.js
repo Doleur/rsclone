@@ -24,6 +24,7 @@ export const gameStats = {
   },
   isBoss: null,
   currMonster: 1,
+  arrLevel: [1]
 };
 export const monstersPerLevel = 10;
 export const countInput = document.querySelector('.count');
