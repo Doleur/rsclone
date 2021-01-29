@@ -76,9 +76,8 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    height: 100%;
     width: 100%;
-    background-image: url('../img/background/Isle1.png');
+    height: 100%;
     cursor: pointer;
     .wrapper-healthbar {
         position: relative;
@@ -98,11 +97,6 @@ body {
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
-            color: #FFFFFF;
-            background-color: rgba(255, 255, 255, 0);
-        }
-        .wrapper-healthdata span {
-            background-color: rgba(255, 255, 255, 0);
         }
         .healthbar {
             width: 100%;
@@ -112,11 +106,22 @@ body {
         }
     }
     .hero {
-        height: 60%;
-        background-color: rgba(255, 255, 255, 0);
-        img {
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0);
+      width: 50vh;
+      height: 50vh;
+      padding: 2rem;
+      display: flex;
+      background-image: url('../img/islands/Beach1.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+        &-img {
+          width: 60%;
+          height: 55%;
+          margin: auto;
+          text-align: center;
+         img {
+            max-height: 100%;
+            max-width: 100%;
             animation: pulse 1s infinite;
             transition: all 0.3s linear;
         }
@@ -125,16 +130,16 @@ body {
             transition: all 0.3s linear;
         }
     }
+        }
+
     .monsters-progress-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0 auto;
         font-size: 2rem;
-        background-color: rgba(255, 255, 255, 0);
-    }
-    .monsters-progress-wrapper span {
-        background-color: rgba(255, 255, 255, 0);
+        color: rgb(255, 255, 255);
+        text-shadow: $font-shadow;
     }
 }
 

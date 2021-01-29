@@ -32,13 +32,17 @@ function innerValue() {
   })
 }
 
-hero.innerHTML = `<img src="${monsters[gameStats.currMonster - 1].img}" alt=""></img>`
+hero.innerHTML = `<div class="hero-img">
+                  <img src="${monsters[gameStats.currMonster - 1].img}" alt=""></img>
+                  </div>`
 
 function setMonsterHealth() {
   if (gameStats.currLevel % 5 === 0) {
     isBoss = 1;
     randomMonster(bosses)
-    hero.innerHTML = `<img src="${bosses[gameStats.currMonster].img}" alt=""></img>`
+    hero.innerHTML = `<div class="hero-img">
+                      <img src="${bosses[gameStats.currMonster].img}" alt=""></img>
+                      </div>`
     countdownStart()
   } else {
     isBoss = 0.1;
@@ -98,7 +102,9 @@ function checkIfDead() {
     console.log(goldDropped.number);
     dropGoldAnimation(goldDropped);
     setCount();
-    hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+    hero.innerHTML = `<div class="hero-img">
+                      <img src="${monsters[gameStats.currMonster].img}" alt=""></img>
+                      </div>`
     if (gameStats.currLevel % 5 === 0) {
       if (currHealth.number <= 0) {
         gameStats.currLevel += 1
@@ -195,7 +201,9 @@ swiperWrapper.addEventListener('click', (e) => {
   if (gameStats.currLevel % 5 == 0) {
     countdownStart()
   } else {
-    hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+    hero.innerHTML = `<div class="hero-img">
+                      <img src="${monsters[gameStats.currMonster].img}" alt=""></img>
+                      </div>`
   }
 })
 
@@ -216,7 +224,9 @@ function setCountdown(elem, seconds) {
     if (tt <= 0) {
       gameStats.currLevel -= 1
       setMonsterHealth()
-      hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+      hero.innerHTML = `<div class="hero-img">
+                        <img src="${monsters[gameStats.currMonster].img}" alt=""></img>
+                        </div>`
       setTimeout(clickPrevButton, 50)
     } else {
       var mi = Math.floor(tt / (60 * 100));
@@ -284,5 +294,4 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(statistics.gameStartTime);
 });
 
-document.addEventListener('DOMContentLoaded', setMonsterHealth);
 export { swiperWrapper }
