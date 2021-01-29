@@ -86,3 +86,21 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.disabled {
+    opacity: 0.5;
+    .buyButton {
+        cursor: initial;
+        &:hover {
+            background-image: linear-gradient(to bottom, rgb(108, 180, 247), rgb(103, 177, 247), rgb(97, 173, 247), rgb(92, 170, 247), rgb(87, 166, 247), rgb(81, 163, 247), rgb(76, 159, 247), rgb(70, 156, 247), rgb(65, 152, 247), rgb(60, 149, 247), rgb(54, 145, 247), rgb(49, 142, 247));
+        }
+    }
+}
+
+.buyButtonDisabled {
+    opacity: 0.5;
+    cursor: initial;
+    &:hover {
+        background-image: linear-gradient(to bottom, rgb(108, 180, 247), rgb(103, 177, 247), rgb(97, 173, 247), rgb(92, 170, 247), rgb(87, 166, 247), rgb(81, 163, 247), rgb(76, 159, 247), rgb(70, 156, 247), rgb(65, 152, 247), rgb(60, 149, 247), rgb(54, 145, 247), rgb(49, 142, 247));
+    }
+}

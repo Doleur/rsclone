@@ -3,8 +3,8 @@ import { dropGoldAnimation, setGoldDropped } from './dropGolds.js'
 import { setCount, setLevelHeros } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
-import { newItemArrSlides, clickPrevButton } from './swiper.js'
-import { shopGeneration, updateShop, buyHero } from './shopGeneration.js';
+import { createSlider, newItemArrSlides, clickPrevButton } from './swiper.js'
+import { shopGeneration, updateShop, buyHero, toggleBuyButtonDisabled } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationHeroDamage, calculationTotalDamage, displayDamage } from './calculationDamage.js'
 import { calculationCostHero } from './calculationCostHero.js'
@@ -109,6 +109,7 @@ function checkIfDead() {
     }
     setMonsterHealth();
     countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`;
+    toggleBuyButtonDisabled()
   }
 }
 
@@ -133,6 +134,8 @@ hero.addEventListener('click', (e) => {
 });
 
 shopWrapper.addEventListener('click', ({ target }) => {
+  let isDisabled = target.closest('.disabled')
+  if (isDisabled) return
   let isBuyButton = target.closest('.buyButton')
   if (!isBuyButton) return
   let hero = isBuyButton.classList[1].replace(/hero/, '')
@@ -167,6 +170,7 @@ function getCount() {
       calculationTotalDamage()
     }
   }
+  createSlider()
 }
 
 swiperWrapper.addEventListener('click', (e) => {
@@ -206,7 +210,7 @@ function setCountdown(elem, seconds) {
       gameStats.currLevel -= 1
       setMonsterHealth()
       hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
-    setTimeout(clickPrevButton, 50)
+      setTimeout(clickPrevButton, 50)
     } else {
       var mi = Math.floor(tt / (60 * 100));
       var ss = Math.floor((tt - mi * 60 * 100) / 100);
@@ -234,7 +238,6 @@ function setCountdown(elem, seconds) {
   };
 
   that.stop = function() {
-    console.log('usedTime = ' + countdown.usedTime);
     if (that.timer) clearInterval(that.timer);
   };
 
@@ -264,6 +267,7 @@ function countdownStop() {
 getCount()
 innerValue()
 shopGeneration()
+
 
 
 
