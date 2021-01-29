@@ -284,5 +284,5 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(statistics.gameStartTime);
 });
 
-
+document.addEventListener('DOMContentLoaded', setMonsterHealth);
 export { swiperWrapper }
