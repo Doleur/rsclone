@@ -225,9 +225,13 @@ function setCountdown(elem, seconds) {
     if (tt <= 0) {
       gameStats.currLevel -= 1
       setMonsterHealth()
+<<<<<<< HEAD
       hero.innerHTML = `<div class="hero-img">
                         <img src="${monsters[gameStats.currMonster].img}" alt=""></img>
                         </div>`
+=======
+      hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+>>>>>>> 029a29c (feat: added blocking of inactive heroes)
       setTimeout(clickPrevButton, 50)
     } else {
       var mi = Math.floor(tt / (60 * 100));
@@ -294,6 +298,5 @@ document.addEventListener('DOMContentLoaded', () => {
   (localStorage.getItem('statsSaved')) ? statistics.gameStartTime = savedStats.gameStartTime: statistics.gameStartTime = Date.parse(new Date());
   console.log(statistics.gameStartTime);
 });
-
 
 export { swiperWrapper }
