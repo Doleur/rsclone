@@ -18,7 +18,7 @@ export const gameStats = {
   },
   currLevel: 1,
   health: {
-    number: 20,
+    number: 10,
     powerOfTen: 0,
     abbreviation: ''
   },

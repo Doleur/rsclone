@@ -1,19 +1,23 @@
 import { gameStats } from './constants.js'
 
-const swiper = new Swiper('.swiper-container', {
-  slidesPerView: 3,
-  spaceBetween: 0,
-  loop: false,
-  centeredSlides: true,
-  initialSlide: (gameStats.currLevel - 1),
-  observer: true,
-  observerParents: true,
-  observeSlideChildren: true,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev'
-  }
-})
+let swiper
+
+function createSlider() {
+  swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 0,
+    loop: false,
+    centeredSlides: true,
+    initialSlide: (gameStats.currLevel - 1),
+    observer: true,
+    observerParents: true,
+    observeSlideChildren: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  })
+}
 
 function newLevelSlide() {
   swiper.appendSlide(`<div class="swiper-slide" data-level=${gameStats.arrLevel[gameStats.arrLevel.length - 1]} >
@@ -37,9 +41,9 @@ function clickNextButton() {
   buttonNext.click()
 }
 
-function clickPrevButton () {
+function clickPrevButton() {
   const buttonPrev = document.querySelector('.swiper-button-prev')
   buttonPrev.click()
 }
 
-export { newLevelSlide, newItemArrSlides, clickPrevButton }
+export { createSlider, newLevelSlide, newItemArrSlides, clickPrevButton }
