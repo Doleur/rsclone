@@ -1,5 +1,6 @@
 import { gameStats } from './constants.js'
 import { heroesData } from './heroesData.js'
+import { statistics } from './stats.js'
 
 function setCount() {
   const serialSaveItems = JSON.stringify(gameStats)
@@ -14,4 +15,9 @@ function setLevelHeros() {
   localStorage.setItem('saveLvl', serialSaveLvl)
 }
 
-export { setCount, setLevelHeros }
+function saveStats() {
+  const serialSaveStats = JSON.stringify(statistics);
+  localStorage.setItem('statsSaved', serialSaveStats);
+}
+
+export { setCount, setLevelHeros, saveStats }
