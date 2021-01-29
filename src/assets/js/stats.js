@@ -62,6 +62,7 @@ export function checkStats() {
   if (localStorage.getItem('statsSaved')) {
     const savedStats = JSON.parse(localStorage.getItem('statsSaved'));
     statistics.monstersKilled = savedStats.monstersKilled;
+    statistics.bossesKilled = savedStats.bossesKilled;
     statistics.clicksMade = savedStats.clicksMade;
     statistics.totalClicksDamage = savedStats.totalClicksDamage;
     statistics.totalDPS = savedStats.totalDPS;
