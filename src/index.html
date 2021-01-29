@@ -96,13 +96,13 @@
                 >
                 <a
                   class="nav-item nav-link"
-                  id="nav-contact-tab"
+                  id="nav-stats-tab"
                   data-toggle="tab"
                   href="#nav-contact"
                   role="tab"
                   aria-controls="nav-contact"
                   aria-selected="false"
-                  >Contact</a
+                  >Statistics</a
                 >
               </div>
             </nav>
@@ -135,7 +135,50 @@
                 role="tabpanel"
                 aria-labelledby="nav-contact-tab"
               >
-                Contact
+                <div class="stats_wrapper">
+                  <ul class="stats">
+                    <li>
+                      <span>Clicks: </span>
+                      <span class="stats_number total_clicks-stats"></span>
+                    </li>
+                    <li>
+                      <span>Click Damage: </span>
+                      <span class="stats_number curr_click_dmg-stats"></span>
+                    </li>
+                    <li>
+                      <span>Total Click Damage: </span>
+                      <span class="stats_number total_click_dmg-stats"></span>
+                    </li>
+                    <li>
+                      <span>DPS: </span>
+                      <span class="stats_number curr_dps_dmg-stats"></span>
+                    </li>
+                    <li>
+                      <span>Total DPS: </span>
+                      <span class="stats_number total_dps_dmg-stats"></span>
+                    </li>
+                    <li>
+                      <span>Gold: </span>
+                      <span class="stats_number curr_gold-stats"></span>
+                    </li>
+                    <li>
+                      <span>Gold Gained: </span>
+                      <span class="stats_number total_gold-stats"></span>
+                    </li>
+                    <li>
+                      <span>Monster Kills: </span>
+                      <span class="stats_number mosters_killed-stats"></span>
+                    </li>
+                    <li>
+                      <span>Boss Kills: </span>
+                      <span class="stats_number bosses_killed-stats"></span>
+                    </li>
+                    <li>
+                      <span>Total time in game: </span>
+                      <span class="stats_number total_time-stats"></span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -144,9 +187,9 @@
           <div class="field-play">
             <div class="wrapper-healthbar">
               <div class="wrapper-healthdata">
-                <span class="current-health">20</span>
+                <span class="current-health"></span>
                 <span> / </span>
-                <span class="total-health">20</span>
+                <span class="total-health"></span>
               </div>
               <div class="healthbar"></div>
             </div>
