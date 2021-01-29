@@ -4,6 +4,7 @@ import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { heroesData } from './heroesData.js'
 
 export function calculationHeroDamage(numberHero) {
+  if (!heroesData[numberHero].lvl) return
   let convertBaseDPS = convertingNumbers(heroesData[numberHero].baseDPS)
   let numberBaseDPS = convertBaseDPS.number
   let resultHeroDamage = convertingNumbers(numberBaseDPS * (1.07 * heroesData[numberHero].lvl))
@@ -23,16 +24,23 @@ export function calculationTotalDamage() {
 
   let totalDPS = 0
   let totalPowerOfTen = 0
+  let sumDPS
   for (let numberHero = 1; numberHero < numberHeroes; numberHero++) {
     let numberHeroDamage = heroesData[numberHero].damage.number
     let powerOfTenHeroDamage = heroesData[numberHero].damage.powerOfTen
-    totalDPS += numberHeroDamage
-    totalPowerOfTen += powerOfTenHeroDamage
+    let differencePowerOfTen = totalPowerOfTen - powerOfTenHeroDamage
+    if (differencePowerOfTen < 0) {
+      differencePowerOfTen *= -1
+      sumDPS = numberHeroDamage * 10 ** differencePowerOfTen + totalDPS
+    } else {
+      sumDPS = numberHeroDamage + totalDPS * 10 ** differencePowerOfTen
+    }
+    let convertSumDPS = convertingNumbers(sumDPS)
+    totalDPS = convertSumDPS.number
+    totalPowerOfTen = differencePowerOfTen + convertSumDPS.powerOfTen
   }
-  let convertTotalDPS = convertingNumbers(totalDPS)
-
-  gameStats.DPS.number = Math.trunc(convertTotalDPS.number)
-  gameStats.DPS.powerOfTen = totalPowerOfTen + convertTotalDPS.powerOfTen
+  gameStats.DPS.number = Math.trunc(totalDPS)
+  gameStats.DPS.powerOfTen = totalPowerOfTen
   gameStats.DPS.abbreviation = abbreviationBigNumber[`${gameStats.DPS.powerOfTen}`]
 }
 
