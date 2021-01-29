@@ -294,4 +294,5 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(statistics.gameStartTime);
 });
 
+
 export { swiperWrapper }
