@@ -14,6 +14,7 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats } from './stats.js'
 
+
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
 var countdown = new setCountdown(time, 30);
