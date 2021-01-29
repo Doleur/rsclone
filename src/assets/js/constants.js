@@ -1,5 +1,5 @@
-export const shopWrapper = document.querySelector('.shop_wrapper');
-export const numberHeroes = 40;
+export const shopWrapper = document.querySelector('.shop_wrapper')
+export const numberHeroes = 40
 export const gameStats = {
   gold: {
     number: 1000,
@@ -24,6 +24,7 @@ export const gameStats = {
   },
   isBoss: null,
   currMonster: 1,
+  arrLevel: [1]
 };
 export const monstersPerLevel = 10;
 export const countInput = document.querySelector('.count');

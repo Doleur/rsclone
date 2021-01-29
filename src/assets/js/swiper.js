@@ -1,5 +1,4 @@
 import { gameStats } from './constants.js'
-import { arrLevel } from './healthbar.js'
 
 const swiper = new Swiper('.swiper-container', {
   slidesPerView: 3,
@@ -17,25 +16,30 @@ const swiper = new Swiper('.swiper-container', {
 })
 
 function newLevelSlide() {
-  swiper.appendSlide(`<div class="swiper-slide" data-level=${arrLevel[arrLevel.length - 1]} >
+  swiper.appendSlide(`<div class="swiper-slide" data-level=${gameStats.arrLevel[gameStats.arrLevel.length - 1]} >
                         <div class = "swiper-slide-container">
-                          <span class = "swiper-slide-text"> Level ${arrLevel[arrLevel.length - 1]} </span>
+                          <span class = "swiper-slide-text"> Level ${gameStats.arrLevel[gameStats.arrLevel.length - 1]} </span>
                         </div>
                       </div>`)
 }
 
 function newItemArrSlides() {
-  const isCurrLevel = arrLevel.includes(gameStats.currLevel)
+  const isCurrLevel = gameStats.arrLevel.includes(gameStats.currLevel)
   if (!isCurrLevel) {
-    arrLevel.push(gameStats.currLevel)
+    gameStats.arrLevel.push(gameStats.currLevel)
     newLevelSlide()
   }
   setTimeout(clickNextButton, 50)
 }
 
-function clickNextButton () {
+function clickNextButton() {
   const buttonNext = document.querySelector('.swiper-button-next')
   buttonNext.click()
 }
 
-export { newLevelSlide, newItemArrSlides }
+function clickPrevButton () {
+  const buttonPrev = document.querySelector('.swiper-button-prev')
+  buttonPrev.click()
+}
+
+export { newLevelSlide, newItemArrSlides, clickPrevButton }

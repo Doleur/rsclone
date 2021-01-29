@@ -1,9 +1,9 @@
-import { shopWrapper, gameStats, countInput, hero, currentLevelNumOnPage, healthBar, currentHealthNumOnPage, totalHealthNumOnPage, currentMonsterNumOnPage, wrapperDmgPopup, swiperWrapper, monstersPerLevel } from './constants.js';
+import { shopWrapper, gameStats, countInput, hero, currentLevelNumOnPage, healthBar, currentHealthNumOnPage, totalHealthNumOnPage, currentMonsterNumOnPage, wrapperDmgPopup, swiperWrapper, monstersPerLevel, numberHeroes } from './constants.js';
 import { dropGoldAnimation, setGoldDropped } from './dropGolds.js'
 import { setCount, setLevelHeros } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
-import { newItemArrSlides } from './swiper.js'
+import { newItemArrSlides, clickPrevButton } from './swiper.js'
 import { shopGeneration, updateShop, buyHero } from './shopGeneration.js';
 import { heroesData } from './heroesData.js'
 import { calculationHeroDamage, calculationTotalDamage, displayDamage } from './calculationDamage.js'
@@ -14,12 +14,8 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats } from './stats.js'
 
-
-
-
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
-let arrLevel = [1]
 var countdown = new setCountdown(time, 30);
 
 function innerValue() {
@@ -28,7 +24,7 @@ function innerValue() {
   totalHealthNumOnPage.innerText = gameStats.health.number
   currentMonsterNumOnPage.innerText = gameStats.currMonster
   currentLevelNumOnPage.innerText = gameStats.currLevel
-  arrLevel.forEach((e) => {
+  gameStats.arrLevel.forEach((e) => {
     const swiperSlide = createTagElement('div', 'swiper-slide', '', swiperWrapper, ['level', e])
     const swiperSlideContainer = createTagElement('div', 'swiper-slide-container', '', swiperSlide)
     const swiperSlideText = createTagElement('span', 'swiper-slide-text', '', swiperSlideContainer)
@@ -163,22 +159,27 @@ shopWrapper.addEventListener('click', ({ target }) => {
 function getCount() {
   if (localStorage.getItem('saveItems') !== null) {
     const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
-    gameStats.gold.number = returnSaveItems.gold
-    gameStats.DPS.number = returnSaveItems.autoDPS
-    gameStats.clickDamage.number = returnSaveItems.damage
+    gameStats.gold = returnSaveItems.gold
+    gameStats.DPS = returnSaveItems.DPS
+    gameStats.clickDamage = returnSaveItems.clickDamage
     gameStats.currLevel = returnSaveItems.currLevel
-    gameStats.health.number = returnSaveItems.health
-    arrLevel = returnSaveItems.arrLevel
-
+    gameStats.health = returnSaveItems.health
+    gameStats.arrLevel = returnSaveItems.arrLevel
     const returnSaveLvl = JSON.parse(localStorage.getItem('saveLvl'))
     heroesData.forEach((item, index) => {
       item.lvl = returnSaveLvl[index]
     })
+    for (let numberHero = 0; numberHero < numberHeroes; numberHero++) {
+      calculationHeroDamage(numberHero)
+      calculationCostHero(numberHero)
+      calculationTotalDamage()
+    }
   }
 }
 
 swiperWrapper.addEventListener('click', (e) => {
   const levelData = e.target.closest('.swiper-slide')
+  if (gameStats.currLevel === +levelData.dataset.level) return
   gameStats.currLevel = +levelData.dataset.level
   gameStats.currMonster = 1
   const activeLevel = document.querySelector('.swiper-slide-active')
@@ -212,6 +213,7 @@ function setCountdown(elem, seconds) {
       gameStats.currLevel -= 1
       setMonsterHealth()
       hero.innerHTML = `<img src="${monsters[gameStats.currMonster].img}" alt=""></img>`
+    setTimeout(clickPrevButton, 50)
     } else {
       var mi = Math.floor(tt / (60 * 100));
       var ss = Math.floor((tt - mi * 60 * 100) / 100);
@@ -280,4 +282,4 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(statistics.gameStartTime);
 });
 
-export { arrLevel, swiperWrapper }
+export { swiperWrapper }

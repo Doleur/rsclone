@@ -1,22 +1,13 @@
 import { gameStats } from './constants.js'
-import { arrLevel } from './healthbar.js'
 import { heroesData } from './heroesData.js'
 import { statistics } from './stats.js'
 
 function setCount() {
-  const saveItems = {
-    gold: gameStats.gold.number,
-    autoDPS: gameStats.DPS.number,
-    damage: gameStats.clickDamage.number,
-    currLevel: gameStats.currLevel,
-    health: gameStats.health.number,
-    arrLevel
-  }
-  const serialSaveItems = JSON.stringify(saveItems)
+  const serialSaveItems = JSON.stringify(gameStats)
   localStorage.setItem('saveItems', serialSaveItems)
 }
 
-function setLevelHeros () {
+function setLevelHeros() {
   const saveLvl = heroesData.map((item) => {
     return item.lvl
   })
