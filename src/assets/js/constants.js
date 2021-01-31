@@ -49,3 +49,4 @@ export const totalGoldStats = document.querySelector('.total_gold-stats');
 export const mostersKilledStats = document.querySelector('.mosters_killed-stats');
 export const bossesKilledStats = document.querySelector('.bosses_killed-stats');
 export const timeInGameStats = document.querySelector('.total_time-stats');
+export const monstersProgressWrapper = document.querySelector('.monsters-progress-wrapper')
