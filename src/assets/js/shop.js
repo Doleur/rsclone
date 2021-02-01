@@ -23,9 +23,13 @@ export function shopGeneration() {
     ], shopHero)
 
     let arrAbilitiesElements = []
-    let numberAbilitiesHero = heroesData[hero].abilities.length
-    for (let ability = 0; ability < numberAbilitiesHero; ability++) {
-      arrAbilitiesElements.push(createTagElement('div', `icon_abilities_${countNumberIcon}`, '', ''))
+    let abilitiesHero = heroesData[hero].abilities
+    for (let ability = 0; ability < abilitiesHero.length; ability++) {
+      if (abilitiesHero[ability].isPurchased) {
+        arrAbilitiesElements.push(createTagElement('div', `icon_abilities_${countNumberIcon} hero_${hero}_ability_${ability} abilities_active`, '', ''))
+      } else {
+        arrAbilitiesElements.push(createTagElement('div', `icon_abilities_${countNumberIcon} hero_${hero}_ability_${ability} abilities_disabled`, '', ''))
+      }
       countNumberIcon++
     }
     if (hero === 9) { countNumberIcon += 2 }
@@ -50,6 +54,7 @@ export function shopGeneration() {
     }
   }
   toggleBuyButtonDisabled()
+  toggleAbilityDisabled()
   displayDamage();
 }
 
@@ -66,6 +71,25 @@ export function updateShop(numberHero) {
     nextHero.classList.remove('disabled')
   }
   toggleBuyButtonDisabled()
+  toggleAbilityDisabled()
+}
+
+export function toggleAbilityDisabled() {
+  for (let numberHero = 0; numberHero < numberHeroes; numberHero++) {
+    let abilitiesHero = heroesData[numberHero].abilities
+    for (let numberAbility = 0; numberAbility < abilitiesHero.length; numberAbility++) {
+      if (abilitiesHero[numberAbility].isPurchased) return
+      const abilityButton = document.querySelector(`.hero_${numberHero}_ability_${numberAbility}`)
+      let isEnoughGold = checkingSufficientGold(abilitiesHero[numberAbility].abilityCost)
+      let currentHeroLvl = heroesData[numberHero].lvl
+      let requiresHeroLvl = abilitiesHero[numberAbility].requiresLvl
+      if (isEnoughGold && currentHeroLvl >= requiresHeroLvl) {
+        abilityButton.classList.remove('abilities_disabled')
+      } else {
+        abilityButton.classList.add('abilities_disabled')
+      }
+    }
+  }
 }
 
 export function toggleBuyButtonDisabled() {
@@ -80,21 +104,26 @@ export function toggleBuyButtonDisabled() {
   }
 }
 
-function checkingSufficientGold(costHero) {
-  let differenceCost = gameStats.gold.number - costHero.number
-  let differencePowerOfTen = gameStats.gold.powerOfTen - costHero.powerOfTen
+function checkingSufficientGold(cost) {
+  let differenceCost = gameStats.gold.number - cost.number
+  let differencePowerOfTen = gameStats.gold.powerOfTen - cost.powerOfTen
   if (differencePowerOfTen < 0) return false
   if (!differencePowerOfTen && differenceCost < 0) return false
   return true
 
 }
 
-export function buyHero(numberHero) {
-  let costHero = heroesData[numberHero].cost
-  if (!checkingSufficientGold(costHero)) return false
-  let differencePowerOfTen = gameStats.gold.powerOfTen - costHero.powerOfTen
-  let newGoldsNumber = convertingNumbers(gameStats.gold.number * (10 ** differencePowerOfTen) - costHero.number)
-  gameStats.gold.powerOfTen = costHero.powerOfTen + newGoldsNumber.powerOfTen
+export function buy(numberHero, numberAbility = -1) {
+  let purchaseCost
+  if (numberAbility === -1) {
+    purchaseCost = heroesData[numberHero].cost
+  } else {
+    purchaseCost = heroesData[numberHero].abilities[numberAbility].abilityCost
+  }
+  if (!checkingSufficientGold(purchaseCost)) return false
+  let differencePowerOfTen = gameStats.gold.powerOfTen - purchaseCost.powerOfTen
+  let newGoldsNumber = convertingNumbers(gameStats.gold.number * (10 ** differencePowerOfTen) - purchaseCost.number)
+  gameStats.gold.powerOfTen = purchaseCost.powerOfTen + newGoldsNumber.powerOfTen
   if (newGoldsNumber.number < 100 && gameStats.gold.powerOfTen) {
     gameStats.gold.number = Math.trunc(newGoldsNumber.number) * 1000
     gameStats.gold.powerOfTen -= 3

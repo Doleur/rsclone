@@ -4,7 +4,7 @@ import { setCount, setLevelHeros } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { createSlider, newItemArrSlides, clickPrevButton } from './swiper.js'
-import { shopGeneration, updateShop, buyHero, toggleBuyButtonDisabled } from './shopGeneration.js';
+import { shopGeneration, updateShop, buy, toggleBuyButtonDisabled, toggleAbilityDisabled } from './shop.js';
 import { heroesData } from './heroesData.js'
 import { calculationHeroDamage, calculationTotalDamage, displayDamage } from './calculationDamage.js'
 import { calculationCostHero } from './calculationCostHero.js'
@@ -122,6 +122,7 @@ function checkIfDead() {
     setMonsterHealth();
     countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`;
     toggleBuyButtonDisabled()
+    toggleAbilityDisabled()
   }
 }
 
@@ -148,14 +149,33 @@ hero.addEventListener('click', (e) => {
 });
 
 shopWrapper.addEventListener('click', ({ target }) => {
-  let isDisabled = target.closest('.disabled')
-  if (isDisabled) return
-  let isBuyButton = target.closest('.buyButton')
-  if (!isBuyButton) return
-  let hero = isBuyButton.classList[1].replace(/hero/, '')
-  let ifPurchaseMade = buyHero(hero)
-  if (!ifPurchaseMade) return
-  heroesData[hero].lvl += 1
+  let isDisabledHero = target.closest('.disabled')
+  if (isDisabledHero) return
+  let isPurchaseMade
+  let hero
+  let targetClassName = target.classList[1]
+  let isAbility = /hero_[\d]_ability/.test(targetClassName)
+
+  if (isAbility) {
+    let numberHeroAndAbility = targetClassName.match(/\d/g)
+    hero = numberHeroAndAbility[0]
+    let numberAbility = numberHeroAndAbility[1]
+    let isAbilityDisabled = target.closest('.abilities_disabled')
+    if (isAbilityDisabled) return
+    if (heroesData[hero].abilities[numberAbility].isPurchased) return
+    isPurchaseMade = buy(hero, numberAbility)
+    if (!isPurchaseMade) return
+    heroesData[hero].abilities[numberAbility].isPurchased = true
+    target.classList.add('abilities_active')
+  } else {
+    let isBuyButton = target.closest('.buyButton')
+    if (!isBuyButton) return
+    hero = isBuyButton.classList[1].replace(/hero/, '')
+    isPurchaseMade = buy(hero)
+    if (!isPurchaseMade) return
+    heroesData[hero].lvl += 1
+  }
+
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
   calculationHeroDamage(hero)
   calculationCostHero(hero)
