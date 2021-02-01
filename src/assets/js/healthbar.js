@@ -338,3 +338,28 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 export { swiperWrapper }
+
+
+// web  audio api
+
+const audioPlay = async url => {
+  const context = new AudioContext();
+  const source = context.createBufferSource();
+  const audioBuffer = await fetch(url)
+    .then(res => audio.arrayBuffer())
+    .then(ArrayBuffer => context.decodeAudioData(ArrayBuffer));
+
+  source.buffer = audioBuffer;
+  source.connect(context.destination);
+  source.start();
+};
+
+document.querySelector('.hero').onclick = () => audioPlay('../audio/arctic_sunrise.mp3');
+
+
+// audio api
+// const audioObj = new Audio('../audio/angry-potato-die.mp3');
+
+// hero.addEventListener('readyState', event =>{
+//   audioObj.play()
+// })
