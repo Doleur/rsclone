@@ -1,5 +1,3 @@
-import { calculationCostHero } from './calculationCostHero.js'
-
 export const heroesData = [{
     name: `Cid, the Helpful Adventurer`,
     baseCost: 5,
@@ -20,6 +18,80 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Big Clicks',
+        unlocksLvl: 10,
+        effect: `Increases Cid, the Helpful Adventurer's Click Damage by 100%`,
+        coefficient: 1,
+        description: 'Cid has the unique ability to strengthen your clicks. Upgrade her to make your clicks more powerful.',
+        cost: {
+          number: 100,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Huge Clicks',
+        unlocksLvl: 50,
+        effect: `Increases Cid, the Helpful Adventurer's Click Damage by 100%.`,
+        coefficient: 1,
+        description: `"I was surprised too, but it turns out we can upgrade these even further," Cid says. "I suspect you've gotten tired of clicks, though. Maybe you don't need this one?"`,
+        cost: {
+          number: 1000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Massive Clicks',
+        unlocksLvl: 75,
+        effect: `Increases Cid, the Helpful Adventurer's Click Damage by 100%.`,
+        coefficient: 1,
+        description: `"We make a great team," Cid says. "Let's get this upgrade and we'll be an even better team."`,
+        cost: {
+          number: 8000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Titanic Clicks',
+        unlocksLvl: 100,
+        effect: `Increases Cid, the Helpful Adventurer's Click Damage by 150%.`,
+        coefficient: 1.5,
+        description: 'Cid looks off into the distance and wonders, "What could be bigger than Titanic?"',
+        cost: {
+          number: 80000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Colossal Clicks',
+        unlocksLvl: 125,
+        effect: `Increases Cid, the Helpful Adventurer's Click Damage by 200%.`,
+        coefficient: 2,
+        description: `"Colossal clicks are bigger than Titanic clicks. We should get this one. I don't think there could be anything bigger," Cid says.`,
+        cost: {
+          number: 400,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Monumental Clicks',
+        unlocksLvl: 150,
+        effect: `Increases Cid, the Helpful Adventurer's Click Damage by 250%.`,
+        coefficient: 2.5,
+        description: `"The final upgrade. These clicks are so big that every time you click, they build a monument to commemorate it."`,
+        cost: {
+          number: 4000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      }
+    ],
     image: 'assets/img/heroes/Cid-Summer.png'
   },
   {
@@ -42,6 +114,68 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Fertilizer',
+        unlocksLvl: 10,
+        effect: `Increases Treebeast's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Treebeast grunts with approval as you consider this upgrade. It will make him grow stronger.',
+        abilityCost: {
+          number: 500,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Thorns',
+        unlocksLvl: 25,
+        effect: `Increases Treebeast's DPS by 100%.`,
+        coefficient: 1,
+        description: `Sharp points on Treebeast's weapon that help cut up enemies.`,
+        abilityCost: {
+          number: 1250,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Megastick',
+        unlocksLvl: 50,
+        effect: `Increases Treebeast's DPS by 100%.`,
+        coefficient: 1,
+        description: 'A really big stick for Treebeast.',
+        abilityCost: {
+          number: 5000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Ultrastick',
+        unlocksLvl: 75,
+        effect: `Increases Treebeast's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'The biggest stick in the forest.',
+        abilityCost: {
+          number: 40000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Lacquer',
+        unlocksLvl: 100,
+        effect: `Increases your Click Damage by 0.5% of your total DPS.`,
+        coefficient: 0.005,
+        description: 'Apply to a big stick for durability and strength.',
+        abilityCost: {
+          number: 400,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      }
+    ],
     image: 'assets/img/heroes/treebeast.png'
   },
   {
@@ -64,6 +198,68 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Hard Cider',
+        unlocksLvl: 10,
+        effect: `Increases Ivan, the Drunken Brawler's DPS by 100%.`,
+        coefficient: 1,
+        description: 'An appetizer for a long night of drinking.',
+        abilityCost: {
+          number: 2500,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Pint of Ale',
+        unlocksLvl: 25,
+        effect: `Increases Ivan, the Drunken Brawler's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Ivan likes a pint, to take the edge off his edge.',
+        abilityCost: {
+          number: 6250,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Pitcher',
+        unlocksLvl: 50,
+        effect: `Increases Ivan, the Drunken Brawler's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Ivan throws his inhibitions to the wind and his fists into the faces.',
+        abilityCost: {
+          number: 25000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Embalming Fluid',
+        unlocksLvl: 100,
+        effect: `Increases your Click Damage by 0.5% of your total DPS.`,
+        coefficient: 0.005,
+        description: 'Having drunk the town dry, Ivan must now resort to embalming fluid to prevent the shakes.',
+        abilityCost: {
+          number: 2000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: `Pint of Pig's Whiskey`,
+        unlocksLvl: 125,
+        effect: `Increases Ivan, the Drunken Brawler's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `It's so strong that it would put chest hairs on your great Aunt Sally, if she didn't already have them.`,
+        abilityCost: {
+          number: 10000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      }
+    ],
     image: 'assets/img/heroes/ivan.png'
   },
   {
@@ -86,6 +282,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Combat Makeup',
+        unlocksLvl: 10,
+        effect: `Increases Brittany, Beach Princess's DPS by 100%.`,
+        coefficient: 1,
+        description: `You doubt she'll use it for camouflage like she's supposed to. In fact, she probably doesn't even know what "camouflage" means.`,
+        abilityCost: {
+          number: 10000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Brand Name Equipment',
+        unlocksLvl: 25,
+        effect: `Increases Brittany, Beach Princess's DPS by 100%.`,
+        coefficient: 1,
+        description: `"I'm not like other girls. I would never, like, take you for granite", she says.`,
+        abilityCost: {
+          number: 25000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Elixir of Deditzification',
+        unlocksLvl: 50,
+        effect: `Increases Brittany, Beach Princess's DPS by 100%.`,
+        coefficient: 1,
+        description: `The effect of this elixir may be too mild to notice at first glance, but Brittany's combat prowess will improve significantly.`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Vegan Meat',
+        unlocksLvl: 75,
+        effect: `Increases Brittany, Beach Princess's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'With the help of the Great Forest Seer, he performs a "blessing" on your cooked meats to make them vegetarian, so Brittany can eat them.',
+        abilityCost: {
+          number: 800,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      }
+    ],
     image: 'assets/img/heroes/Brittany_nogild.png'
   },
   {
@@ -108,6 +354,68 @@ export const heroesData = [{
       globalDPS: 25,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Spear Training',
+        unlocksLvl: 10,
+        effect: `Increases The Wandering Fisherman's DPS by 100%.`,
+        coefficient: 1,
+        description: `"I've only ever used this spear for fishing. I need to learn how to use it better in combat."`,
+        abilityCost: {
+          number: 40000,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: 'Crab Net',
+        unlocksLvl: 25,
+        effect: `Increases The Wandering Fisherman's DPS by 100%.`,
+        coefficient: 1,
+        description: `"I'll have a way to get food with very little effort." Your team will be grateful for this...`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Whetstone',
+        unlocksLvl: 50,
+        effect: `Increases The Wandering Fisherman's DPS by 100%.`,
+        coefficient: 1,
+        description: 'I used to have one of these. No idea what happened to it." If he can sharpen his spear, he will do more damage.',
+        abilityCost: {
+          number: 400,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Fish Cooking',
+        unlocksLvl: 75,
+        effect: `Increases DPS of all heroes by 25%.`,
+        coefficient: 0.25,
+        description: `"Betty's been teaching me. We'll be able to cook fish for the team!"`,
+        abilityCost: {
+          number: 3200,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'State of the Art Fishing Gear',
+        unlocksLvl: 100,
+        effect: `Increases your Click Damage by 0.5% of your total DPS.`,
+        coefficient: 0.005,
+        description: `"We should be able to buy all this spiffy new gear because we've been selling off all the extra fish we didn't need. Now we can haul in a bigger load!"`,
+        abilityCost: {
+          number: 32000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      }
+    ],
     image: 'assets/img/heroes/fisherman.png'
   },
   {
@@ -130,6 +438,68 @@ export const heroesData = [{
       globalDPS: 107.36,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Wilderburr Dumplings',
+        unlocksLvl: 10,
+        effect: `Increases DPS of all heroes by 20%.`,
+        coefficient: 0.2,
+        description: '"Delicate and oh so delicious, these delightful morsels make you very vigorous."',
+        abilityCost: {
+          number: 200,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Braised Flamingogo Casserole',
+        unlocksLvl: 25,
+        effect: 'Increases DPS of all heroes by 20%.',
+        coefficient: 0.2,
+        description: '"You know what they say. An army runs on good homemade Casseroles."',
+        abilityCost: {
+          number: 500,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Truffled Trollgre with Bloop Reduction',
+        unlocksLvl: 50,
+        effect: 'Increases DPS of all heroes by 20%.',
+        coefficient: 0.2,
+        description: `"A new dish I came up with. It's exquisite."`,
+        abilityCost: {
+          number: 2000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Foomgus Risotto',
+        unlocksLvl: 75,
+        effect: 'Increases DPS of all heroes by 20%.',
+        coefficient: 0.2,
+        description: `"One bite and you won't have to eat for days. It has something to do with the magical qualities of the Foomgus."`,
+        abilityCost: {
+          number: 16000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'World Famous Cookbook',
+        unlocksLvl: 100,
+        effect: 'Increases your Click Damage by 0.5% of your total DPS.',
+        coefficient: 0.005,
+        description: `"One bite and you won't have to eat for days. It has something to do with the magical qualities of the Foomgus."`,
+        abilityCost: {
+          number: 160,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      }
+    ],
     image: 'assets/img/heroes/betty.png'
   },
   {
@@ -152,6 +522,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Jutsu I',
+        unlocksLvl: 10,
+        effect: `Increases The Masked Samurai's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The Masked Samurai says he knows the greatest swordfighting teacher in the world. This training will greatly benefit his abilities.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Jutsu II',
+        unlocksLvl: 25,
+        effect: `Increases The Masked Samurai's DPS by 100%.`,
+        coefficient: 1,
+        description: `You've never seen him train with this "Great Teacher" he always refers to. But his combat skills have improved, so what do you have to complain about?`,
+        abilityCost: {
+          number: 2500,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Jutsu III',
+        unlocksLvl: 50,
+        effect: `Increases The Masked Samurai's DPS by 100%.`,
+        coefficient: 1,
+        description: `What if he's lying? What if he's just holding back his DPS for money, and doing a bit extra each time you pay for his "training"?`,
+        abilityCost: {
+          number: 10000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Jutsu IV',
+        unlocksLvl: 75,
+        effect: `Increases The Masked Samurai's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `He's probably making everything up. Roman numerals don't even belong with Japanese words! Ah, well, what can you do? The added damage would be useful.`,
+        abilityCost: {
+          number: 80000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+    ],
     image: 'assets/img/heroes/samurai.png'
   },
   {
@@ -174,6 +594,56 @@ export const heroesData = [{
       globalDPS: 25,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Courage Tonic',
+        unlocksLvl: 10,
+        effect: `Increases Leon's DPS by 100%.`,
+        coefficient: 1,
+        description: `He's pretty strong, but fearful of things. This tonic will help him overcome his fears. It smells like paint thinner.`,
+        abilityCost: {
+          number: 4000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Stronger Claws',
+        unlocksLvl: 25,
+        effect: `Increases Leon's DPS by 100%.`,
+        coefficient: 1,
+        description: `A more powerful replacement for Leon's current claws.`,
+        abilityCost: {
+          number: 10000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Lionheart Potion',
+        unlocksLvl: 50,
+        effect: `Increases Leon's DPS by 100%.`,
+        coefficient: 1,
+        description: 'A magic concoction that allows Leon to truly believe in himself.',
+        abilityCost: {
+          number: 40000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: `Lion's Roar`,
+        unlocksLvl: 75,
+        effect: 'Increases DPS of all heroes by 25%.',
+        coefficient: 0.25,
+        description: 'With his tonics and potions, Leon is finally capable of roaring like a real lion. This provides a boost to your entire team.',
+        abilityCost: {
+          number: 320,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+    ],
     image: 'assets/img/heroes/leon.png'
   },
   {
@@ -196,6 +666,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Forest Creatures',
+        unlocksLvl: 10,
+        effect: `Increases The Great Forest Seer's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The Seer can call upon the forest creatures to do his bidding. Enraged rabbits, squirrels and birds will launch themselves at your opponents.',
+        abilityCost: {
+          number: 25000,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Insight',
+        unlocksLvl: 25,
+        effect: `Increases The Great Forest Seer's DPS by 100%.`,
+        coefficient: 1,
+        description: '"Leon is not a real lion", he says. "And Brittany is vain." These, and other important insights only the Seer can know, will help your entire team.',
+        abilityCost: {
+          number: 62500,
+          powerOfTen: 3,
+          abbreviation: 'K'
+        }
+      },
+      {
+        name: 'Dark Lore',
+        unlocksLvl: 50,
+        effect: `Increases The Great Forest Seer's DPS by 100%.`,
+        coefficient: 1,
+        description: '"I must not shy away from the world of darkness", he tells you. This upgrade will grant him greater power, and the capability for terrifying upgrades in the future.',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Swarm',
+        unlocksLvl: 75,
+        effect: `Increases The Great Forest Seer's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'The Seer can control the arthropods with this grotesque power. Spiders, millipedes, and other bugs weave in and out of his clothing, and will swarm your enemies at his command.',
+        abilityCost: {
+          number: 2000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+    ],
     image: 'assets/img/heroes/forestseer.png'
   },
   {
@@ -218,6 +738,32 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Clairvoyance',
+        unlocksLvl: 25,
+        effect: `Increases Alexa, Assassin's DPS by 125%.`,
+        coefficient: 1.25,
+        description: 'An improvement to her ability to see surroundings without her eyes, increasing her combat prowess.',
+        abilityCost: {
+          number: 375,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Poisoned Blades',
+        unlocksLvl: 50,
+        effect: `Increases Alexa, Assassin's DPS by 125%.`,
+        coefficient: 1.25,
+        description: `"Don't use these as steak knives", she warns.`,
+        abilityCost: {
+          number: 1500,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      }
+    ],
     image: 'assets/img/heroes/Alexa-Summer.png'
   },
   {
@@ -240,6 +786,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Magic 101',
+        unlocksLvl: 10,
+        effect: `Increases Natalia, Ice Apprentice's DPS by 100%.`,
+        coefficient: 1,
+        description: 'This book is standard reading at any Mage university. It would be cruel to keep her from studying it.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Below Zero',
+        unlocksLvl: 25,
+        effect: `Increases Natalia, Ice Apprentice's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Canonical undergraduate Ice reading. She needs it to become a successful Ice Mage.',
+        abilityCost: {
+          number: 2500,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Frozen Warfare',
+        unlocksLvl: 50,
+        effect: `Increases Natalia, Ice Apprentice's DPS by 100%.`,
+        coefficient: 1,
+        description: 'A graduate-level book on using Ice Magic for combat purposes. Personally recommended by Jerator.',
+        abilityCost: {
+          number: 10000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'The Book of Frost',
+        unlocksLvl: 75,
+        effect: `Increases Natalia, Ice Apprentice's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `A frigid mist billows out of this rare book, owned only by the greatest Ice Wizards. Natalia's eyes are wide with desire.`,
+        abilityCost: {
+          number: 80000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+    ],
     image: 'assets/img/heroes/10natalia.png'
   },
   {
@@ -262,6 +858,68 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Mithril Edge',
+        unlocksLvl: 10,
+        effect: `Increases Mercedes, Duchess of Blades's DPS by 100%.`,
+        coefficient: 1,
+        description: 'By reinforcing the edge of her blade with Mithril, she can cut through much more difficult materials.',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Enchanted Blade',
+        unlocksLvl: 25,
+        effect: `Increases Mercedes, Duchess of Blades's DPS by 100%.`,
+        coefficient: 1,
+        description: `With the research and help of some of your more magic-inclined friends, Mercedes' blade can be empowered with magic.`,
+        abilityCost: {
+          number: 20000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Quickblade',
+        unlocksLvl: 50,
+        effect: `Increases Mercedes, Duchess of Blades's DPS by 100%.`,
+        coefficient: 1,
+        description: `Another upgrade to her sword, giving her a much faster swing. "Nobody's head will be safe from me."`,
+        abilityCost: {
+          number: 80000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Blessed Sword',
+        unlocksLvl: 75,
+        effect: `Increases Mercedes, Duchess of Blades's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `"My sword, she's already historic. If she receives a blessing from the gods, I'll have to give her a name..."`,
+        abilityCost: {
+          number: 640,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Art of Swordfighting',
+        unlocksLvl: 100,
+        effect: `Increases your Click Damage by 0.5% of your total DPS.`,
+        coefficient: 0.005,
+        description: `This rare book was co-authored by three ancient sword masters. 'I know it's expensive, but I think it's well worth it.`,
+        abilityCost: {
+          number: 6400,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      }
+    ],
     image: 'assets/img/heroes/11mercedes.png'
   },
   {
@@ -284,6 +942,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Impressive Moves',
+        unlocksLvl: 10,
+        effect: `Increases Bobby, Bounty Hunter's DPS by 100%.`,
+        coefficient: 1,
+        description: 'You get the impression these moves are not really optimized for battle damage, but for looks.',
+        abilityCost: {
+          number: 65000,
+          powerOfTen: 6,
+          abbreviation: 'M'
+        }
+      },
+      {
+        name: 'Acrobatic Jetpack',
+        unlocksLvl: 25,
+        effect: `Increases Bobby, Bounty Hunter's DPS by 100%.`,
+        coefficient: 1,
+        description: `"I need this upgrade so I can move in and out of combat more efficiently", Bobby says. But through your experienced eyes, you know he's up to something else.`,
+        abilityCost: {
+          number: 162.5,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Jetpack Dance',
+        unlocksLvl: 50,
+        effect: `Increases Bobby, Bounty Hunter's DPS by 100%.`,
+        coefficient: 1,
+        description: `"It's like she doesn't even know I exist", you hear him mutter to himself. This upgrade allows Bobby to perform sideflips through the air with minor combat bonus.`,
+        abilityCost: {
+          number: 650,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Whirling Skyblade',
+        unlocksLvl: 75,
+        effect: `Increases Bobby, Bounty Hunter's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `"It's Natalia", he admits. "She only cares about her books." How can you not feel pity for the poor guy? Buy him this upgrade. At least he'll do more DPS.`,
+        abilityCost: {
+          number: 5200,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      }
+    ],
     image: 'assets/img/heroes/12bobby.png'
   },
   {
@@ -306,6 +1014,56 @@ export const heroesData = [{
       globalDPS: 25,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Roast Monsters',
+        unlocksLvl: 10,
+        effect: 'Increases DPS of all heroes by 25%.',
+        coefficient: 0.25,
+        description: 'Betty Clicker and Lindeoven pair up to produce delicious food for the team.',
+        abilityCost: {
+          number: 500,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Combustible Air',
+        unlocksLvl: 25,
+        effect: `Increases Broyle Lindeoven, Fire Mage's DPS by 100%.`,
+        coefficient: 1,
+        description: 'This magic seems extremely dangerous. Once the spell is cast, the air can burst into flames with a single spark.',
+        abilityCost: {
+          number: 1250,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Inner Fire',
+        unlocksLvl: 50,
+        effect: `Increases Broyle Lindeoven, Fire Mage's DPS by 100%.`,
+        coefficient: 1,
+        description: '"With this magic, I can concentrate large amounts of heat on very specific, small locations in space. I will effectively set fire to the insides of our enemies."',
+        abilityCost: {
+          number: 5000,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'The Floor is Lava',
+        unlocksLvl: 75,
+        effect: `Increases Broyle Lindeoven, Fire Mage's DPS by 150%.`,
+        coefficient: 1.5,
+        description: '"I used to play this game as a child. I can turn it into a reality for our enemies with this spell", he says.',
+        abilityCost: {
+          number: 40000,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+    ],
     image: 'assets/img/heroes/13broyle.png'
   },
   {
@@ -328,6 +1086,68 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Abandoned Regret',
+        unlocksLvl: 10,
+        effect: `Increases Sir George II, King's Guard's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Though he swore to uphold his vows to protect his King, the guard must move on with his life. "It will take some effort", he says.',
+        abilityCost: {
+          number: 4500,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Offensive Strategies',
+        unlocksLvl: 25,
+        effect: `Increases Sir George II, King's Guard's DPS by 100%.`,
+        coefficient: 1,
+        description: '"I no longer protect my King. He has lost his way, and I am in your service now." He is willing to learn new fighting strategies.',
+        abilityCost: {
+          number: 11250,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Combat Strategy',
+        unlocksLvl: 50,
+        effect: `Increases Sir George II, King's Guard's DPS by 100%.`,
+        coefficient: 1,
+        description: `As of late, the mood of Sir George II has improved significantly. This upgrade provides a massive improvement to George's DPS.`,
+        abilityCost: {
+          number: 45000,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Burning Blade',
+        unlocksLvl: 75,
+        effect: `Increases Sir George II, King's Guard's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `Lindeoven can enchant George's weapon with fire.`,
+        abilityCost: {
+          number: 360,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: `King's Pardon`,
+        unlocksLvl: 100,
+        effect: `Increases your Click Damage by 0.5% of your total DPS.`,
+        coefficient: 1.5,
+        description: `"Even though he lost his way, my King was still mine to protect and I felt much regret leaving his side. This pardon has lifted a great weight off my shoulders."`,
+        abilityCost: {
+          number: 3600,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      }
+    ],
     image: 'assets/img/heroes/14sirgeorge.png'
   },
   {
@@ -350,6 +1170,68 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Bag of Holding',
+        unlocksLvl: 10,
+        effect: 'Increases all gold found by 25%.',
+        coefficient: 0.25,
+        description: `This space-bending bag can store things much bigger than itself. Get Midas one of these so he doesn't have to haul his fortune around with him in the midst of battle.`,
+        abilityCost: {
+          number: 40000,
+          powerOfTen: 9,
+          abbreviation: 'B'
+        }
+      },
+      {
+        name: 'Heart of Gold',
+        unlocksLvl: 25,
+        effect: 'Increases all gold found by 25%.',
+        coefficient: 0.25,
+        description: `Midas can find more gold from your enemies. Where it comes from, you're not really sure. "These are riches beyond belief!" he says. "How can I thank Sir George?"`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Touch of Gold',
+        unlocksLvl: 50,
+        effect: 'Increases all gold found by 25%.',
+        coefficient: 0.25,
+        description: 'This upgrade gives Midas the power to turn things (and enemies!) into gold by touching them. He promises to share the wealth with you.',
+        abilityCost: {
+          number: 400,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Golden Dimension',
+        unlocksLvl: 75,
+        effect: 'Increases all gold found by 25%.',
+        coefficient: 0.25,
+        description: '"I can open rifts to the Planes of Gold," he says, with madness in his eyes. The rift can only open after killing a monster, and heavy golden furniture falls through.',
+        abilityCost: {
+          number: 3200,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Gold Blade',
+        unlocksLvl: 75,
+        effect: 'Increases all gold found by 25%.',
+        coefficient: 0.25,
+        description: 'Forged from riches of his fallen foes, the golden blade is the most expensive sword ever made.',
+        abilityCost: {
+          number: 160,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      }
+    ],
     image: 'assets/img/heroes/15kingmidas.png'
   },
   {
@@ -372,6 +1254,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Defrosting',
+        unlocksLvl: 10,
+        effect: `Increases Referi Jerator, Ice Wizard's DPS by 100%.`,
+        coefficient: 1,
+        description: 'This upgrade will allow Jerator to cast his spells more effectively because he can see clearly.',
+        abilityCost: {
+          number: 360,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Headbashing',
+        unlocksLvl: 25,
+        effect: `Increases Referi Jerator, Ice Wizard's DPS by 100%.`,
+        coefficient: 1,
+        description: 'While his magic is paramount, this upgrade will allow Jerator to smash his enemies in head-to-head combat.',
+        abilityCost: {
+          number: 900,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Iceberg Rain',
+        unlocksLvl: 50,
+        effect: `Increases Referi Jerator, Ice Wizard's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Icebergs rain down from the sky, smashing your enemies.',
+        abilityCost: {
+          number: 3600,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Glacierstorm',
+        unlocksLvl: 75,
+        effect: `Increases Referi Jerator, Ice Wizard's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'A hurricane of massive glaciers forms in the sky. They fall on your enemies.',
+        abilityCost: {
+          number: 28800,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      }
+    ],
     image: 'assets/img/heroes/16referi.png'
   },
   {
@@ -394,6 +1326,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Rise of the Dead',
+        unlocksLvl: 10,
+        effect: `Increases Abaddon's DPS by 125%.`,
+        coefficient: 1.25,
+        description: 'Abaddon can raise the corpses of the fallen, to fight by your side.',
+        abilityCost: {
+          number: 3200,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Curse of the Dark God',
+        unlocksLvl: 25,
+        effect: `Increases Abaddon's DPS by 100%.`,
+        coefficient: 1,
+        description: `"To call this a 'Curse' is a misnomer, mortal. This power is a blessing."`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Epidemic Evil',
+        unlocksLvl: 50,
+        effect: `Increases Abaddon's DPS by 100%.`,
+        coefficient: 1,
+        description: '"The powers of darkness breed more powers," he says. Abaddon is kind of scary.',
+        abilityCost: {
+          number: 32000,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'The Dark Ritual',
+        unlocksLvl: 75,
+        effect: `Increases Abaddon's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The ground beneath Abaddon glows with runes. He beckons for you to help him with his final ritual.',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/17abbadon.png'
   },
   {
@@ -416,6 +1398,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: `Heaven's Hand`,
+        unlocksLvl: 10,
+        effect: `Increases Ma Zhu's DPS by 100%.`,
+        coefficient: 1,
+        description: `The eastern gods bless Ma Zhu with a portion of their holy might increasing Ma Zhu's damage.`,
+        abilityCost: {
+          number: 27000,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Plasma Arc',
+        unlocksLvl: 25,
+        effect: `Increases Ma Zhu's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Ma Zhu sparks and crackles with electricity. The heat from a focused arc can inflict incredible damage.',
+        abilityCost: {
+          number: 67500,
+          powerOfTen: 12,
+          abbreviation: 'T'
+        }
+      },
+      {
+        name: 'Ancient Wrath',
+        unlocksLvl: 50,
+        effect: `Increases Ma Zhu's DPS by 100%.`,
+        coefficient: 1,
+        description: '"I fear you may not be balancing the powers of the Gods," Ma Zhu tells you, hinting at this upgrade. "Abaddon is a dangerous one."',
+        abilityCost: {
+          number: 270,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: 'Pet Dragon',
+        unlocksLvl: 75,
+        effect: `Increases Ma Zhu's DPS by 150%.`,
+        coefficient: 1.5,
+        description: '"I can go get my dragon, if you like. His name is Bashe, and he eats elephants", Ma Zhu says.',
+        abilityCost: {
+          number: 2160,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+    ],
     image: 'assets/img/heroes/18mazhu.png'
   },
   {
@@ -438,6 +1470,44 @@ export const heroesData = [{
       globalDPS: 44,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Smite',
+        unlocksLvl: 10,
+        effect: `Increases Amenhotep's DPS by 100%.`,
+        coefficient: 1,
+        description: '"I am here to help you, mortal. Grant me this power and you will be rewarded with the loot of many corpses."',
+        abilityCost: {
+          number: 240,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: 'Genesis Research',
+        unlocksLvl: 25,
+        effect: 'Increases DPS of all heroes by 20%.',
+        coefficient: 0.2,
+        description: '"Foolish mortal! You have let Abaddon grow too powerful," he scolds you. "We must undo what has been done! It will take time. Do not let Abaddon know."',
+        abilityCost: {
+          number: 600,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: 'Prepare the Rebeginning',
+        unlocksLvl: 50,
+        effect: 'Increases DPS of all heroes by 20%.',
+        coefficient: 0.2,
+        description: 'With a terrifying rumble, the ground and the skies ripple. Amenhotep glows brilliantly with power as he prepares the final act.',
+        abilityCost: {
+          number: 2400,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      }
+    ],
     image: 'assets/img/heroes/19amenhotep.png'
   },
   {
@@ -460,6 +1530,56 @@ export const heroesData = [{
       globalDPS: 10,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Eye In The Sky',
+        unlocksLvl: 10,
+        effect: `Increases Beastlord's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The birds in the sky can spot when our enemies are their most vulnerable.',
+        abilityCost: {
+          number: 3000,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: 'Critters',
+        unlocksLvl: 25,
+        effect: `Increases Beastlord's DPS by 100%.`,
+        coefficient: 1,
+        description: 'They are small, but they make up for it in numbers and ferocity.',
+        abilityCost: {
+          number: 7500,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: 'Beastmode',
+        unlocksLvl: 50,
+        effect: `Increases Beastlord's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The beastmaster murmurs an incantation. Fur sprouts from his skin, quills shoot from his back. He bears his claws and teeth, which bear resemblances to a bear.',
+        abilityCost: {
+          number: 30000,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: `Sacrificial Lamb's Blood`,
+        unlocksLvl: 75,
+        effect: 'Increases DPS of all heroes by 10%.',
+        coefficient: 0.1,
+        description: 'Bath our heroes with the blood of the sacrificed to increase their strength and stamina.',
+        abilityCost: {
+          number: 240,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+    ],
     image: 'assets/img/heroes/20beastlord.png'
   },
   {
@@ -482,6 +1602,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Hand-to-Head Combat',
+        unlocksLvl: 10,
+        effect: `Increases Athena, Goddess of War's DPS by 100%.`,
+        coefficient: 1,
+        description: '"Fresh Skulls for the taking, one of my favorite pastimes."',
+        abilityCost: {
+          number: 90000,
+          powerOfTen: 15,
+          abbreviation: 'q'
+        }
+      },
+      {
+        name: 'Warscream',
+        unlocksLvl: 25,
+        effect: `Increases Athena, Goddess of War's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Athena takes a deep breath and lets out a hellish scream that reverberates miles across land and sea. Monsters tremble in its wake.',
+        abilityCost: {
+          number: 225,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+      {
+        name: 'Bloodlust',
+        unlocksLvl: 50,
+        effect: `Increases Athena, Goddess of War's DPS by 100%.`,
+        coefficient: 1,
+        description: `Taste for blood thickens as enemies fall to Athena's feet. Her hunger drives her DPS through the roof.`,
+        abilityCost: {
+          number: 900,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+      {
+        name: 'Boiling Blood',
+        unlocksLvl: 75,
+        effect: `Increases Athena, Goddess of War's DPS by 100%.`,
+        coefficient: 1,
+        description: `Angering the Goddess of War will totally ruin someone's day.`,
+        abilityCost: {
+          number: 7200,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Athena_nogild.png'
   },
   {
@@ -504,6 +1674,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Lasso of Love',
+        unlocksLvl: 10,
+        effect: `Increases Aphrodite, Goddess of Love's DPS by 100%.`,
+        coefficient: 1,
+        description: '"Anyone trapped in my lasso falls head over heels in love with me."',
+        abilityCost: {
+          number: 3500,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+      {
+        name: 'Love Potion',
+        unlocksLvl: 25,
+        effect: `Increases Aphrodite, Goddess of Love's DPS by 100%.`,
+        coefficient: 1,
+        description: `One little taste and enemies practically kill each other for Aphrodite's affection.`,
+        abilityCost: {
+          number: 8750,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+      {
+        name: 'Love Hurts',
+        unlocksLvl: 50,
+        effect: `Increases Aphrodite, Goddess of Love's DPS by 100%.`,
+        coefficient: 1,
+        description: '"All is destroyed in love and war," says Aphrodite.',
+        abilityCost: {
+          number: 35000,
+          powerOfTen: 18,
+          abbreviation: 'Q'
+        }
+      },
+      {
+        name: 'Kiss of Death',
+        unlocksLvl: 125,
+        effect: `Increases Aphrodite, Goddess of Love's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Pucker up sweetheart, today's your unlucky day."`,
+        abilityCost: {
+          number: 2799,
+          powerOfTen: 21,
+          abbreviation: 's'
+        }
+      },
+    ],
     image: 'assets/img/heroes/22aphrodite.png'
   },
   {
@@ -526,6 +1746,56 @@ export const heroesData = [{
       globalDPS: 10,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Dancing Blades',
+        unlocksLvl: 10,
+        effect: `Increases Shinatobe, Wind Deity's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Swords dance in the wind, dicing and chopping enemies into bits and pieces.',
+        abilityCost: {
+          number: 139.9,
+          powerOfTen: 21,
+          abbreviation: 's'
+        }
+      },
+      {
+        name: 'Annoying Winds',
+        unlocksLvl: 25,
+        effect: 'Increases DPS of all heroes by 10%.',
+        coefficient: 0.1,
+        description: 'Strong gusts of wind break down enemy morale.',
+        abilityCost: {
+          number: 349.9,
+          powerOfTen: 21,
+          abbreviation: 's'
+        }
+      },
+      {
+        name: 'Bladestorm',
+        unlocksLvl: 50,
+        effect: `Increases Shinatobe, Wind Deity's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Amass any and all weapons and throw them into this tornado I've conjured," says Shinatobe. Pieces of sharp metal twirl violently at the edges of the tornado.`,
+        abilityCost: {
+          number: 1399,
+          powerOfTen: 21,
+          abbreviation: 's'
+        }
+      },
+      {
+        name: 'Eye of the Storm',
+        unlocksLvl: 75,
+        effect: `Increases Shinatobe, Wind Deity's DPS by 100%.`,
+        coefficient: 1,
+        description: 'A storm of epic proportions, perhaps the biggest storm in history, to constantly ravage your enemies.',
+        abilityCost: {
+          number: 11200,
+          powerOfTen: 21,
+          abbreviation: 's'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Shinatobe..png'
   },
   {
@@ -548,6 +1818,56 @@ export const heroesData = [{
       globalDPS: 56.25,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Red Whip',
+        unlocksLvl: 10,
+        effect: 'Increases DPS of all heroes by 25%.',
+        coefficient: 0.25,
+        description: '"I pride myself as a great General because I keep my troops in line." Grant whips his army into shape to prepare for battle.',
+        abilityCost: {
+          number: 41990,
+          powerOfTen: 21,
+          abbreviation: 's'
+        }
+      },
+      {
+        name: 'Art of War',
+        unlocksLvl: 25,
+        effect: `Increases Grant, The General's DPS by 100%.`,
+        coefficient: 1,
+        description: '"I pride myself as a great General because I continue to increase my knowledge in warfare," says Grant.',
+        abilityCost: {
+          number: 105,
+          powerOfTen: 24,
+          abbreviation: 'S'
+        }
+      },
+      {
+        name: 'Battle Plan',
+        unlocksLvl: 50,
+        effect: 'Increases DPS of all heroes by 25%.',
+        coefficient: 0.25,
+        description: '"I pride myself as a great general because I devise plans to destroy my enemies," he says.',
+        abilityCost: {
+          number: 420,
+          powerOfTen: 24,
+          abbreviation: 'S'
+        }
+      },
+      {
+        name: 'Top of the Line Gear',
+        unlocksLvl: 75,
+        effect: `Increases Grant, The General's DPS by 100%.`,
+        coefficient: 1,
+        description: `"I changed my mind about why I'm such a great General. I pride myself as a great General because I buy my troops the best equipment," says Grant.`,
+        abilityCost: {
+          number: 3359,
+          powerOfTen: 24,
+          abbreviation: 'S'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Grant.png'
   },
   {
@@ -570,6 +1890,56 @@ export const heroesData = [{
       globalDPS: 25,
       clickDmgFromDPS: 0.5,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Ice Age',
+        unlocksLvl: 10,
+        effect: `Increases Frostleaf's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Decreases temperature of the world by 15 degrees.',
+        abilityCost: {
+          number: 21000,
+          powerOfTen: 24,
+          abbreviation: 'S'
+        }
+      },
+      {
+        name: 'Book of Winter',
+        unlocksLvl: 25,
+        effect: `Increases Frostleaf's DPS by 100%.`,
+        coefficient: 1,
+        description: `"It's a really cold book. Don't touch it, because it will freeze your hand off," Frostleaf explains.`,
+        abilityCost: {
+          number: 52490,
+          powerOfTen: 24,
+          abbreviation: 'S'
+        }
+      },
+      {
+        name: 'Frozen Stare',
+        unlocksLvl: 50,
+        effect: 'Increases DPS of all heroes by 25%.',
+        coefficient: 1,
+        description: 'Frostleaf penetrates deep into the souls of his enemies, freezing them in place for eternity.',
+        abilityCost: {
+          number: 210,
+          powerOfTen: 27,
+          abbreviation: 'O'
+        }
+      },
+      {
+        name: 'Frigid Enchant',
+        unlocksLvl: 75,
+        effect: 'Increases your Click Damage by 0.5% of your total DPS.',
+        coefficient: 1,
+        description: `Frostleaf enchants everyone's weapons with icy energy that decreases enemy armor tremendously.`,
+        abilityCost: {
+          number: 1679,
+          powerOfTen: 27,
+          abbreviation: 'O'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Frostleaf_nogild.png'
   },
   {
@@ -592,6 +1962,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Lost Soul',
+        unlocksLvl: 10,
+        effect: `Increases Dread Knight's DPS by 100%.`,
+        coefficient: 1,
+        description: `Shhhhh... don't tell him he's part of your group. A man with nothing to lose is most dangerous and thats how he should stay.`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 39,
+          abbreviation: 'D'
+        }
+      },
+      {
+        name: 'Soul Catcher',
+        unlocksLvl: 25,
+        effect: `Increases Dread Knight's DPS by 100%.`,
+        coefficient: 1,
+        description: '"Fetch me my souls!."',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 39,
+          abbreviation: 'D'
+        }
+      },
+      {
+        name: 'Raging Bull',
+        unlocksLvl: 50,
+        effect: `Increases Dread Knight's DPS by 100%.`,
+        coefficient: 1,
+        description: 'This upgrade will send him over the edge. Anger may cloud his judgement, but his strength will increase.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 39,
+          abbreviation: 'D'
+        }
+      },
+      {
+        name: 'Dark Soul',
+        unlocksLvl: 100,
+        effect: `Increases Dread Knight's DPS by 150%.`,
+        coefficient: 1,
+        description: `"AHHHh UUghh...I can't keep it inside any longer! I'm afraid it's too late, there's no stopping it now."`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 39,
+          abbreviation: 'D'
+        }
+      }
+    ],
     image: 'assets/img/heroes/Dread_Knight-2.png'
   },
   {
@@ -614,6 +2034,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Resurrection',
+        unlocksLvl: 10,
+        effect: `Increases Atlas's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Breathes new life into heroes with lost hope.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 54,
+          abbreviation: '%'
+        }
+      },
+      {
+        name: 'Band of Brothers',
+        unlocksLvl: 25,
+        effect: `Increases Atlas's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Stand by one another. There's strength in numbers."`,
+        abilityCost: {
+          number: 250,
+          powerOfTen: 54,
+          abbreviation: '%'
+        }
+      },
+      {
+        name: 'Medic',
+        unlocksLvl: 50,
+        effect: `Increases Atlas's DPS by 100%.`,
+        coefficient: 1,
+        description: `With all the fighting going on, its a wonder how there's no medical staff on board.`,
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 54,
+          abbreviation: '%'
+        }
+      },
+      {
+        name: 'Fully Charged',
+        unlocksLvl: 100,
+        effect: `Increases Atlas's DPS by 150%.`,
+        coefficient: 1.5,
+        description: '"One speech is all it takes to put a fire under their asses."',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 54,
+          abbreviation: '%'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Atlas2.png'
   },
   {
@@ -636,6 +2106,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Inteference',
+        unlocksLvl: 10,
+        effect: `Increases Terra's DPS by 100%.`,
+        coefficient: 1,
+        description: `It's part of the job description.`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 69,
+          abbreviation: 'Y'
+        }
+      },
+      {
+        name: 'Surveillance',
+        unlocksLvl: 25,
+        effect: `Increases Terra's DPS by 100%.`,
+        coefficient: 1,
+        description: `"There's nothing that goes on around here without me knowing so NO funny business."`,
+        abilityCost: {
+          number: 250,
+          powerOfTen: 69,
+          abbreviation: 'Y'
+        }
+      },
+      {
+        name: 'Camouflage',
+        unlocksLvl: 50,
+        effect: `Increases Terra's DPS by 100%.`,
+        coefficient: 1,
+        description: '"Good news is if I have to go to the bathroom I can use part of my disguise."',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 69,
+          abbreviation: 'Y'
+        }
+      },
+      {
+        name: 'Revive',
+        unlocksLvl: 75,
+        effect: `Increases Terra's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'Brings the dead back to life.',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 69,
+          abbreviation: 'Y'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Terra.png'
   },
   {
@@ -658,6 +2178,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Pesticide',
+        unlocksLvl: 10,
+        effect: `Increases Phthalo's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Masks on! Lets not let what happened to Ruben happen to anyone else. I don't want anybody throwing up all over my sandwich again or you're fired just like Ruben."`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 84,
+          abbreviation: 'w'
+        }
+      },
+      {
+        name: 'Rejuvenating Seeds',
+        unlocksLvl: 25,
+        effect: `Increases Phthalo's DPS by 100%`,
+        coefficient: 1,
+        description: 'A food source for every creature walking this earth.',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 84,
+          abbreviation: 'w'
+        }
+      },
+      {
+        name: 'Green Scroll',
+        unlocksLvl: 50,
+        effect: `Increases Phthalo's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Unlocks secrets of the green ring.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 84,
+          abbreviation: 'w'
+        }
+      },
+      {
+        name: 'Split Earth',
+        unlocksLvl: 100,
+        effect: `Increases Phthalo's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'Great for planting seeds and burying bodies.',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 84,
+          abbreviation: 'w'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Phthalo2-0.png'
   },
   {
@@ -680,6 +2250,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Travel Supplies',
+        unlocksLvl: 10,
+        effect: `Increases Orntchya Gladeye, Didensy Banana's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Equipped with everything you need. Includes flashlight, sleeping gear, and lets not forget Bloop mace.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 99,
+          abbreviation: 'R'
+        }
+      },
+      {
+        name: 'Portal',
+        unlocksLvl: 25,
+        effect: `Increases Orntchya Gladeye, Didensy Banana's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Watch your step unless you're my mother-in-law. Just kidding, I sent her through one of those last Wednesday."`,
+        abilityCost: {
+          number: 250,
+          powerOfTen: 99,
+          abbreviation: 'R'
+        }
+      },
+      {
+        name: 'Travel Potion',
+        unlocksLvl: 50,
+        effect: `Increases Orntchya Gladeye, Didensy Banana's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Bottoms up. You don't want travel sickness do you? It's much like sea sickness, but the effects come out the other end."`,
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 99,
+          abbreviation: 'R'
+        }
+      },
+      {
+        name: 'Traveling Sword',
+        unlocksLvl: 100,
+        effect: `Increases Orntchya Gladeye, Didensy Banana's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `"To protect against bandits of course. Don't worry, I have a license for this."`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 99,
+          abbreviation: 'R'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Didensy.png'
   },
   {
@@ -702,6 +2322,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Heart Juice',
+        unlocksLvl: 10,
+        effect: `Increases Lilin's DPS by 100%.`,
+        coefficient: 1,
+        description: `"Can't start the day without a hearty breakfast. Eggs, toast, bacon and some heart juice to wash it all down."`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 114,
+          abbreviation: 'h'
+        }
+      },
+      {
+        name: 'Luscious Lips',
+        unlocksLvl: 25,
+        effect: `Increases Lilin's DPS by 100%.`,
+        coefficient: 1,
+        description: `Once you lay your eyes on them, you won't be able to look away.`,
+        abilityCost: {
+          number: 250,
+          powerOfTen: 114,
+          abbreviation: 'h'
+        }
+      },
+      {
+        name: `Lover's Quarrel`,
+        unlocksLvl: 50,
+        effect: `Increases Lilin's DPS by 100%.`,
+        coefficient: 1,
+        description: `"I'm one lucky gal. With a hoard of young tough men to do my fighting for me, I don't have to lift a finger."`,
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 114,
+          abbreviation: 'h'
+        }
+      },
+      {
+        name: 'Love at First Sight',
+        unlocksLvl: 100,
+        effect: `Increases Lilin's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `"Don't hate me because I'm beautiful. Love me because I'm powerful." Aphrodite glares at her.`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 114,
+          abbreviation: 'h'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Lilin.png'
   },
   {
@@ -724,6 +2394,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Fighting for Dummies',
+        unlocksLvl: 10,
+        effect: `Increases Cadmia's DPS by 100%.`,
+        coefficient: 1,
+        description: 'A how-to on becoming the ultimate fighter.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 129,
+          abbreviation: 'L'
+        }
+      },
+      {
+        name: 'Warrior Spirit',
+        unlocksLvl: 25,
+        effect: `Increases Cadmia's DPS by 100%.`,
+        coefficient: 1,
+        description: '"War is my middle name."',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 129,
+          abbreviation: 'L'
+        }
+      },
+      {
+        name: 'Red Sword',
+        unlocksLvl: 50,
+        effect: `Increases Cadmia's DPS by 100%.`,
+        coefficient: 1,
+        description: `"My trusty companion. There's no one I'd rather go into battle with."`,
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 129,
+          abbreviation: 'L'
+        }
+      },
+      {
+        name: 'Flaming Red Sword',
+        unlocksLvl: 100,
+        effect: `Increases Cadmia's DPS by 150%.`,
+        coefficient: 1.5,
+        description: '"Thanks for the DPS boost, Broyle. I owe you one."',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 129,
+          abbreviation: 'L'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Cadmia.png'
   },
   {
@@ -746,6 +2466,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Meditation',
+        unlocksLvl: 10,
+        effect: `Increases Alabaster's DPS by 100%.`,
+        coefficient: 1,
+        description: '"The burden of protecting everyone in all the worlds can be stressful. Sometimes I just need some time to myself."',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 144,
+          abbreviation: 'z'
+        }
+      },
+      {
+        name: 'Travel Boots',
+        unlocksLvl: 25,
+        effect: `Increases Alabaster's DPS by 100%.`,
+        coefficient: 1,
+        description: `"You should probably get these for me. My boots are falling apart and I won't be able to travel across worlds without them."`,
+        abilityCost: {
+          number: 250,
+          powerOfTen: 144,
+          abbreviation: 'z'
+        }
+      },
+      {
+        name: 'Peacekeeper',
+        unlocksLvl: 50,
+        effect: `Increases Alabaster's DPS by 100%.`,
+        coefficient: 1,
+        description: 'It is said that the Peacekeeper never needs sharpening.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 144,
+          abbreviation: 'z'
+        }
+      },
+      {
+        name: 'Blinding Light',
+        unlocksLvl: 100,
+        effect: `Increases Alabaster's DPS by 150%.`,
+        coefficient: 1.5,
+        description: 'The light at the end of the tunnel. The tunnel of life.',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 144,
+          abbreviation: 'z'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Alabaster.png'
   },
   {
@@ -768,6 +2538,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Pro-Aging',
+        unlocksLvl: 10,
+        effect: `Increases Astraea's DPS by 100%.`,
+        coefficient: 1,
+        description: `Speed up a monster's internal clock. One second for us will become a year for them.`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 159,
+          abbreviation: '*B'
+        }
+      },
+      {
+        name: 'Slice and Dice',
+        unlocksLvl: 25,
+        effect: `Increases Astraea's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The Yellow Dimensional Ranger is the fastest blade slinger in the west. This training will further increase her speed.',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 159,
+          abbreviation: '*B'
+        }
+      },
+      {
+        name: 'Time Travel',
+        unlocksLvl: 50,
+        effect: `Increases Astraea's DPS by 100%.`,
+        coefficient: 1,
+        description: '"I can kill you before you get born!" she yells.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 159,
+          abbreviation: '*B'
+        }
+      },
+      {
+        name: 'Alter Time',
+        unlocksLvl: 75,
+        effect: `Increases Astraea's DPS by 150%.`,
+        coefficient: 1,
+        description: `"Let's just slow everything down shall we? There, that's better. Who says time is never on our side?"`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 159,
+          abbreviation: '*B'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Astraea.png'
   },
   {
@@ -790,6 +2610,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Diamond Arrowheads',
+        unlocksLvl: 10,
+        effect: `Increases Chiron's DPS by 100%.`,
+        coefficient: 1,
+        description: `You don't think twice when Chiron requests expensive arrowheads. You heard somewhere that diamonds are strong, so it seems reasonable.`,
+        abilityCost: {
+          number: 100,
+          powerOfTen: 174,
+          abbreviation: '*S'
+        }
+      },
+      {
+        name: 'Diamond Bow',
+        unlocksLvl: 25,
+        effect: `Increases Chiron's DPS by 100%.`,
+        coefficient: 1,
+        description: `You're pretty certain diamond does not have the ideal tensile characteristics for a bow, but Chiron seems to know what he's doing.`,
+        abilityCost: {
+          number: 250,
+          powerOfTen: 174,
+          abbreviation: '*S'
+        }
+      },
+      {
+        name: 'Diamond Horseshoes',
+        unlocksLvl: 50,
+        effect: `Increases Chiron's DPS by 100%.`,
+        coefficient: 1,
+        description: `There's no way this is going to help his archery, but every time you give him what he wants he performs better. No reason to stop now.`,
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 174,
+          abbreviation: '*S'
+        }
+      },
+      {
+        name: 'Huge Bag of Diamonds',
+        unlocksLvl: 100,
+        effect: `Increases Chiron's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `Chiron has given up all pretext of a pragmatic motivation for his love of diamonds. He hands you an empty sack with the word 'shinies' and a crude drawing of a happy centaur on it.`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 174,
+          abbreviation: '*S'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Chiron.png'
   },
   {
@@ -812,6 +2682,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Charging Exercises',
+        unlocksLvl: 10,
+        effect: `Increases Moloch's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Putting in the time every morning to do a set of charging drills and strength building exercises can go a long way toward improving minotaur combat performance. Moloch knows not to skip leg day.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 189,
+          abbreviation: '*D'
+        }
+      },
+      {
+        name: 'Horn Sharpening',
+        unlocksLvl: 25,
+        effect: `Increases Moloch's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Regular maintenance is required for optimal monster penetration.',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 189,
+          abbreviation: '*D'
+        }
+      },
+      {
+        name: 'Diamond Bullshoes',
+        unlocksLvl: 50,
+        effect: `Increases Moloch's DPS by 100%.`,
+        coefficient: 1,
+        description: `Moloch has been eyeing Chiron's flashy new hoofwear and threatens to go on strike if he is not similarly compensated.`,
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 189,
+          abbreviation: '*D'
+        }
+      },
+      {
+        name: 'Labyrinthium Axe',
+        unlocksLvl: 100,
+        effect: `Increases Moloch's DPS by 150%.`,
+        coefficient: 1.5,
+        description: `Forged from an ore found in the ancient labyrinths known only to his people, Moloch's most prized possession is as much a symbol of pride for him as it is a sign of doom for his enemies.`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 189,
+          abbreviation: '*D'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Moloch.png'
   },
   {
@@ -834,6 +2754,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Blacker Powder',
+        unlocksLvl: 10,
+        effect: `Increases Bomber Max's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Bomber Max is the sole proprietor of a nearby micro-boomery, where he crafts artisanal explosives using only the finest quality of locally sourced fuels and oxidizers.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 204,
+          abbreviation: '*%'
+        }
+      },
+      {
+        name: 'Shorter Fuses',
+        unlocksLvl: 25,
+        effect: `Increases Bomber Max's DPS by 100%.`,
+        coefficient: 1,
+        description: 'The shorter the fuse, the sooner he throws the bomb. The sooner he throws the bomb, the sooner he is picking up another bomb and lighting the fuse.',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 204,
+          abbreviation: '*%'
+        }
+      },
+      {
+        name: 'Goggle Cleaning Solution',
+        unlocksLvl: 50,
+        effect: `Increases Bomber Max's DPS by 250%.`,
+        coefficient: 2.5,
+        description: 'Imagine how much more dangerous he will be when he can actually see what he is doing.',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 204,
+          abbreviation: '*%'
+        }
+      },
+      {
+        name: 'MTR Gold Mining',
+        unlocksLvl: 100,
+        effect: 'Increases all gold found by 50%.',
+        coefficient: 1,
+        description: 'Bomber Max assures you that Monstertop Removal is the latest in gold mining technologies, but he quickly changes the subject when anyone brings up a concern for the environmental impact.',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 204,
+          abbreviation: '*%'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Bomber_Max.png'
   },
   {
@@ -856,6 +2826,56 @@ export const heroesData = [{
       globalDPS: 50,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Quad-Wielding',
+        unlocksLvl: 10,
+        effect: `Increases Gog's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Being able to wield four weapons at once allows Gog to threaten his enemies from several directions simultaneously.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 219,
+          abbreviation: '*Y'
+        }
+      },
+      {
+        name: 'Four-Wielding',
+        unlocksLvl: 25,
+        effect: `Increases Gog's DPS by 100%.`,
+        coefficient: 1,
+        description: 'Frequent biambidexterity exercises allow Gog to hold four weapons while many others struggle with two.',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 219,
+          abbreviation: '*Y'
+        }
+      },
+      {
+        name: '4-Wielding',
+        unlocksLvl: 50,
+        effect: `Increases Gog's DPS by 250%.`,
+        coefficient: 2.5,
+        description: 'With this upgrade, Gog can wield more than three (but fewer than five) weapons.',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 219,
+          abbreviation: '*Y'
+        }
+      },
+      {
+        name: 'Multi-Weapon Training',
+        unlocksLvl: 1000,
+        effect: 'Increases DPS of all heroes by 50%.',
+        coefficient: 0.5,
+        description: `Gog tries desperately to teach each hero how to wield four weapons. He can never quite figure out why they don't seem to get it, but they all get stronger in the process.`,
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 219,
+          abbreviation: '*Y'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Gog.png'
   },
   {
@@ -878,6 +2898,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: 'Patience',
+        unlocksLvl: 25,
+        effect: `Increases Wepwawet's DPS by 200%.`,
+        coefficient: 2,
+        description: '',
+        abilityCost: {
+          number: 100,
+          powerOfTen: 234,
+          abbreviation: '*w'
+        }
+      },
+      {
+        name: 'Silence',
+        unlocksLvl: 100,
+        effect: `Increases Wepwawet's DPS by 250%.`,
+        coefficient: 2.5,
+        description: '',
+        abilityCost: {
+          number: 250,
+          powerOfTen: 234,
+          abbreviation: '*w'
+        }
+      },
+      {
+        name: 'Way of the Chef',
+        unlocksLvl: 1500,
+        effect: `Increases Betty Clicker's DPS by 500,000,000%.`,
+        coefficient: 5000000,
+        description: '',
+        abilityCost: {
+          number: 1000,
+          powerOfTen: 234,
+          abbreviation: '*w'
+        }
+      },
+      {
+        name: 'Way of Kings',
+        unlocksLvl: 2000,
+        effect: `Increases King Midas's DPS by 10,000,000,000%.`,
+        coefficient: 100000000,
+        description: '',
+        abilityCost: {
+          number: 8000,
+          powerOfTen: 234,
+          abbreviation: '*w'
+        }
+      },
+    ],
     image: 'assets/img/heroes/Wepwawet.png'
   },
   {
@@ -900,6 +2970,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Tsuchi.png'
   },
   {
@@ -922,6 +3042,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Skogur.png'
   },
   {
@@ -944,6 +3114,56 @@ export const heroesData = [{
       globalDPS: 50,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Moeru.png'
   },
   {
@@ -966,6 +3186,56 @@ export const heroesData = [{
       globalDPS: 134.375,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Zilar.png'
   },
   {
@@ -988,6 +3258,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Madzi.png'
   },
   {
@@ -1010,6 +3330,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Xavira.png'
   },
   {
@@ -1032,6 +3402,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Cadu.png'
   },
   {
@@ -1054,6 +3474,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Ceus.png'
   },
   {
@@ -1076,6 +3546,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/The_Maw.png'
   },
   {
@@ -1098,6 +3618,56 @@ export const heroesData = [{
       globalDPS: 11,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Yachiyl.png'
   },
   {
@@ -1120,6 +3690,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Ace_Scout_Rose.png'
   },
   {
@@ -1142,6 +3762,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Ace_Scout_Sophia.png'
   },
   {
@@ -1164,6 +3834,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Ace_Scout_Blanche.png'
   },
   {
@@ -1186,6 +3906,56 @@ export const heroesData = [{
       globalDPS: null,
       clickDmgFromDPS: null,
     },
+    totalCoefficient: 0,
+    abilities: [{
+        name: '',
+        unlocksLvl: 10,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 25,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 50,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+      {
+        name: '',
+        unlocksLvl: 75,
+        effect: '',
+        coefficient: 1,
+        description: '',
+        abilityCost: {
+          number: 0,
+          powerOfTen: 0,
+          abbreviation: ''
+        }
+      },
+    ],
     image: 'assets/img/heroes/Ace_Scout_Dorothy.png'
   },
 ];

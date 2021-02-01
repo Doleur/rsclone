@@ -8,12 +8,13 @@ import { calculationCostHero } from './calculationCostHero.js'
 import { convertingNumbers } from './convertingNumbers.js'
 
 export function shopGeneration() {
+  let countNumberIcon = 1
   for (let hero = 0; hero < numberHeroes; hero++) {
     let shopHero = createTagElement('div', `shop_hero hero${hero}`, '', shopWrapper)
 
     calculationCostHero(hero)
 
-    let buyButton = createTagElement('div', `buyButton hero${hero}`, [
+    createTagElement('div', `buyButton hero${hero}`, [
       createTagElement('div', `buyButton__header`, 'LVL UP', ''),
       createTagElement('div', `wrapper-buyButton__cost`, [
         createTagElement('img', `buyButton__imgGold`, '', '', ['src', `assets/img/Gold.png`]),
@@ -21,10 +22,23 @@ export function shopGeneration() {
       ], '')
     ], shopHero)
 
+    let arrAbilitiesElements = []
+    let numberAbilitiesHero = heroesData[hero].abilities.length
+    for (let ability = 0; ability < numberAbilitiesHero; ability++) {
+      arrAbilitiesElements.push(createTagElement('div', `icon_abilities_${countNumberIcon}`, '', ''))
+      countNumberIcon++
+    }
+    if (hero === 9) { countNumberIcon += 2 }
+    if (hero === 12) { countNumberIcon++ }
+    if (hero === 16) { countNumberIcon++ }
+    if (hero === 19) { countNumberIcon++ }
+
+
     createTagElement('div', `hero_info`, [
       createTagElement('div', `hero_name hero${hero}`, `${heroesData[hero].name}`, ''),
       createTagElement('div', `hero_stats`, [
         createTagElement('span', `hero_stats__damage hero${hero}`, `${heroesData[hero].damage.number}${heroesData[hero].damage.abbreviation}`, ''),
+        createTagElement('div', `abilities_wrapper`, arrAbilitiesElements, ''),
         createTagElement('span', `hero_stats__lvl hero${hero}`, `lvl ${heroesData[hero].lvl}`, '')
       ], '')
     ], shopHero)
