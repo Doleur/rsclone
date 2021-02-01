@@ -110,14 +110,14 @@ body {
       height: 50vh;
       padding: 2rem;
       display: flex;
-      background-image: url('../img/islands/Beach1.png');
+      background-image: url('../img/islands/1.png');
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
         &-img {
-          width: 60%;
-          height: 55%;
-          margin: auto;
+          width: 50%;
+          height: 45%;
+          margin: 15% auto;
           text-align: center;
          img {
             max-height: 100%;
