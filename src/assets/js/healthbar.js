@@ -20,8 +20,8 @@ var countdown = new setCountdown(time, 30);
 
 function innerValue() {
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
-  currentHealthNumOnPage.innerText = gameStats.health.number
-  totalHealthNumOnPage.innerText = gameStats.health.number
+  currentHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
+  totalHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
   currentMonsterNumOnPage.innerText = gameStats.currMonster
   currentLevelNumOnPage.innerText = gameStats.currLevel
   gameStats.arrLevel.forEach((e) => {
