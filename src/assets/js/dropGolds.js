@@ -1,8 +1,9 @@
 import createTagElement from './creatElement.js'
-import { gameStats } from './constants.js'
+import { gameStats, numberHeroes } from './constants.js'
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { sumNumbers } from './sumNumbers.js'
+import { heroesData } from './heroesData.js'
 
 const wrapperGolds = document.querySelector('.wrapper-gold')
 
