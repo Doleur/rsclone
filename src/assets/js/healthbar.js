@@ -25,7 +25,7 @@ import {
   buy,
   toggleBuyButtonDisabled,
   toggleAbilityDisabled
-} from './shopGeneration.js'
+} from './shop.js'
 import { heroesData } from './heroesData.js'
 import {
   calculationHeroDamage,
