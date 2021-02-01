@@ -2,7 +2,7 @@ export const shopWrapper = document.querySelector('.shop_wrapper')
 export const numberHeroes = 40
 export const gameStats = {
   gold: {
-    number: 1000,
+    number: 10000,
     powerOfTen: 0,
     abbreviation: ''
   },

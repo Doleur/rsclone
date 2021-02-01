@@ -22,8 +22,9 @@ import { createSlider, newItemArrSlides, clickPrevButton } from './swiper.js'
 import {
   shopGeneration,
   updateShop,
-  buyHero,
-  toggleBuyButtonDisabled
+  buy,
+  toggleBuyButtonDisabled,
+  toggleAbilityDisabled
 } from './shopGeneration.js'
 import { heroesData } from './heroesData.js'
 import {
@@ -40,7 +41,7 @@ import { statistics, checkStats } from './stats.js'
 import { initIsland } from './island.js'
 
 let isBoss = gameStats.isBoss
-let currHealth = { ...gameStats.health }
+let currHealth = {...gameStats.health }
 let milliSecondsRemaining
 let intervalHandle
 
@@ -55,8 +56,7 @@ function innerValue() {
       'div',
       'swiper-slide',
       '',
-      swiperWrapper,
-      ['level', e]
+      swiperWrapper, ['level', e]
     )
     const swiperSlideContainer = createTagElement(
       'div',
@@ -101,8 +101,8 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         10 *
-          (gameStats.currLevel - 1 + Math.pow(1.55, gameStats.currLevel - 1)) *
-          (isBoss * 10)
+        (gameStats.currLevel - 1 + Math.pow(1.55, gameStats.currLevel - 1)) *
+        (isBoss * 10)
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -113,9 +113,9 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         10 *
-          (139 +
-            Math.pow(1.55, 139) * Math.pow(1.145, gameStats.currLevel - 140)) *
-          (isBoss * 10)
+        (139 +
+          Math.pow(1.55, 139) * Math.pow(1.145, gameStats.currLevel - 140)) *
+        (isBoss * 10)
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -126,12 +126,12 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         10 *
-          (139 +
-            Math.pow(1.55, 139) *
-              Math.pow(1.145, 360) *
-              Math.PI *
-              (1.145 + 0.001 * Math.floor((501 - 1) / 500))) *
-          (isBoss * 10)
+        (139 +
+          Math.pow(1.55, 139) *
+          Math.pow(1.145, 360) *
+          Math.PI *
+          (1.145 + 0.001 * Math.floor((501 - 1) / 500))) *
+        (isBoss * 10)
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -142,9 +142,9 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         Math.pow(1.545, gameStats.currLevel - 200001) *
-          1.24 *
-          Math.pow(10, 25409) +
-          (gameStats.currLevel - 1) * 10
+        1.24 *
+        Math.pow(10, 25409) +
+        (gameStats.currLevel - 1) * 10
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -152,7 +152,7 @@ function setMonsterHealth() {
     gameStats.health.abbreviation =
       abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   }
-  currHealth = { ...gameStats.health }
+  currHealth = {...gameStats.health }
 }
 
 function setDamage(damage) {
@@ -205,13 +205,14 @@ function checkIfDead() {
       gameStats.currLevel += 1
       newItemArrSlides()
       initIsland()
-      // changeIsland()
+        // changeIsland()
     } else {
       gameStats.currMonster += 1
     }
     setMonsterHealth()
     countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
     toggleBuyButtonDisabled()
+    toggleAbilityDisabled()
   }
 }
 
@@ -249,14 +250,33 @@ hero.addEventListener('click', e => {
 })
 
 shopWrapper.addEventListener('click', ({ target }) => {
-  let isDisabled = target.closest('.disabled')
-  if (isDisabled) return
-  let isBuyButton = target.closest('.buyButton')
-  if (!isBuyButton) return
-  let hero = isBuyButton.classList[1].replace(/hero/, '')
-  let ifPurchaseMade = buyHero(hero)
-  if (!ifPurchaseMade) return
-  heroesData[hero].lvl += 1
+  let isDisabledHero = target.closest('.disabled')
+  if (isDisabledHero) return
+  let isPurchaseMade
+  let hero
+  let targetClassName = target.classList[1]
+  let isAbility = /hero_[\d]_ability/.test(targetClassName)
+
+  if (isAbility) {
+    let numberHeroAndAbility = targetClassName.match(/\d/g)
+    hero = numberHeroAndAbility[0]
+    let numberAbility = numberHeroAndAbility[1]
+    let isAbilityDisabled = target.closest('.abilities_disabled')
+    if (isAbilityDisabled) return
+    if (heroesData[hero].abilities[numberAbility].isPurchased) return
+    isPurchaseMade = buy(hero, numberAbility)
+    if (!isPurchaseMade) return
+    heroesData[hero].abilities[numberAbility].isPurchased = true
+    target.classList.add('abilities_active')
+  } else {
+    let isBuyButton = target.closest('.buyButton')
+    if (!isBuyButton) return
+    hero = isBuyButton.classList[1].replace(/hero/, '')
+    isPurchaseMade = buy(hero)
+    if (!isPurchaseMade) return
+    heroesData[hero].lvl += 1
+  }
+
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
   calculationHeroDamage(hero)
   calculationCostHero(hero)
@@ -321,12 +341,14 @@ function tick() {
   }
   milliSecondsRemaining--
 }
+
 function startCountdown() {
   time.classList.add('active')
   let seconds = 30
   milliSecondsRemaining = seconds * 60
   intervalHandle = setInterval(tick, 10)
 }
+
 function stopCountdown() {
   clearInterval(intervalHandle)
   time.classList.remove('active')
@@ -340,9 +362,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setMonsterHealth()
   checkStats()
   const savedStats = JSON.parse(localStorage.getItem('statsSaved'))
-  localStorage.getItem('statsSaved')
-    ? (statistics.gameStartTime = savedStats.gameStartTime)
-    : (statistics.gameStartTime = Date.parse(new Date()))
+  localStorage.getItem('statsSaved') ?
+    (statistics.gameStartTime = savedStats.gameStartTime) :
+    (statistics.gameStartTime = Date.parse(new Date()))
   console.log(statistics.gameStartTime)
 })
 
