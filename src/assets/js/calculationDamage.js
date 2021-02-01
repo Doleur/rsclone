@@ -2,16 +2,15 @@ import { gameStats, displayClickDamage, displayDPS, numberHeroes } from './const
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { heroesData } from './heroesData.js'
+import { sumNumbers } from './sumNumbers.js'
 
 export function calculationHeroDamage(numberHero) {
   if (!heroesData[numberHero].lvl) return
   calculationHeroCoefficient(numberHero)
   let convertBaseDPS = convertingNumbers(heroesData[numberHero].baseDPS)
   let numberBaseDPS = convertBaseDPS.number
-
   let resultHeroDamage = convertingNumbers(numberBaseDPS * (1.07 * heroesData[numberHero].lvl) * heroesData[numberHero].totalCoefficient)
   let resultPowerOfTen = convertBaseDPS.powerOfTen + resultHeroDamage.powerOfTen
-
 
   heroesData[numberHero].damage.number = Math.trunc(resultHeroDamage.number)
   heroesData[numberHero].damage.powerOfTen = resultPowerOfTen
@@ -19,10 +18,10 @@ export function calculationHeroDamage(numberHero) {
 }
 
 function calculationHeroCoefficient(numberHero) {
+  heroesData[numberHero].totalCoefficient = 1
   let heroAbilities = heroesData[numberHero].abilities
   for (let numberCoefficientAbility = 0; numberCoefficientAbility < heroAbilities.length; numberCoefficientAbility++) {
     if (heroAbilities[numberCoefficientAbility].isSelfDPS && heroAbilities[numberCoefficientAbility].isPurchased) {
-
       heroesData[numberHero].totalCoefficient *= heroAbilities[numberCoefficientAbility].coefficient + 1
     }
   }
@@ -57,39 +56,38 @@ function calculationTotalClickDamageCoefficient() {
 }
 
 export function calculationTotalDamage() {
-  let totalDPS = 0
-  let totalPowerOfTen = 0
+  let sumAllDPS = {
+    number: 0,
+    powerOfTen: 0
+  }
   let sumDPS
   for (let numberHero = 1; numberHero < numberHeroes; numberHero++) {
-    let numberHeroDamage = heroesData[numberHero].damage.number
-    let powerOfTenHeroDamage = heroesData[numberHero].damage.powerOfTen
-    let differencePowerOfTen = totalPowerOfTen - powerOfTenHeroDamage
-    if (differencePowerOfTen < 0) {
-      differencePowerOfTen *= -1
-      sumDPS = numberHeroDamage * 10 ** differencePowerOfTen + totalDPS
-    } else {
-      sumDPS = numberHeroDamage + totalDPS * 10 ** differencePowerOfTen
-    }
-    let convertSumDPS = convertingNumbers(sumDPS)
-    totalDPS = convertSumDPS.number
-    totalPowerOfTen = differencePowerOfTen + convertSumDPS.powerOfTen
+    sumDPS = sumNumbers(heroesData[numberHero].damage, sumAllDPS)
+    let convertSumDPS = convertingNumbers(sumDPS.number)
+    sumAllDPS.number = convertSumDPS.number
+    sumAllDPS.powerOfTen = sumDPS.powerOfTen + convertSumDPS.powerOfTen
   }
   let dpsTotalCoefficient = calculationTotalDPSCoefficient()
-  totalDPS = convertingNumbers(totalDPS + totalDPS * dpsTotalCoefficient)
+  let totalDPS = convertingNumbers(sumAllDPS.number * dpsTotalCoefficient)
   gameStats.DPS.number = Math.trunc(totalDPS.number)
-  gameStats.DPS.powerOfTen = totalPowerOfTen + totalDPS.powerOfTen
+  gameStats.DPS.powerOfTen = sumAllDPS.powerOfTen + totalDPS.powerOfTen
   gameStats.DPS.abbreviation = abbreviationBigNumber[`${gameStats.DPS.powerOfTen}`]
 
+
   let clickDamageCoefficient = calculationTotalClickDamageCoefficient()
-  let totalClickDamage = convertingNumbers(heroesData[0].damage.number + gameStats.DPS.number * clickDamageCoefficient)
-  let convertTotalClickDamage = totalClickDamage.number
-  let totalClickDamagePowerOfTen = totalClickDamage.powerOfTen + gameStats.DPS.powerOfTen
-  if (convertTotalClickDamage < 100 && totalClickDamagePowerOfTen > 0) {
-    convertTotalClickDamage *= 1000
-    totalClickDamagePowerOfTen -= 3
+  let bonusClickDamage = {
+    number: gameStats.DPS.number * clickDamageCoefficient,
+    powerOfTen: gameStats.DPS.powerOfTen
   }
-  gameStats.clickDamage.number = convertTotalClickDamage + 1
-  gameStats.clickDamage.powerOfTen = totalClickDamagePowerOfTen
+  let totalClickDamage = sumNumbers(heroesData[0].damage, bonusClickDamage)
+  let convertTotalClickDamage = convertingNumbers(totalClickDamage.number)
+  convertTotalClickDamage.powerOfTen += convertTotalClickDamage.powerOfTen
+  if (convertTotalClickDamage.number < 100 && convertTotalClickDamage.powerOfTen > 0) {
+    convertTotalClickDamage.number *= 1000
+    convertTotalClickDamage.powerOfTen -= 3
+  }
+  gameStats.clickDamage.number = Math.trunc(convertTotalClickDamage.number) + 1
+  gameStats.clickDamage.powerOfTen = convertTotalClickDamage.powerOfTen
   gameStats.clickDamage.abbreviation = abbreviationBigNumber[`${gameStats.clickDamage.powerOfTen}`]
 }
 
