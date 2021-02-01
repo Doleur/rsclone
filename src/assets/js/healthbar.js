@@ -37,6 +37,7 @@ import { bosses } from './boss.js'
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats } from './stats.js'
+import { initIsland } from './island.js'
 
 let isBoss = gameStats.isBoss
 let currHealth = { ...gameStats.health }
@@ -71,6 +72,7 @@ function innerValue() {
     )
     swiperSlideText.textContent = `Level ${e}`
   })
+  initIsland()
 }
 
 function setMonsterHealth() {
@@ -183,6 +185,10 @@ setAutoDamage()
 
 function checkIfDead() {
   if (currHealth.number <= 0) {
+    // if (gameStats.currLevel % 5 === 0) {
+    //   changeIsland()
+    //   saveIsland()
+    // }
     statistics.monstersKilled += 1
     let goldDropped = setGoldDropped()
     statistics.totalGold += +goldDropped.number
@@ -198,6 +204,8 @@ function checkIfDead() {
       gameStats.currMonster = 1
       gameStats.currLevel += 1
       newItemArrSlides()
+      initIsland()
+      // changeIsland()
     } else {
       gameStats.currMonster += 1
     }
@@ -291,6 +299,7 @@ swiperWrapper.addEventListener('click', e => {
   isLevel.classList.add('swiper-slide-active')
   setMonsterHealth()
   setCount()
+  initIsland()
 })
 
 function tick() {
