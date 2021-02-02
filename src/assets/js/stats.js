@@ -32,7 +32,7 @@ export function updateStats() {
   mostersKilledStats.innerText = statistics.monstersKilled;
   bossesKilledStats.innerText = statistics.bossesKilled;
   timeInGameStats.innerText = setTimeFigures();
-  // updateAchievements();
+  updateAchievements();
 }
 
 function getCurrentTime() {

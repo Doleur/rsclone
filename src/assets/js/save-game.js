@@ -1,6 +1,7 @@
 import { gameStats } from './constants.js'
 import { heroesData } from './heroesData.js'
 import { statistics } from './stats.js'
+import { achievementsArr } from './achievements.js'
 import { island } from './island.js'
 
 function setCount() {
@@ -21,9 +22,14 @@ function saveStats() {
   localStorage.setItem('statsSaved', serialSaveStats);
 }
 
+function saveAchievements() {
+  const serialSaveAchievements = JSON.stringify(achievementsArr);
+  localStorage.setItem('achievsSaved', serialSaveAchievements);
+}
+
 // function saveIsland() {
 //   const serialSaveIsland = JSON.stringify(island);
 //   localStorage.setItem('islandSaved', serialSaveIsland);
 // }
 
-export { setCount, setLevelHeros, saveStats }
+export { setCount, setLevelHeros, saveStats, saveAchievements }

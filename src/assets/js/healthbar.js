@@ -38,7 +38,7 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats, updateStats } from './stats.js'
 import { initIsland } from './island.js'
-import { generateAchievements, updateAchievements } from './achievements.js'
+import { generateAchievements, updateAchievements, checkAchievementsSaved } from './achievements.js'
 
 let isBoss = gameStats.isBoss
 let currHealth = { ...gameStats.health }
@@ -186,11 +186,11 @@ setAutoDamage()
 
 function checkIfDead() {
   if (currHealth.number <= 0) {
-    // if (gameStats.currLevel % 5 === 0) {
-    //   changeIsland()
-    //   saveIsland()
-    // }
-    statistics.monstersKilled += 1
+    if (gameStats.currLevel % 5 === 0) {
+      statistics.bossesKilled += 1
+    } else {
+      statistics.monstersKilled += 1
+    }
     let goldDropped = setGoldDropped()
     statistics.totalGold += +goldDropped.number
     console.log(goldDropped.number)
@@ -343,6 +343,7 @@ generateAchievements()
 document.addEventListener('DOMContentLoaded', () => {
   setMonsterHealth()
   checkStats()
+  checkAchievementsSaved()
   const savedStats = JSON.parse(localStorage.getItem('statsSaved'))
   localStorage.getItem('statsSaved')
     ? (statistics.gameStartTime = savedStats.gameStartTime)
