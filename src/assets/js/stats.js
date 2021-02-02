@@ -1,6 +1,6 @@
 import { gameStats, totalClicksStats, currClickDamageStats, totalClickDamageStats, currDPSDamageStats, totalDPSDamageStats, currGoldStats, totalGoldStats, mostersKilledStats, bossesKilledStats, timeInGameStats } from './constants.js';
 import { saveStats } from './save-game.js';
-import { renewAchievments } from './achievements.js';
+import { updateAchievements } from './achievements.js';
 
 export const statistics = {
   clicksMade: 0,
@@ -13,12 +13,12 @@ export const statistics = {
   monstersKilled: 0,
   bossesKilled: 0,
   timeInGame: 0,
-  gameStartTime: null
+  gameStartTime: Date.parse(new Date())
 };
 
 export let startTime;
 
-function updateStats() {
+export function updateStats() {
   totalClicksStats.innerText = statistics.clicksMade;
   statistics.currentClickDamage = gameStats.clickDamage.number;
   currClickDamageStats.innerText = statistics.currentClickDamage;
@@ -32,7 +32,7 @@ function updateStats() {
   mostersKilledStats.innerText = statistics.monstersKilled;
   bossesKilledStats.innerText = statistics.bossesKilled;
   timeInGameStats.innerText = setTimeFigures();
-  renewAchievments();
+  // updateAchievements();
 }
 
 function getCurrentTime() {

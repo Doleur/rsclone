@@ -36,8 +36,9 @@ import { monsters } from './monsterData.js'
 import { bosses } from './boss.js'
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
-import { statistics, checkStats } from './stats.js'
+import { statistics, checkStats, updateStats } from './stats.js'
 import { initIsland } from './island.js'
+import { generateAchievements, updateAchievements } from './achievements.js'
 
 let isBoss = gameStats.isBoss
 let currHealth = { ...gameStats.health }
@@ -246,6 +247,8 @@ hero.addEventListener('click', e => {
   setDamage(gameStats.clickDamage)
   createDamagePopup(e)
   removeDamagePopup()
+  updateStats()
+  updateAchievements()
 })
 
 shopWrapper.addEventListener('click', ({ target }) => {
@@ -335,6 +338,7 @@ function stopCountdown() {
 getCount()
 innerValue()
 shopGeneration()
+generateAchievements()
 
 document.addEventListener('DOMContentLoaded', () => {
   setMonsterHealth()
