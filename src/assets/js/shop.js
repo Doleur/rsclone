@@ -25,11 +25,21 @@ export function shopGeneration() {
     let arrAbilitiesElements = []
     let abilitiesHero = heroesData[hero].abilities
     for (let ability = 0; ability < abilitiesHero.length; ability++) {
+      let abilityContainer
       if (abilitiesHero[ability].isPurchased) {
-        arrAbilitiesElements.push(createTagElement('div', `icon_abilities_${countNumberIcon} hero_${hero}_ability_${ability} abilities_active`, '', ''))
+        abilityContainer = createTagElement('div', `icon_abilities_${countNumberIcon} hero_${hero}_ability_${ability} ability abilities_active`, '', '')
       } else {
-        arrAbilitiesElements.push(createTagElement('div', `icon_abilities_${countNumberIcon} hero_${hero}_ability_${ability} abilities_disabled`, '', ''))
+        abilityContainer = createTagElement('div', `icon_abilities_${countNumberIcon} hero_${hero}_ability_${ability} ability abilities_disabled`, '', '')
       }
+      createTagElement('div', `tooltip`, [
+        createTagElement('h2', `tooltip_name`, `${abilitiesHero[ability].name}`, ''),
+        createTagElement('h3', `tooltip_cost`, `Cost ${abilitiesHero[ability].abilityCost.number}${abilitiesHero[ability].abilityCost.abbreviation}`, ''),
+        createTagElement('p', `tooltip_requires`, `Requires hero level: ${abilitiesHero[ability].requiresLvl}`, ''),
+        createTagElement('p', `tooltip_effect`, `${abilitiesHero[ability].effect}`, ''),
+        createTagElement('p', `tooltip_description`, `${abilitiesHero[ability].description}`, '')
+      ], abilityContainer)
+
+      arrAbilitiesElements.push(abilityContainer)
       countNumberIcon++
     }
     if (hero === 9) { countNumberIcon += 2 }
@@ -78,7 +88,7 @@ export function toggleAbilityDisabled() {
   for (let numberHero = 0; numberHero < numberHeroes; numberHero++) {
     let abilitiesHero = heroesData[numberHero].abilities
     for (let numberAbility = 0; numberAbility < abilitiesHero.length; numberAbility++) {
-      if (abilitiesHero[numberAbility].isPurchased) return
+      if (abilitiesHero[numberAbility].isPurchased) continue
       const abilityButton = document.querySelector(`.hero_${numberHero}_ability_${numberAbility}`)
       let isEnoughGold = checkingSufficientGold(abilitiesHero[numberAbility].abilityCost)
       let currentHeroLvl = heroesData[numberHero].lvl
