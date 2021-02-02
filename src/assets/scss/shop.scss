@@ -89,6 +89,15 @@
 
 .disabled {
     opacity: 0.5;
+    .tooltip {
+        opacity: 0;
+    }
+    .ability:hover {
+        cursor: unset;
+        .tooltip {
+            opacity: 0;
+        }
+    }
     .buyButton {
         cursor: initial;
         &:hover {

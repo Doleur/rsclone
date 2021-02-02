@@ -1,0 +1,62 @@
+.tooltip {
+    visibility: hidden;
+    z-index: 5;
+    opacity: .40;
+    width: 30rem;
+    padding: 1rem 2rem;
+    background: rgb(0, 0, 0);
+    position: absolute;
+    top: -120%;
+    left: -25%;
+    border-radius: 9px;
+    letter-spacing: 0.1rem;
+    transform: translateY(9px);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
+}
+
+.ability:hover .tooltip {
+    visibility: visible;
+    opacity: 0.8;
+    transition: .3s linear;
+}
+
+.ability .tooltip {
+    top: 80%;
+}
+
+.ability .tooltip::after {
+    top: -18%;
+    left: 2%;
+    transform: rotate(180deg);
+}
+
+.tooltip_name {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.tooltip_cost {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: gold;
+}
+
+.tooltip_requires {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: red;
+}
+
+.tooltip_effect {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.tooltip_description {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #eb903b;
+}
