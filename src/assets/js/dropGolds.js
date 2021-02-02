@@ -27,7 +27,6 @@ async function dropGoldAnimation(goldDropped) {
 
 function setGoldDropped() {
   let dropGolds
-  let dropGoldsPowerOfTen
   let goldDroppedTotalCoefficient = calculationTotalGoldDroppedCoefficient()
   if (gameStats.currLevel > 75) {
     let coefficientPerLvl = convertingNumbers(Math.pow(1.025, gameStats.currLevel - 75))
@@ -47,7 +46,7 @@ function setGoldDropped() {
   gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
   return {
     number: dropGolds.number,
-    powerOfTen: dropGoldsPowerOfTen,
+    powerOfTen: dropGolds.powerOfTen,
     abbreviation: dropGoldAbbreviation
   }
 }

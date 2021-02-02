@@ -15,7 +15,7 @@ import {
   monstersProgressWrapper
 } from './constants.js'
 import { dropGoldAnimation, setGoldDropped } from './dropGolds.js'
-import { setCount, setLevelHeros } from './save-game.js'
+import { setCount, setLevelHeroes, setPurchasedAbilityHeroes } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { createSlider, newItemArrSlides, clickPrevButton } from './swiper.js'
@@ -39,6 +39,7 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats } from './stats.js'
 import { initIsland } from './island.js'
+import { sumNumbers } from './sumNumbers.js'
 
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
@@ -178,7 +179,12 @@ function setDamage(damage) {
 function setAutoDamage() {
   setInterval(() => {
     setDamage(gameStats.DPS)
-    statistics.totalDPS += gameStats.DPS.number
+
+    let sumDPS = sumNumbers(statistics.totalDPS, gameStats.DPS)
+    let convertSumDPS = convertingNumbers(sumDPS.number)
+    statistics.totalDPS.number = convertSumDPS.number + convertSumDPS.powerOfTen
+    statistics.totalDPS.powerOfTen = sumDPS.powerOfTen
+    statistics.totalDPS.abbreviation = abbreviationBigNumber[`${statistics.totalDPS.powerOfTen}`]
   }, 1000)
 }
 setAutoDamage()
@@ -191,8 +197,11 @@ function checkIfDead() {
     // }
     statistics.monstersKilled += 1
     let goldDropped = setGoldDropped()
-    statistics.totalGold += +goldDropped.number
-    console.log(goldDropped.number)
+    let sumGolds = sumNumbers(statistics.totalGold, goldDropped)
+    let convertSumGold = convertingNumbers(sumGolds.number)
+    statistics.totalGold.number = convertSumGold.number
+    statistics.totalGold.powerOfTen = sumGolds.powerOfTen + convertSumGold.powerOfTen
+    statistics.totalGold.abbreviation = abbreviationBigNumber[`${statistics.totalGold.powerOfTen}`]
     dropGoldAnimation(goldDropped)
     setCount()
     hero.innerHTML = `<div class="hero-img">
@@ -243,7 +252,13 @@ function removeDamagePopup() {
 
 hero.addEventListener('click', e => {
   statistics.clicksMade += 1
-  statistics.totalClicksDamage += gameStats.clickDamage.number
+
+  let sumClickDamage = sumNumbers(statistics.totalClicksDamage, gameStats.clickDamage)
+  let convertSumClickDamage = convertingNumbers(sumClickDamage.number)
+  statistics.totalClicksDamage.number = convertSumClickDamage.number
+  statistics.totalClicksDamage.powerOfTen = sumClickDamage.powerOfTen + convertSumClickDamage.powerOfTen
+  statistics.totalClicksDamage.abbreviation = abbreviationBigNumber[`${statistics.totalClicksDamage.powerOfTen}`]
+
   setDamage(gameStats.clickDamage)
   createDamagePopup(e)
   removeDamagePopup()
@@ -283,7 +298,8 @@ shopWrapper.addEventListener('click', ({ target }) => {
   updateShop(hero)
   calculationTotalDamage()
   displayDamage()
-  setLevelHeros()
+  setLevelHeroes()
+  setPurchasedAbilityHeroes()
 })
 
 function getCount() {
@@ -296,8 +312,12 @@ function getCount() {
     gameStats.health = returnSaveItems.health
     gameStats.arrLevel = returnSaveItems.arrLevel
     const returnSaveLvl = JSON.parse(localStorage.getItem('saveLvl'))
+    const returnPurchasedAbility = JSON.parse(localStorage.getItem('savePurchasedAbility'))
     heroesData.forEach((item, index) => {
       item.lvl = returnSaveLvl[index]
+      item.abilities.forEach((ability, index2) => {
+        ability.isPurchased = returnPurchasedAbility[index][index2]
+      })
     })
     for (let numberHero = 0; numberHero < numberHeroes; numberHero++) {
       calculationHeroDamage(numberHero)

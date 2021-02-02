@@ -8,6 +8,8 @@ import './assets/scss/shop.scss'
 import './assets/scss/stats.scss'
 import './assets/scss/sprite-abilities.scss'
 import './assets/scss/adaptive.scss'
+import './assets/scss/toolTip.scss'
+
 
 import './assets/js/swiper.js'
 import './assets/js/healthbar.js'
