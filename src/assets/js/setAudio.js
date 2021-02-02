@@ -34,7 +34,7 @@ const soundPlay = async url => {
   source.buffer = audioBuffer
   var gainNode = context.createGain()
   source.connect(gainNode)
-  gainNode.loop = true
+  source.loop = true
   gainNode.connect(context.destination)
   // source.connect(context.destination);
 
