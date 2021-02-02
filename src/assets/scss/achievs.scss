@@ -1,0 +1,46 @@
+.achievs_wrapper {
+  height: 60vh;
+  overflow: scroll;
+  .achievement {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgb(241, 220, 161);
+    border-radius: 0.7rem;
+    color: #ffffff;
+    text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+    .achievement_stars {
+      width: 50%;
+    }
+    .achievement_progressbar-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 25%;
+      height: 20px;
+      background-color: grey;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: rgb(255, 255, 255);
+      border: 1px black solid;
+      .achievement_progressbar-data {
+          position: absolute;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .progressbar {
+          width: 0%;
+          height: 100%;
+          background-color: green;
+          transition: 0.4s all ease-out;
+      }
+    }
+  }
+}
+
