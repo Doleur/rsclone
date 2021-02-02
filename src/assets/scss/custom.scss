@@ -1,7 +1,8 @@
 
 
-.nav-tabs {
-    font-size: x-large;
+.nav-tabs {    
+    font-size: 2rem;
+    text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
 }
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
