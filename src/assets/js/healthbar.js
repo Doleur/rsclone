@@ -401,21 +401,3 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 export { swiperWrapper }
-
-
-// web  audio api
-// window.AudioContext = window.AudioContext || window.webkitAudioContext
-// const audioPlay = async url => {
-//   const context = new AudioContext();
-//   const source = context.createBufferSource();
-//   const audioBuffer = await fetch(url)
-//     .then(res => res.arrayBuffer())
-//     .then(ArrayBuffer => context.decodeAudioData(ArrayBuffer));
-//     // res.catch(function(error) { console.error(error); });
-
-//   source.buffer = audioBuffer;
-//   source.connect(context.destination);
-//   source.start();
-// };
-
-// document.querySelector('.hero').onclick = () => audioPlay('assets/audio/hit_1.mp3');
