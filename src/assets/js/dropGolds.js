@@ -42,10 +42,10 @@ function setGoldDropped() {
   let sumGold = sumNumbers(gameStats.gold, dropGolds)
   let newNumberGolds = convertingNumbers(sumGold.number)
   newNumberGolds.powerOfTen += sumGold.powerOfTen
-  gameStats.gold.number = Math.trunc(newNumberGolds.number)
+  gameStats.gold.number = newNumberGolds.number
   gameStats.gold.powerOfTen = newNumberGolds.powerOfTen
   gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
-      // audioPlay('assets/audio/coin_1.mp3')
+    // audioPlay('assets/audio/coin_1.mp3')
 
   return {
     number: dropGolds.number,

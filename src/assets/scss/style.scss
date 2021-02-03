@@ -1,4 +1,7 @@
-$font-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+$font-shadow: rgb(71, 71, 71) 1px 1px 1px,
+rgb(71, 71, 71) -1px -1px 1px,
+rgb(71, 71, 71) -1px 1px 1px,
+rgb(71, 71, 71) 1px -1px 1px;
 * {
     box-sizing: border-box;
     user-select: none;
@@ -9,16 +12,16 @@ $font-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71
 }
 
 ::-webkit-scrollbar {
-  width: 0;
+    width: 0;
 }
 
 body {
-    background: linear-gradient(192deg,#b9efe6,#2694a2);
+    background: linear-gradient(192deg, #b9efe6, #2694a2);
     min-height: 100vh;
 }
 
 .green {
-  background: green;
+    background: green;
 }
 
 .logo {
@@ -49,6 +52,7 @@ body {
     background: linear-gradient(50deg, rgb(125, 79, 8), rgb(187, 122, 25));
     border-radius: 10px;
     border: 5px solid rgb(117, 73, 6);
+    overflow: scroll;
 }
 
 .level-wrapper {
@@ -61,8 +65,8 @@ body {
         width: 100%;
         height: 100%;
     }
-    &:hover{
-      transform: scale(1.2);
+    &:hover {
+        transform: scale(1.2);
     }
 }
 
@@ -110,32 +114,31 @@ body {
         }
     }
     .hero {
-      width: 50vh;
-      height: 50vh;
-      padding: 2rem;
-      display: flex;
-      background-image: url('../img/islands/1.png');
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
+        width: 50vh;
+        height: 50vh;
+        padding: 2rem;
+        display: flex;
+        background-image: url('../img/islands/1.png');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
         &-img {
-          width: 50%;
-          height: 45%;
-          margin: 10% auto;
-          text-align: center;
-         img {
-            max-height: 100%;
-            max-width: 100%;
-            animation: pulse 1s infinite;
-            transition: all 0.3s linear;
-        }
-        img:active {
-            height: 115%;
-            transition: all 0.3s linear;
+            width: 50%;
+            height: 45%;
+            margin: 10% auto;
+            text-align: center;
+            img {
+                max-height: 100%;
+                max-width: 100%;
+                animation: pulse 1s infinite;
+                transition: all 0.3s linear;
+            }
+            img:active {
+                height: 115%;
+                transition: all 0.3s linear;
+            }
         }
     }
-        }
-
     .monsters-progress-wrapper {
         display: flex;
         justify-content: center;
@@ -146,8 +149,8 @@ body {
         text-shadow: $font-shadow;
         visibility: visible;
     }
-    .monsters-progress-wrapper.disabled{
-      visibility: hidden;
+    .monsters-progress-wrapper.disabled {
+        visibility: hidden;
     }
 }
 
@@ -180,41 +183,40 @@ body {
 }
 
 .countdown span.time.active {
-  visibility: visible;
+    visibility: visible;
 }
 
 .countdown span.time {
-  visibility: hidden;
-  padding: 12px;
-  display: inline-block;
-  font-family: verdana;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 900;
-  color: #ff0000;
-  background: none;
-  border-radius: 10px;
+    visibility: hidden;
+    padding: 12px;
+    display: inline-block;
+    font-family: verdana;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 900;
+    color: #ff0000;
+    background: none;
+    border-radius: 10px;
 }
 
-footer{
-  padding: 1rem;
-  text-shadow: $font-shadow;
-  color: #fff;
-  font-size: 8px;
-  text-transform: uppercase;
-  .footer-link{
+footer {
+    padding: 1rem;
+    text-shadow: $font-shadow;
     color: #fff;
-    
-  }
-  .footer-logo{
-    width: 70px;
-  }
+    font-size: 8px;
+    text-transform: uppercase;
+    .footer-link {
+        color: #fff;
+    }
+    .footer-logo {
+        width: 70px;
+    }
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  min-height: calc(100vh - 126px);
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 126px);
 }
 
 @keyframes pulse {
