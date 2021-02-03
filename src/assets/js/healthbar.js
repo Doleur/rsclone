@@ -204,7 +204,6 @@ function checkIfDead() {
     }
     let goldDropped = setGoldDropped()
     statistics.monstersKilled += 1
-    let goldDropped = setGoldDropped()
     let sumGolds = sumNumbers(statistics.totalGold, goldDropped)
     let convertSumGold = convertingNumbers(sumGolds.number)
     statistics.totalGold.number = convertSumGold.number

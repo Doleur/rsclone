@@ -43,4 +43,4 @@ function saveAchievements() {
 //   localStorage.setItem('islandSaved', serialSaveIsland);
 // }
 
-export { setCount, setLevelHeros, saveStats, saveAchievements, setPurchasedAbilityHeroes }
+export { setCount, setLevelHeroes, saveStats, saveAchievements, setPurchasedAbilityHeroes }

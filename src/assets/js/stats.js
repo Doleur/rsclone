@@ -44,15 +44,22 @@ export let startTime;
 
 export function updateStats() {
   totalClicksStats.innerText = statistics.clicksMade
+
   statistics.currentClickDamage = gameStats.clickDamage
   currClickDamageStats.innerText = `${Math.trunc(statistics.currentClickDamage.number)}${statistics.currentClickDamage.abbreviation}`
+
   totalClickDamageStats.innerText = `${Math.trunc(statistics.totalClicksDamage.number)}${statistics.totalClicksDamage.abbreviation}`
+
   statistics.currentDPS = gameStats.DPS
   currDPSDamageStats.innerText = `${Math.trunc(statistics.currentDPS.number)}${statistics.currentDPS.abbreviation}`
+
   totalDPSDamageStats.innerText = `${Math.trunc(statistics.totalDPS.number)}${statistics.totalDPS.abbreviation}`
+
   statistics.currentGold = gameStats.gold
   currGoldStats.innerText = `${Math.trunc(statistics.currentGold.number)}${statistics.currentGold.abbreviation}`
+
   totalGoldStats.innerText = `${Math.trunc(statistics.totalGold.number)}${statistics.totalGold.abbreviation}`
+
   mostersKilledStats.innerText = statistics.monstersKilled
   bossesKilledStats.innerText = statistics.bossesKilled
   timeInGameStats.innerText = setTimeFigures()

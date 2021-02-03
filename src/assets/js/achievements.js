@@ -2,6 +2,7 @@ import createTagElement from './creatElement.js';
 import { gameStats, achievementsWrapper } from './constants.js';
 import { statistics } from './stats.js';
 import { saveAchievements } from './save-game.js';
+import { type } from 'jquery';
 
 export const achievementsArr = [{
     initWord: 'Achieve',
@@ -79,20 +80,27 @@ export function generateAchievements() {
       ),
     ], achievementTab);
 
-    createTagElement('div', `achievement_progressbar-wrapper`, [
-      createTagElement(
-        'div',
-        `achievement_progressbar-data`,
-        `${achievementsArr[x].currentValue} / ${achievementsArr[x].goalsArr[achievementsArr[x].goalIndex]}`,
-        ''
-      ),
-      createTagElement(
-        'div',
-        `progressbar`,
-        ``,
-        ''
-      ),
-    ], achievementTab);
+    let achievmentBar = null;
+    if (typeof(achievementsArr[x].currentValue) === 'object') {
+      achievmentBar = createTagElement('div', `achievement_progressbar-wrapper`, [
+        createTagElement(
+          'div',
+          `achievement_progressbar-data`,
+          `${Math.trunc(achievementsArr[x].currentValue.number)}${achievementsArr[x].currentValue.abbreviation} / ${achievementsArr[x].goalsArr[achievementsArr[x].goalIndex]}`,
+          ''
+        ),
+      ], achievementTab);
+    } else {
+      achievmentBar = createTagElement('div', `achievement_progressbar-wrapper`, [
+        createTagElement(
+          'div',
+          `achievement_progressbar-data`,
+          `${achievementsArr[x].currentValue} / ${achievementsArr[x].goalsArr[achievementsArr[x].goalIndex]}`,
+          ''
+        ),
+      ], achievementTab);
+    }
+    createTagElement('div', `progressbar`, ``, achievmentBar);
   }
 }
 
@@ -131,10 +139,17 @@ export function updateAchievements() {
 
     descr.innerText = `${achievementsArr[num].initWord} ${achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]} ${achievementsArr[num].goalName}.`;
 
-    progress.innerText = `${achievementsArr[num].currentValue} / ${achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]}`;
-    progressBar.style.width = `${
-      (achievementsArr[num].currentValue / achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]) * 100
-    }%`;
+    if (typeof(achievementsArr[num].currentValue) === 'object') {
+      progress.innerText = `${Math.trunc(achievementsArr[num].currentValue.number)}${achievementsArr[num].currentValue.abbreviation} / ${achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]}`;
+      progressBar.style.width = `${
+        (Math.trunc(achievementsArr[num].currentValue.number) / achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]) * 100
+      }%`;
+    } else {
+      progress.innerText = `${achievementsArr[num].currentValue} / ${achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]}`;
+      progressBar.style.width = `${
+        (achievementsArr[num].currentValue / achievementsArr[num].goalsArr[achievementsArr[num].goalIndex]) * 100
+      }%`;
+    }
   });
 }
 
