@@ -303,8 +303,8 @@ shopWrapper.addEventListener('click', ({ target }) => {
 })
 
 function getCount() {
-  if (localStorage.getItem('saveItems') !== null) {
-    const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
+  const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
+  if (returnSaveItems) {
     gameStats.gold = returnSaveItems.gold
     gameStats.DPS = returnSaveItems.DPS
     gameStats.clickDamage = returnSaveItems.clickDamage
@@ -313,12 +313,14 @@ function getCount() {
     gameStats.arrLevel = returnSaveItems.arrLevel
     const returnSaveLvl = JSON.parse(localStorage.getItem('saveLvl'))
     const returnPurchasedAbility = JSON.parse(localStorage.getItem('savePurchasedAbility'))
-    heroesData.forEach((item, index) => {
-      item.lvl = returnSaveLvl[index]
-      item.abilities.forEach((ability, index2) => {
-        ability.isPurchased = returnPurchasedAbility[index][index2]
+    if (returnSaveLvl) {
+      heroesData.forEach((item, index) => {
+        item.lvl = returnSaveLvl[index]
+        item.abilities.forEach((ability, index2) => {
+          ability.isPurchased = returnPurchasedAbility[index][index2]
+        })
       })
-    })
+    }
     for (let numberHero = 0; numberHero < numberHeroes; numberHero++) {
       calculationHeroDamage(numberHero)
       calculationCostHero(numberHero)
