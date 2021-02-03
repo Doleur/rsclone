@@ -76,5 +76,5 @@ audio.addEventListener('click', () => {
     </span>`
   }
 })
-export { audioPlay, soundPlay }
+export { audioPlay }
 //  api

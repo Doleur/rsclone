@@ -4,7 +4,6 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { sumNumbers } from './sumNumbers.js'
 import { heroesData } from './heroesData.js'
-// import {audioPlay} from './setAudio.js'
 
 const wrapperGolds = document.querySelector('.wrapper-gold')
 
@@ -45,7 +44,6 @@ function setGoldDropped() {
   gameStats.gold.number = newNumberGolds.number
   gameStats.gold.powerOfTen = newNumberGolds.powerOfTen
   gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
-    // audioPlay('assets/audio/coin_1.mp3')
 
   return {
     number: dropGolds.number,
