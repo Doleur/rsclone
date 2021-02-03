@@ -1,7 +1,7 @@
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     .swiper-slide{
         font-size: 1rem;
-    }    
+    }
     .count {
         font-size: 2rem;
     }
@@ -14,7 +14,19 @@
     }
 }
 
-@media (max-width: 767.98px) {    
+@media (max-width: 767.98px) {
+    .logo {
+      height: 50px;
+      }
+    .menu__icon {
+        display: block;
+    }
+    .custom{
+      display: none; // почему не применяется
+    }
+    .shop-container {
+      display: none;
+    }
     .field-play .hero {
         width: 40vh;
         height: 40vh;
@@ -27,14 +39,14 @@
 @media (max-width: 575.98px) {
     .swiper-slide{
         font-size: 1rem;
-    }    
-    .logo {
-    height: 50px;
     }
     .costom-item {
     width: 20px;
     }
     .shop_wrapper {
     height: 55vh;
+    }
+    .stats {
+      font-size: 1rem;
     }
 }
