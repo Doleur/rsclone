@@ -193,7 +193,7 @@ function checkIfDead() {
     }
     let goldDropped = setGoldDropped()
     statistics.totalGold += +goldDropped.number
-    console.log(goldDropped.number)
+    // console.log(goldDropped.number)
     dropGoldAnimation(goldDropped)
     setCount()
     hero.innerHTML = `<div class="hero-img">
