@@ -312,7 +312,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
   displayDamage()
   setLevelHeroes()
   setPurchasedAbilityHeroes()
-  audioPlay('assets/audio/level_up.mp3')
+  audioPlay('assets/audio/click_1.mp3')
 })
 
 function getCount() {
@@ -358,14 +358,15 @@ swiperWrapper.addEventListener('click', e => {
 })
 
 function tick() {
-  let min = Math.floor(milliSecondsRemaining / 60)
-  let ms = milliSecondsRemaining - min * 60
+  let min = Math.floor(milliSecondsRemaining / (60 * 100))
+  let ss = Math.floor((milliSecondsRemaining - min * 60 * 100) / 100);
+  let ms = milliSecondsRemaining - Math.floor(milliSecondsRemaining / 100) * 100;
 
   if (ms < 10) {
     ms = '0' + ms
   }
 
-  time.innerHTML = `${min}:${ms}`
+  time.innerHTML = `${ss}:${ms}`
 
   if (milliSecondsRemaining === 0) {
     stopCountdown()
@@ -380,7 +381,7 @@ function tick() {
 function startCountdown() {
   time.classList.add('active')
   let seconds = 30
-  milliSecondsRemaining = seconds * 60
+  milliSecondsRemaining = seconds * 100
   intervalHandle = setInterval(tick, 10)
 }
 
