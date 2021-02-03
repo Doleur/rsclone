@@ -49,11 +49,11 @@ export function shopGeneration() {
 
 
     createTagElement('div', `hero_info`, [
-      createTagElement('div', `hero_name hero${hero}`, `${heroesData[hero].name}`, ''),
+      createTagElement('div', `hero_name hero${hero} text_theme`, `${heroesData[hero].name}`, ''),
       createTagElement('div', `hero_stats`, [
-        createTagElement('span', `hero_stats__damage hero${hero}`, `${heroesData[hero].damage.number}${heroesData[hero].damage.abbreviation}`, ''),
+        createTagElement('span', `hero_stats__damage hero${hero} text_theme`, `${heroesData[hero].damage.number}${heroesData[hero].damage.abbreviation}`, ''),
         createTagElement('div', `abilities_wrapper`, arrAbilitiesElements, ''),
-        createTagElement('span', `hero_stats__lvl hero${hero}`, `lvl ${heroesData[hero].lvl}`, '')
+        createTagElement('span', `hero_stats__lvl hero${hero} text_theme`, `lvl ${heroesData[hero].lvl}`, '')
       ], '')
     ], shopHero)
 
