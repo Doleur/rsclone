@@ -86,7 +86,7 @@ function setMonsterHealth() {
                       <img src="${
                         bosses[gameStats.currMonster].img
                       }" alt="${
-                        bosses[gameStats.currMonster].img
+                        bosses[gameStats.currMonster].name
                       }"></img>
                       </div>`
     gameStats.currMonster = 10
@@ -94,13 +94,14 @@ function setMonsterHealth() {
     startCountdown()
   } else {
     isBoss = 0.1
+    randomMonster(monsters)
     stopCountdown()
     monstersProgressWrapper.classList.remove('disabled')
     hero.innerHTML = `<div class="hero-img">
                   <img src="${
                     monsters[gameStats.currMonster - 1].img
                   }" alt="${
-                    monsters[gameStats.currMonster].img
+                    monsters[gameStats.currMonster].name
                   }"></img>
                   </div>`
   }
@@ -214,7 +215,7 @@ function checkIfDead() {
                       <img src="${
                         monsters[gameStats.currMonster].img
                       }" alt="${
-                        monsters[gameStats.currMonster].img
+                        monsters[gameStats.currMonster].name
                       }"></img>
                       </div>`
     audioPlay('assets/audio/coin_1.mp3')
@@ -312,7 +313,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
   displayDamage()
   setLevelHeroes()
   setPurchasedAbilityHeroes()
-  audioPlay('assets/audio/level_up.mp3')
+  audioPlay('assets/audio/click_1.mp3')
 })
 
 function getCount() {
@@ -358,14 +359,15 @@ swiperWrapper.addEventListener('click', e => {
 })
 
 function tick() {
-  let min = Math.floor(milliSecondsRemaining / 60)
-  let ms = milliSecondsRemaining - min * 60
+  let min = Math.floor(milliSecondsRemaining / (60 * 100))
+  let ss = Math.floor((milliSecondsRemaining - min * 60 * 100) / 100);
+  let ms = milliSecondsRemaining - Math.floor(milliSecondsRemaining / 100) * 100;
 
   if (ms < 10) {
     ms = '0' + ms
   }
 
-  time.innerHTML = `${min}:${ms}`
+  time.innerHTML = `${ss}:${ms}`
 
   if (milliSecondsRemaining === 0) {
     stopCountdown()
@@ -380,7 +382,7 @@ function tick() {
 function startCountdown() {
   time.classList.add('active')
   let seconds = 30
-  milliSecondsRemaining = seconds * 60
+  milliSecondsRemaining = seconds * 100
   intervalHandle = setInterval(tick, 10)
 }
 
