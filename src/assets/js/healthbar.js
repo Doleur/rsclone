@@ -40,6 +40,8 @@ import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats } from './stats.js'
 import { initIsland } from './island.js'
 import { sumNumbers } from './sumNumbers.js'
+import {audioPlay} from './setAudio.js'
+
 
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
@@ -83,7 +85,9 @@ function setMonsterHealth() {
     hero.innerHTML = `<div class="hero-img">
                       <img src="${
                         bosses[gameStats.currMonster].img
-                      }" alt=""></img>
+                      }" alt="${
+                        bosses[gameStats.currMonster].img
+                      }"></img>
                       </div>`
     gameStats.currMonster = 10
     monstersProgressWrapper.classList.add('disabled')
@@ -95,7 +99,9 @@ function setMonsterHealth() {
     hero.innerHTML = `<div class="hero-img">
                   <img src="${
                     monsters[gameStats.currMonster - 1].img
-                  }" alt=""></img>
+                  }" alt="${
+                    monsters[gameStats.currMonster].img
+                  }"></img>
                   </div>`
   }
   if (gameStats.currLevel < 141) {
@@ -207,8 +213,11 @@ function checkIfDead() {
     hero.innerHTML = `<div class="hero-img">
                       <img src="${
                         monsters[gameStats.currMonster].img
-                      }" alt=""></img>
+                      }" alt="${
+                        monsters[gameStats.currMonster].img
+                      }"></img>
                       </div>`
+  audioPlay('assets/audio/coin_1.mp3')
     if (gameStats.currMonster === monstersPerLevel) {
       gameStats.currMonster = 1
       gameStats.currLevel += 1
@@ -217,6 +226,7 @@ function checkIfDead() {
         // changeIsland()
     } else {
       gameStats.currMonster += 1
+      audioPlay('assets/audio/angry-potato-die.mp3')
     }
     setMonsterHealth()
     countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
@@ -262,6 +272,7 @@ hero.addEventListener('click', e => {
   setDamage(gameStats.clickDamage)
   createDamagePopup(e)
   removeDamagePopup()
+  audioPlay('assets/audio/hit_1.mp3')
 })
 
 shopWrapper.addEventListener('click', ({ target }) => {
@@ -300,6 +311,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
   displayDamage()
   setLevelHeroes()
   setPurchasedAbilityHeroes()
+  audioPlay('assets/audio/level_up.mp3')
 })
 
 function getCount() {

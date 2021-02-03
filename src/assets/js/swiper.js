@@ -1,4 +1,6 @@
 import { gameStats } from './constants.js'
+import {audioPlay} from './setAudio.js'
+
 
 let swiper
 
@@ -32,6 +34,7 @@ function newItemArrSlides() {
   if (!isCurrLevel) {
     gameStats.arrLevel.push(gameStats.currLevel)
     newLevelSlide()
+    audioPlay('assets/audio/level_up_ding.mp3')
   }
   setTimeout(clickNextButton, 50)
 }
@@ -39,11 +42,13 @@ function newItemArrSlides() {
 function clickNextButton() {
   const buttonNext = document.querySelector('.swiper-button-next')
   buttonNext.click()
+  audioPlay('assets/audio/click_1.mp3')
 }
 
 function clickPrevButton() {
   const buttonPrev = document.querySelector('.swiper-button-prev')
   buttonPrev.click()
+  audioPlay('assets/audio/click_1.mp3')
 }
 
 export { createSlider, newLevelSlide, newItemArrSlides, clickPrevButton }
