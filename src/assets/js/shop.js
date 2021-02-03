@@ -18,7 +18,7 @@ export function shopGeneration() {
       createTagElement('div', `buyButton__header`, 'LVL UP', ''),
       createTagElement('div', `wrapper-buyButton__cost`, [
         createTagElement('img', `buyButton__imgGold`, '', '', ['src', `assets/img/Gold.png`]),
-        createTagElement('div', `buyButton__cost hero${hero}`, `${heroesData[hero].cost.number}${heroesData[hero].cost.abbreviation}`, '')
+        createTagElement('div', `buyButton__cost hero${hero}`, `${Math.trunc(heroesData[hero].cost.number)}${heroesData[hero].cost.abbreviation}`, '')
       ], '')
     ], shopHero)
 
@@ -51,7 +51,7 @@ export function shopGeneration() {
     createTagElement('div', `hero_info`, [
       createTagElement('div', `hero_name hero${hero} text_theme`, `${heroesData[hero].name}`, ''),
       createTagElement('div', `hero_stats`, [
-        createTagElement('span', `hero_stats__damage hero${hero} text_theme`, `${heroesData[hero].damage.number}${heroesData[hero].damage.abbreviation}`, ''),
+        createTagElement('span', `hero_stats__damage hero${hero} text_theme`, `${Math.trunc(heroesData[hero].damage.number)}${heroesData[hero].damage.abbreviation}`, ''),
         createTagElement('div', `abilities_wrapper`, arrAbilitiesElements, ''),
         createTagElement('span', `hero_stats__lvl hero${hero} text_theme`, `lvl ${heroesData[hero].lvl}`, '')
       ], '')
@@ -74,8 +74,8 @@ export function updateShop(numberHero) {
   const heroLvl = document.querySelector(`.hero_stats__lvl.hero${numberHero}`)
   const nextHero = document.querySelector(`.shop_hero.hero${+numberHero + 1}`)
 
-  costHero.innerHTML = `${heroesData[numberHero].cost.number}${heroesData[numberHero].cost.abbreviation}`
-  heroDamage.innerHTML = `${heroesData[numberHero].damage.number}${heroesData[numberHero].damage.abbreviation}`
+  costHero.innerHTML = `${Math.trunc(heroesData[numberHero].cost.number)}${heroesData[numberHero].cost.abbreviation}`
+  heroDamage.innerHTML = `${Math.trunc(heroesData[numberHero].damage.number)}${heroesData[numberHero].damage.abbreviation}`
   heroLvl.innerHTML = 'lvl ' + heroesData[numberHero].lvl
   if (nextHero) {
     nextHero.classList.remove('disabled')
@@ -135,10 +135,10 @@ export function buy(numberHero, numberAbility = -1) {
   let newGoldsNumber = convertingNumbers(gameStats.gold.number * (10 ** differencePowerOfTen) - purchaseCost.number)
   gameStats.gold.powerOfTen = purchaseCost.powerOfTen + newGoldsNumber.powerOfTen
   if (newGoldsNumber.number < 100 && gameStats.gold.powerOfTen) {
-    gameStats.gold.number = Math.trunc(newGoldsNumber.number) * 1000
+    gameStats.gold.number = newGoldsNumber.number * 1000
     gameStats.gold.powerOfTen -= 3
   } else {
-    gameStats.gold.number = Math.trunc(newGoldsNumber.number)
+    gameStats.gold.number = newGoldsNumber.number
   }
   gameStats.gold.abbreviation = abbreviationBigNumber[`${gameStats.gold.powerOfTen}`]
   return true

@@ -41,7 +41,7 @@ import { statistics, checkStats, updateStats } from './stats.js'
 import { initIsland } from './island.js'
 import { generateAchievements, updateAchievements, checkAchievementsSaved } from './achievements.js'
 import { sumNumbers } from './sumNumbers.js'
-import {audioPlay} from './setAudio.js'
+import { audioPlay } from './setAudio.js'
 
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
@@ -49,9 +49,9 @@ let milliSecondsRemaining
 let intervalHandle
 
 function innerValue() {
-  countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
-  currentHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
-  totalHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
+  countInput.textContent = `${Math.trunc(gameStats.gold.number)}${gameStats.gold.abbreviation}`
+  currentHealthNumOnPage.innerText = `${Math.trunc(gameStats.health.number)}${gameStats.health.abbreviation}`
+  totalHealthNumOnPage.innerText = `${Math.trunc(gameStats.health.number)}${gameStats.health.abbreviation}`
   currentMonsterNumOnPage.innerText = gameStats.currMonster
   currentLevelNumOnPage.innerText = gameStats.currLevel
   gameStats.arrLevel.forEach(e => {
@@ -112,7 +112,7 @@ function setMonsterHealth() {
         (isBoss * 10)
       )
     )
-    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.number = newHealth.number
     gameStats.health.powerOfTen = newHealth.powerOfTen
     gameStats.health.abbreviation =
       abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
@@ -125,7 +125,7 @@ function setMonsterHealth() {
         (isBoss * 10)
       )
     )
-    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.number = newHealth.number
     gameStats.health.powerOfTen = newHealth.powerOfTen
     gameStats.health.abbreviation =
       abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
@@ -141,7 +141,7 @@ function setMonsterHealth() {
         (isBoss * 10)
       )
     )
-    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.number = newHealth.number
     gameStats.health.powerOfTen = newHealth.powerOfTen
     gameStats.health.abbreviation =
       abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
@@ -154,7 +154,7 @@ function setMonsterHealth() {
         (gameStats.currLevel - 1) * 10
       )
     )
-    gameStats.health.number = Math.trunc(newHealth.number)
+    gameStats.health.number = newHealth.number
     gameStats.health.powerOfTen = newHealth.powerOfTen
     gameStats.health.abbreviation =
       abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
@@ -172,13 +172,12 @@ function setDamage(damage) {
   currHealth.abbreviation = abbreviationBigNumber[`${currHealth.powerOfTen}`]
   checkIfDead()
   currentLevelNumOnPage.innerText = gameStats.currLevel
-  healthBar.style.width = `${
-    (currHealth.number / gameStats.health.number) * 100
-  }%`
+  let remainingHealth = (currHealth.number / (gameStats.health.number * 10 ** (gameStats.health.powerOfTen - currHealth.powerOfTen))) * 100
+  healthBar.style.width = `${remainingHealth}%`
   currentHealthNumOnPage.innerText = `${Math.trunc(currHealth.number)}${
     currHealth.abbreviation
   }`
-  totalHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
+  totalHealthNumOnPage.innerText = `${Math.trunc(gameStats.health.number)}${gameStats.health.abbreviation}`
   currentMonsterNumOnPage.innerText = gameStats.currMonster
 }
 
@@ -218,7 +217,7 @@ function checkIfDead() {
                         monsters[gameStats.currMonster].img
                       }"></img>
                       </div>`
-  audioPlay('assets/audio/coin_1.mp3')
+    audioPlay('assets/audio/coin_1.mp3')
     if (gameStats.currMonster === monstersPerLevel) {
       gameStats.currMonster = 1
       gameStats.currLevel += 1
@@ -229,7 +228,7 @@ function checkIfDead() {
       audioPlay('assets/audio/angry-potato-die.mp3')
     }
     setMonsterHealth()
-    countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
+    countInput.textContent = `${Math.trunc(gameStats.gold.number)}${gameStats.gold.abbreviation}`
     toggleBuyButtonDisabled()
     toggleAbilityDisabled()
   }
@@ -249,7 +248,7 @@ function createDamagePopup() {
     damagePopup
   )
   damagePopupNumOnPage.innerText =
-    '-' + gameStats.clickDamage.number + gameStats.clickDamage.abbreviation
+    '-' + Math.trunc(gameStats.clickDamage.number) + gameStats.clickDamage.abbreviation
   wrapperDmgPopup.append(damagePopup)
 }
 
@@ -305,7 +304,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
     heroesData[hero].lvl += 1
   }
 
-  countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
+  countInput.textContent = `${Math.trunc(gameStats.gold.number)}${gameStats.gold.abbreviation}`
   calculationHeroDamage(hero)
   calculationCostHero(hero)
   updateShop(hero)
