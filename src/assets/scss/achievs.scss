@@ -1,0 +1,87 @@
+.achievs_wrapper {
+  height: 60vh;
+  overflow: scroll;
+  .achievement {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgb(241, 220, 161);
+    border-radius: 0.7rem;
+    color: #ffffff;
+    text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+    .achievement_descr {
+      width: 25%;
+    }
+    .achievement_stars {
+      width: 50%;
+    }
+    .achievement_progressbar-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 25%;
+      height: 20px;
+      background-color: grey;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: rgb(255, 255, 255);
+      border: 1px black solid;
+      .achievement_progressbar-data {
+          position: absolute;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .progressbar {
+          width: 0%;
+          height: 100%;
+          background-color: green;
+          transition: 0.4s all ease-out;
+      }
+    }
+  }
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.star {
+  margin: 1px;
+  display: inline-block;
+  vertical-align: center;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(to bottom, rgb(108, 106, 106) 0%, rgb(93, 92, 92) 100%);
+  position: relative;
+  -webkit-clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+  clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    background: linear-gradient(to bottom, rgb(171, 170, 170) 0%, rgb(152, 151, 150) 100%);
+    z-index: 1;
+    -webkit-clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+    clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+  }
+}
+
+.star_active {
+  background: linear-gradient(to bottom, rgba(224, 194, 75, 1) 0%, rgba(207, 125, 0, 1) 100%);
+  &:before {
+    background: linear-gradient(to bottom, rgba(243, 212, 85, 1) 0%, rgba(238, 164, 0, 1) 100%);
+  }
+}
+

@@ -6,11 +6,13 @@ import './assets/scss/tab.scss'
 import './assets/scss/gold.scss'
 import './assets/scss/shop.scss'
 import './assets/scss/stats.scss'
+import './assets/scss/achievs.scss'
 import './assets/scss/sprite-abilities.scss'
 import './assets/scss/burger-menu.scss'
 import './assets/scss/toolTip.scss'
 import './assets/scss/adaptive.scss' // always after!!!
 
+import './assets/js/achievements.js'
 import './assets/js/swiper.js'
 import './assets/js/healthbar.js'
 import './assets/js/save-game.js'

@@ -1,5 +1,6 @@
 import { gameStats, totalClicksStats, currClickDamageStats, totalClickDamageStats, currDPSDamageStats, totalDPSDamageStats, currGoldStats, totalGoldStats, mostersKilledStats, bossesKilledStats, timeInGameStats } from './constants.js';
 import { saveStats } from './save-game.js';
+import { updateAchievements } from './achievements.js';
 
 export const statistics = {
   clicksMade: 0,
@@ -36,25 +37,33 @@ export const statistics = {
   monstersKilled: 0,
   bossesKilled: 0,
   timeInGame: 0,
-  gameStartTime: null
+  gameStartTime: Date.parse(new Date())
 };
 
 export let startTime;
 
-function updateStats() {
+export function updateStats() {
   totalClicksStats.innerText = statistics.clicksMade
+
   statistics.currentClickDamage = gameStats.clickDamage
   currClickDamageStats.innerText = `${Math.trunc(statistics.currentClickDamage.number)}${statistics.currentClickDamage.abbreviation}`
+
   totalClickDamageStats.innerText = `${Math.trunc(statistics.totalClicksDamage.number)}${statistics.totalClicksDamage.abbreviation}`
+
   statistics.currentDPS = gameStats.DPS
   currDPSDamageStats.innerText = `${Math.trunc(statistics.currentDPS.number)}${statistics.currentDPS.abbreviation}`
+
   totalDPSDamageStats.innerText = `${Math.trunc(statistics.totalDPS.number)}${statistics.totalDPS.abbreviation}`
+
   statistics.currentGold = gameStats.gold
   currGoldStats.innerText = `${Math.trunc(statistics.currentGold.number)}${statistics.currentGold.abbreviation}`
+
   totalGoldStats.innerText = `${Math.trunc(statistics.totalGold.number)}${statistics.totalGold.abbreviation}`
+
   mostersKilledStats.innerText = statistics.monstersKilled
   bossesKilledStats.innerText = statistics.bossesKilled
   timeInGameStats.innerText = setTimeFigures()
+  updateAchievements()
 }
 
 function getCurrentTime() {

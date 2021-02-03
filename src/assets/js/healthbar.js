@@ -37,11 +37,11 @@ import { monsters } from './monsterData.js'
 import { bosses } from './boss.js'
 import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
-import { statistics, checkStats } from './stats.js'
+import { statistics, checkStats, updateStats } from './stats.js'
 import { initIsland } from './island.js'
+import { generateAchievements, updateAchievements, checkAchievementsSaved } from './achievements.js'
 import { sumNumbers } from './sumNumbers.js'
 import {audioPlay} from './setAudio.js'
-
 
 let isBoss = gameStats.isBoss
 let currHealth = {...gameStats.health }
@@ -197,12 +197,13 @@ setAutoDamage()
 
 function checkIfDead() {
   if (currHealth.number <= 0) {
-    // if (gameStats.currLevel % 5 === 0) {
-    //   changeIsland()
-    //   saveIsland()
-    // }
-    statistics.monstersKilled += 1
+    if (gameStats.currLevel % 5 === 0) {
+      statistics.bossesKilled += 1
+    } else {
+      statistics.monstersKilled += 1
+    }
     let goldDropped = setGoldDropped()
+    statistics.monstersKilled += 1
     let sumGolds = sumNumbers(statistics.totalGold, goldDropped)
     let convertSumGold = convertingNumbers(sumGolds.number)
     statistics.totalGold.number = convertSumGold.number
@@ -223,7 +224,6 @@ function checkIfDead() {
       gameStats.currLevel += 1
       newItemArrSlides()
       initIsland()
-        // changeIsland()
     } else {
       gameStats.currMonster += 1
       audioPlay('assets/audio/angry-potato-die.mp3')
@@ -272,6 +272,8 @@ hero.addEventListener('click', e => {
   setDamage(gameStats.clickDamage)
   createDamagePopup(e)
   removeDamagePopup()
+  updateStats()
+  updateAchievements()
   audioPlay('assets/audio/hit_1.mp3')
 })
 
@@ -391,15 +393,16 @@ function stopCountdown() {
 getCount()
 innerValue()
 shopGeneration()
+generateAchievements()
 
 document.addEventListener('DOMContentLoaded', () => {
   setMonsterHealth()
   checkStats()
+  checkAchievementsSaved()
   const savedStats = JSON.parse(localStorage.getItem('statsSaved'))
   localStorage.getItem('statsSaved') ?
     (statistics.gameStartTime = savedStats.gameStartTime) :
     (statistics.gameStartTime = Date.parse(new Date()))
-  console.log(statistics.gameStartTime)
 })
 
 export { swiperWrapper }
