@@ -76,6 +76,5 @@ audio.addEventListener('click', () => {
     </span>`
   }
 })
-soundPlay('../audio/arctic_sunrise.mp3')
 export { audioPlay, soundPlay }
 //  api

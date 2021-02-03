@@ -86,7 +86,7 @@ function setMonsterHealth() {
                       <img src="${
                         bosses[gameStats.currMonster].img
                       }" alt="${
-                        bosses[gameStats.currMonster].img
+                        bosses[gameStats.currMonster].name
                       }"></img>
                       </div>`
     gameStats.currMonster = 10
@@ -100,7 +100,7 @@ function setMonsterHealth() {
                   <img src="${
                     monsters[gameStats.currMonster - 1].img
                   }" alt="${
-                    monsters[gameStats.currMonster].img
+                    monsters[gameStats.currMonster].name
                   }"></img>
                   </div>`
   }
@@ -214,7 +214,7 @@ function checkIfDead() {
                       <img src="${
                         monsters[gameStats.currMonster].img
                       }" alt="${
-                        monsters[gameStats.currMonster].img
+                        monsters[gameStats.currMonster].name
                       }"></img>
                       </div>`
     audioPlay('assets/audio/coin_1.mp3')
