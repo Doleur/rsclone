@@ -15,16 +15,17 @@ import {
   monstersProgressWrapper
 } from './constants.js'
 import { dropGoldAnimation, setGoldDropped } from './dropGolds.js'
-import { setCount, setLevelHeros } from './save-game.js'
+import { setCount, setLevelHeroes, setPurchasedAbilityHeroes } from './save-game.js'
 import createTagElement from './creatElement.js'
 import { randomMonster } from './random.js'
 import { createSlider, newItemArrSlides, clickPrevButton } from './swiper.js'
 import {
   shopGeneration,
   updateShop,
-  buyHero,
-  toggleBuyButtonDisabled
-} from './shopGeneration.js'
+  buy,
+  toggleBuyButtonDisabled,
+  toggleAbilityDisabled
+} from './shop.js'
 import { heroesData } from './heroesData.js'
 import {
   calculationHeroDamage,
@@ -39,16 +40,18 @@ import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { statistics, checkStats, updateStats } from './stats.js'
 import { initIsland } from './island.js'
 import { generateAchievements, updateAchievements, checkAchievementsSaved } from './achievements.js'
+import { sumNumbers } from './sumNumbers.js'
+import {audioPlay} from './setAudio.js'
 
 let isBoss = gameStats.isBoss
-let currHealth = { ...gameStats.health }
+let currHealth = {...gameStats.health }
 let milliSecondsRemaining
 let intervalHandle
 
 function innerValue() {
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
-  currentHealthNumOnPage.innerText = gameStats.health.number
-  totalHealthNumOnPage.innerText = gameStats.health.number
+  currentHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
+  totalHealthNumOnPage.innerText = `${gameStats.health.number}${gameStats.health.abbreviation}`
   currentMonsterNumOnPage.innerText = gameStats.currMonster
   currentLevelNumOnPage.innerText = gameStats.currLevel
   gameStats.arrLevel.forEach(e => {
@@ -56,8 +59,7 @@ function innerValue() {
       'div',
       'swiper-slide',
       '',
-      swiperWrapper,
-      ['level', e]
+      swiperWrapper, ['level', e]
     )
     const swiperSlideContainer = createTagElement(
       'div',
@@ -83,7 +85,9 @@ function setMonsterHealth() {
     hero.innerHTML = `<div class="hero-img">
                       <img src="${
                         bosses[gameStats.currMonster].img
-                      }" alt=""></img>
+                      }" alt="${
+                        bosses[gameStats.currMonster].img
+                      }"></img>
                       </div>`
     gameStats.currMonster = 10
     monstersProgressWrapper.classList.add('disabled')
@@ -95,15 +99,17 @@ function setMonsterHealth() {
     hero.innerHTML = `<div class="hero-img">
                   <img src="${
                     monsters[gameStats.currMonster - 1].img
-                  }" alt=""></img>
+                  }" alt="${
+                    monsters[gameStats.currMonster].img
+                  }"></img>
                   </div>`
   }
   if (gameStats.currLevel < 141) {
     let newHealth = convertingNumbers(
       Math.ceil(
         10 *
-          (gameStats.currLevel - 1 + Math.pow(1.55, gameStats.currLevel - 1)) *
-          (isBoss * 10)
+        (gameStats.currLevel - 1 + Math.pow(1.55, gameStats.currLevel - 1)) *
+        (isBoss * 10)
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -114,9 +120,9 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         10 *
-          (139 +
-            Math.pow(1.55, 139) * Math.pow(1.145, gameStats.currLevel - 140)) *
-          (isBoss * 10)
+        (139 +
+          Math.pow(1.55, 139) * Math.pow(1.145, gameStats.currLevel - 140)) *
+        (isBoss * 10)
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -127,12 +133,12 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         10 *
-          (139 +
-            Math.pow(1.55, 139) *
-              Math.pow(1.145, 360) *
-              Math.PI *
-              (1.145 + 0.001 * Math.floor((501 - 1) / 500))) *
-          (isBoss * 10)
+        (139 +
+          Math.pow(1.55, 139) *
+          Math.pow(1.145, 360) *
+          Math.PI *
+          (1.145 + 0.001 * Math.floor((501 - 1) / 500))) *
+        (isBoss * 10)
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -143,9 +149,9 @@ function setMonsterHealth() {
     let newHealth = convertingNumbers(
       Math.ceil(
         Math.pow(1.545, gameStats.currLevel - 200001) *
-          1.24 *
-          Math.pow(10, 25409) +
-          (gameStats.currLevel - 1) * 10
+        1.24 *
+        Math.pow(10, 25409) +
+        (gameStats.currLevel - 1) * 10
       )
     )
     gameStats.health.number = Math.trunc(newHealth.number)
@@ -153,7 +159,7 @@ function setMonsterHealth() {
     gameStats.health.abbreviation =
       abbreviationBigNumber[`${gameStats.health.powerOfTen}`]
   }
-  currHealth = { ...gameStats.health }
+  currHealth = {...gameStats.health }
 }
 
 function setDamage(damage) {
@@ -179,7 +185,12 @@ function setDamage(damage) {
 function setAutoDamage() {
   setInterval(() => {
     setDamage(gameStats.DPS)
-    statistics.totalDPS += gameStats.DPS.number
+
+    let sumDPS = sumNumbers(statistics.totalDPS, gameStats.DPS)
+    let convertSumDPS = convertingNumbers(sumDPS.number)
+    statistics.totalDPS.number = convertSumDPS.number + convertSumDPS.powerOfTen
+    statistics.totalDPS.powerOfTen = sumDPS.powerOfTen
+    statistics.totalDPS.abbreviation = abbreviationBigNumber[`${statistics.totalDPS.powerOfTen}`]
   }, 1000)
 }
 setAutoDamage()
@@ -192,27 +203,36 @@ function checkIfDead() {
       statistics.monstersKilled += 1
     }
     let goldDropped = setGoldDropped()
-    statistics.totalGold += +goldDropped.number
-    // console.log(goldDropped.number)
+    statistics.monstersKilled += 1
+    let goldDropped = setGoldDropped()
+    let sumGolds = sumNumbers(statistics.totalGold, goldDropped)
+    let convertSumGold = convertingNumbers(sumGolds.number)
+    statistics.totalGold.number = convertSumGold.number
+    statistics.totalGold.powerOfTen = sumGolds.powerOfTen + convertSumGold.powerOfTen
+    statistics.totalGold.abbreviation = abbreviationBigNumber[`${statistics.totalGold.powerOfTen}`]
     dropGoldAnimation(goldDropped)
     setCount()
     hero.innerHTML = `<div class="hero-img">
                       <img src="${
                         monsters[gameStats.currMonster].img
-                      }" alt=""></img>
+                      }" alt="${
+                        monsters[gameStats.currMonster].img
+                      }"></img>
                       </div>`
+  audioPlay('assets/audio/coin_1.mp3')
     if (gameStats.currMonster === monstersPerLevel) {
       gameStats.currMonster = 1
       gameStats.currLevel += 1
       newItemArrSlides()
       initIsland()
-      // changeIsland()
     } else {
       gameStats.currMonster += 1
+      audioPlay('assets/audio/angry-potato-die.mp3')
     }
     setMonsterHealth()
     countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
     toggleBuyButtonDisabled()
+    toggleAbilityDisabled()
   }
 }
 
@@ -243,35 +263,63 @@ function removeDamagePopup() {
 
 hero.addEventListener('click', e => {
   statistics.clicksMade += 1
-  statistics.totalClicksDamage += gameStats.clickDamage.number
+
+  let sumClickDamage = sumNumbers(statistics.totalClicksDamage, gameStats.clickDamage)
+  let convertSumClickDamage = convertingNumbers(sumClickDamage.number)
+  statistics.totalClicksDamage.number = convertSumClickDamage.number
+  statistics.totalClicksDamage.powerOfTen = sumClickDamage.powerOfTen + convertSumClickDamage.powerOfTen
+  statistics.totalClicksDamage.abbreviation = abbreviationBigNumber[`${statistics.totalClicksDamage.powerOfTen}`]
+
   setDamage(gameStats.clickDamage)
   createDamagePopup(e)
   removeDamagePopup()
   updateStats()
   updateAchievements()
+  audioPlay('assets/audio/hit_1.mp3')
 })
 
 shopWrapper.addEventListener('click', ({ target }) => {
-  let isDisabled = target.closest('.disabled')
-  if (isDisabled) return
-  let isBuyButton = target.closest('.buyButton')
-  if (!isBuyButton) return
-  let hero = isBuyButton.classList[1].replace(/hero/, '')
-  let ifPurchaseMade = buyHero(hero)
-  if (!ifPurchaseMade) return
-  heroesData[hero].lvl += 1
+  let isDisabledHero = target.closest('.disabled')
+  if (isDisabledHero) return
+  let isPurchaseMade
+  let hero
+  let targetClassName = target.classList[1]
+  let isAbility = /hero_[\d]_ability/.test(targetClassName)
+
+  if (isAbility) {
+    let numberHeroAndAbility = targetClassName.match(/\d/g)
+    hero = numberHeroAndAbility[0]
+    let numberAbility = numberHeroAndAbility[1]
+    let isAbilityDisabled = target.closest('.abilities_disabled')
+    if (isAbilityDisabled) return
+    if (heroesData[hero].abilities[numberAbility].isPurchased) return
+    isPurchaseMade = buy(hero, numberAbility)
+    if (!isPurchaseMade) return
+    heroesData[hero].abilities[numberAbility].isPurchased = true
+    target.classList.add('abilities_active')
+  } else {
+    let isBuyButton = target.closest('.buyButton')
+    if (!isBuyButton) return
+    hero = isBuyButton.classList[1].replace(/hero/, '')
+    isPurchaseMade = buy(hero)
+    if (!isPurchaseMade) return
+    heroesData[hero].lvl += 1
+  }
+
   countInput.textContent = `${gameStats.gold.number}${gameStats.gold.abbreviation}`
   calculationHeroDamage(hero)
   calculationCostHero(hero)
   updateShop(hero)
   calculationTotalDamage()
   displayDamage()
-  setLevelHeros()
+  setLevelHeroes()
+  setPurchasedAbilityHeroes()
+  audioPlay('assets/audio/level_up.mp3')
 })
 
 function getCount() {
-  if (localStorage.getItem('saveItems') !== null) {
-    const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
+  const returnSaveItems = JSON.parse(localStorage.getItem('saveItems'))
+  if (returnSaveItems) {
     gameStats.gold = returnSaveItems.gold
     gameStats.DPS = returnSaveItems.DPS
     gameStats.clickDamage = returnSaveItems.clickDamage
@@ -279,9 +327,15 @@ function getCount() {
     gameStats.health = returnSaveItems.health
     gameStats.arrLevel = returnSaveItems.arrLevel
     const returnSaveLvl = JSON.parse(localStorage.getItem('saveLvl'))
-    heroesData.forEach((item, index) => {
-      item.lvl = returnSaveLvl[index]
-    })
+    const returnPurchasedAbility = JSON.parse(localStorage.getItem('savePurchasedAbility'))
+    if (returnSaveLvl) {
+      heroesData.forEach((item, index) => {
+        item.lvl = returnSaveLvl[index]
+        item.abilities.forEach((ability, index2) => {
+          ability.isPurchased = returnPurchasedAbility[index][index2]
+        })
+      })
+    }
     for (let numberHero = 0; numberHero < numberHeroes; numberHero++) {
       calculationHeroDamage(numberHero)
       calculationCostHero(numberHero)
@@ -324,12 +378,14 @@ function tick() {
   }
   milliSecondsRemaining--
 }
+
 function startCountdown() {
   time.classList.add('active')
   let seconds = 30
   milliSecondsRemaining = seconds * 60
   intervalHandle = setInterval(tick, 10)
 }
+
 function stopCountdown() {
   clearInterval(intervalHandle)
   time.classList.remove('active')
@@ -345,10 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
   checkStats()
   checkAchievementsSaved()
   const savedStats = JSON.parse(localStorage.getItem('statsSaved'))
-  localStorage.getItem('statsSaved')
-    ? (statistics.gameStartTime = savedStats.gameStartTime)
-    : (statistics.gameStartTime = Date.parse(new Date()))
-  console.log(statistics.gameStartTime)
+  localStorage.getItem('statsSaved') ?
+    (statistics.gameStartTime = savedStats.gameStartTime) :
+    (statistics.gameStartTime = Date.parse(new Date()))
 })
 
 export { swiperWrapper }

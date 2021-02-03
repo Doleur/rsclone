@@ -1,0 +1,1956 @@
+.abilities_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.abilities_disabled {
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .7);
+        z-index: 2;
+    }
+}
+
+.abilities_active {
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(../img/check_mark.png);
+        background-repeat: no-repeat;
+        z-index: 2;
+    }
+}
+
+.icon_abilities_1 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_10 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_100 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_101 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_102 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_103 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_104 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_105 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_106 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_107 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_108 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_109 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_11 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_110 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_111 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_112 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_113 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_114 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_115 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_116 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_117 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_118 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_119 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_12 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_120 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_121 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_122 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_123 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_124 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_125 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_126 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_127 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_128 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_129 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_13 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_130 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_131 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_132 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_133 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_134 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_135 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_136 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_137 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_138 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_139 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_14 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_140 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_141 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_142 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_143 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_144 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_145 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_146 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_147 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_148 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_149 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_15 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_150 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_151 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_152 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_153 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_154 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_155 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_156 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_157 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_158 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_159 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_16 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_160 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_161 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_162 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_163 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_164 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_165 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_166 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_167 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_168 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_169 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_17 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_170 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_171 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_172 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_173 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_174 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_175 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_18 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_19 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_2 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_20 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_21 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_22 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_23 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_24 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_25 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_26 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_27 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_28 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_29 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_3 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_30 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_31 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_32 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_33 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_34 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_35 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_36 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_37 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_38 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_39 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_4 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_40 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_41 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_42 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_43 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_44 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_45 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_46 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_47 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_48 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_49 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_5 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_50 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_51 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_52 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_53 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_54 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_55 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_56 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_57 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_58 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_59 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_6 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_60 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_61 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_62 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_63 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_64 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_65 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_66 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_67 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_68 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_69 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_7 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_70 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_71 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_72 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_73 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_74 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_75 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_76 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_77 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -180px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_78 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -210px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_79 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -240px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_8 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -270px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_80 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -300px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_81 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -330px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_82 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: 0px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_83 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -30px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_84 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -60px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_85 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -90px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_86 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -120px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_87 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -150px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_88 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -180px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_89 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -210px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_9 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -240px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_90 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -270px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_91 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -300px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_92 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -330px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_93 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -360px -360px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_94 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -390px 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_95 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -390px -30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_96 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -390px -60px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_97 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -390px -90px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_98 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -390px -120px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon_abilities_99 {
+    background-image: url(../img/sprite_abilities.png);
+    background-position: -390px -150px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -1,7 +1,8 @@
 export const monsters = [{
     name: 'Angry Potato',
     code: 'Angry_Potato',
-    img: 'assets/img/monsters/Angry_Potato.png'
+    img: 'assets/img/monsters/Angry_Potato.png',
+    audio: '../audio/angry-potato-die.mp3'
   },
   {
     name: 'Catra',

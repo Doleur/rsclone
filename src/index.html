@@ -13,28 +13,39 @@
 
 <body>
   <header>
+    <div class="overlay"></div>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row align-items-center menu-wrapper">
+        <button class="menu__icon ">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <div class="col-sm-10 text-center">
           <div class="logo">
             <img src="assets/img/logo.png" class="rounded" alt="Clicker Heroes" />
           </div>
         </div>
-        <div class="col-sm-2 d-flex align-items-center justify-content-center">
-          <div class="col-sm-7 d-flex align-items-center justify-content-center">
-            <a class="col-sm-4" href="#">
+        <div class="col-sm-2 custom">
+          <div class="col-md-7 d-flex align-items-center justify-content-center">
+            <a class="col-4" href="#">
               <div class="costom-item">
                 <img src="assets/img/icon/costom.svg" alt="costom" />
               </div>
             </a>
-            <a class="col-sm-4" href="#">
+            <a class="col-4" href="#">
               <div class="costom-item">
                 <img src="assets/img/icon/diskort.svg" alt="diskord" />
               </div>
             </a>
             <a class="col-sm-4" href="#">
-              <div class="costom-item">
-                <img src="assets/img/icon/music.svg" alt="diskord" />
+              <div class="costom-item sound unmute">
+                <img src="assets/img/icon/music.svg" alt="sound" />
+              </div>
+            </a>
+            <a class="col-sm-4" href="#">
+              <div class="costom-item audio unmute">
+                <img src="assets/img/icon/music.svg" alt="sound" />
               </div>
             </a>
           </div>
@@ -47,10 +58,10 @@
       <div class="row">
         <div class="col-sm-5 d-flex align-items-center justify-content-center">
           <img src="assets/img/icon/gold.svg" class="image" alt="Score" />
-          <div class="count"></div>
+          <div class="count text_theme"></div>
         </div>
         <div class="col-sm-7 d-flex align-items-center justify-content-center">
-          <nav class="col-sm-7 d-flex align-items-center justify-content-center flex-column">
+          <nav class="col-md-7 d-flex align-items-center justify-content-center flex-column">
             <img src="assets/img/icon/level-wrapper.svg" class="image" alt="Level bg" />
             <!-- Swiper -->
             <div class="swiper-container">
@@ -67,15 +78,14 @@
     </div>
   </section>
   <section class="container-fluid">
-    <div class="row">
-      <div class="col-sm-5">
+    <div class="row d-flex">
+      <div class="col-md-5 order-1 order-md-0 shop-container">
         <div class="shop">
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a
-                >
+              <a class="nav-item nav-link text-white active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
                 <a
-                  class="nav-item nav-link"
+                  class="nav-item nav-link text-white text_theme"
                   id="nav-achiev-tab"
                   data-toggle="tab"
                   href="#nav-achievements"
@@ -85,7 +95,7 @@
                   >Achievements</a
                 >
                 <a
-                  class="nav-item nav-link"
+                  class="nav-item nav-link text-white text_theme"
                   id="nav-stats-tab"
                   data-toggle="tab"
                   href="#nav-stats"
@@ -103,10 +113,10 @@
                 role="tabpanel"
                 aria-labelledby="nav-home-tab"
               >
-
+              
               <div class="display_damage">
-                <div class="display_click_damage"></div>
-                <div class="display_DPS"></div>
+                <div class="display_click_damage text_theme"></div>
+                <div class="display_DPS text_theme"></div>
               </div>
 
               <div class="shop_wrapper"></div>
@@ -173,7 +183,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-7">
+        <div class="col-md-7">
           <div class="field-play">
             <div class="wrapper-healthbar">
               <div class="wrapper-healthdata">
@@ -206,25 +216,26 @@
 
     <footer class="container-fluid">
       <div class="row">
-        <div class="col-sm-5 d-flex justify-content-between">
-            <div class="col-sm-6 d-flex align-items-center justify-content-between">
-              <div class="col-sm-6 d-flex align-items-center justify-content-center flex-column">
+        <div class="col-md-5 d-flex justify-content-between">
+            <div class="col-md-6 d-flex align-items-center justify-content-between">
+              <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
                  <a class="footer-link" href="https://github.com/alena-zykava">alena-zykava </a>
                 <a class="footer-link" href="https://github.com/aliakseibabich">aliakseibabich</a>
               </div>
-              <div class="col-sm-6 d-flex align-items-center justify-content-center flex-column">
+              <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
                 <a class="footer-link" href="https://github.com/doleur">doleur</a>
                 <a class="footer-link" href="https://github.com/JenkJS">JenkJS</a>
               </div>
-            </div>
-            <span class="col-sm-2 d-flex align-items-center justify-content-center">2021</span>
-            <a href="https://rs.school/js/" class="col-sm-4 d-flex align-items-center justify-content-center">
-                <img class="footer-logo" src="assets/img/rs_school_js.svg" alt="RS-Shool">
-            </a>
+          </div>
+          <span class="col-md-2 d-flex align-items-center justify-content-center">2021</span>
+          <a href="https://rs.school/js/" class="col-md-4 d-flex align-items-center justify-content-center">
+            <img class="footer-logo" src="assets/img/rs_school_js.svg" alt="RS-Shool">
+          </a>
         </div>
       </div>
-    </footer>
+      </footer>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  </body>
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</body>
+
 </html>

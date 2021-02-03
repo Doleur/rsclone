@@ -4,12 +4,36 @@ import { updateAchievements } from './achievements.js';
 
 export const statistics = {
   clicksMade: 0,
-  currentClickDamage: 0,
-  totalClicksDamage: 0,
-  currentDPS: 0,
-  totalDPS: 0,
-  currentGold: 0,
-  totalGold: 0,
+  currentClickDamage: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
+  totalClicksDamage: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
+  currentDPS: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
+  totalDPS: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
+  currentGold: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
+  totalGold: {
+    number: 0,
+    powerOfTen: 0,
+    abbreviation: ''
+  },
   monstersKilled: 0,
   bossesKilled: 0,
   timeInGame: 0,
@@ -19,20 +43,20 @@ export const statistics = {
 export let startTime;
 
 export function updateStats() {
-  totalClicksStats.innerText = statistics.clicksMade;
-  statistics.currentClickDamage = gameStats.clickDamage.number;
-  currClickDamageStats.innerText = statistics.currentClickDamage;
-  totalClickDamageStats.innerText = statistics.totalClicksDamage;
-  statistics.currentDPS = gameStats.DPS.number;
-  currDPSDamageStats.innerText = statistics.currentDPS;
-  totalDPSDamageStats.innerText = statistics.totalDPS;
-  statistics.currentGold = gameStats.gold.number;
-  currGoldStats.innerText = statistics.currentGold;
-  totalGoldStats.innerText = statistics.totalGold;
-  mostersKilledStats.innerText = statistics.monstersKilled;
-  bossesKilledStats.innerText = statistics.bossesKilled;
-  timeInGameStats.innerText = setTimeFigures();
-  updateAchievements();
+  totalClicksStats.innerText = statistics.clicksMade
+  statistics.currentClickDamage = gameStats.clickDamage
+  currClickDamageStats.innerText = `${Math.trunc(statistics.currentClickDamage.number)}${statistics.currentClickDamage.abbreviation}`
+  totalClickDamageStats.innerText = `${Math.trunc(statistics.totalClicksDamage.number)}${statistics.totalClicksDamage.abbreviation}`
+  statistics.currentDPS = gameStats.DPS
+  currDPSDamageStats.innerText = `${Math.trunc(statistics.currentDPS.number)}${statistics.currentDPS.abbreviation}`
+  totalDPSDamageStats.innerText = `${Math.trunc(statistics.totalDPS.number)}${statistics.totalDPS.abbreviation}`
+  statistics.currentGold = gameStats.gold
+  currGoldStats.innerText = `${Math.trunc(statistics.currentGold.number)}${statistics.currentGold.abbreviation}`
+  totalGoldStats.innerText = `${Math.trunc(statistics.totalGold.number)}${statistics.totalGold.abbreviation}`
+  mostersKilledStats.innerText = statistics.monstersKilled
+  bossesKilledStats.innerText = statistics.bossesKilled
+  timeInGameStats.innerText = setTimeFigures()
+  updateAchievements()
 }
 
 function getCurrentTime() {
@@ -46,17 +70,17 @@ getCurrentTime();
 
 function setTimeFigures() {
   const seconds = Math.floor((statistics.timeInGame / 1000) % 60),
-        minutes = Math.floor((statistics.timeInGame / 1000 / 60) % 60),
-        hours = Math.floor((statistics.timeInGame / (1000 * 60 * 60)) % 24),
-        days = Math.floor(statistics.timeInGame / (1000 * 60 * 60 * 24));
+    minutes = Math.floor((statistics.timeInGame / 1000 / 60) % 60),
+    hours = Math.floor((statistics.timeInGame / (1000 * 60 * 60)) % 24),
+    days = Math.floor(statistics.timeInGame / (1000 * 60 * 60 * 24));
   if (statistics.timeInGame / 1000 < 60) {
     return (seconds === 1) ? `${seconds} second` : `${seconds} seconds`;
   } else if (statistics.timeInGame / 1000 < 60 * 60) {
     return (minutes === 1) ? `${minutes} minute` : `${minutes} minutes`;
   } else if (statistics.timeInGame / 1000 < 60 * 60 * 24) {
-    return (hours === 1) ?`${hours} hour` : `${hours} hours`;
+    return (hours === 1) ? `${hours} hour` : `${hours} hours`;
   } else {
-    return (days === 1) ?`${days} day` : `${days} days`;
+    return (days === 1) ? `${days} day` : `${days} days`;
   }
 }
 

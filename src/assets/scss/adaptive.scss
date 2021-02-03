@@ -1,0 +1,52 @@
+@media (max-width: 991.98px) {
+    .swiper-slide{
+        font-size: 1rem;
+    }
+    .count {
+        font-size: 2rem;
+    }
+    .field-play .hero {
+        width: 40vh;
+        height: 40vh;
+    }
+    main {
+        min-height: calc(100vh - 136px);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .logo {
+      height: 50px;
+      }
+    .menu__icon {
+        display: block;
+    }
+    .custom{
+      display: none; // почему не применяется
+    }
+    .shop-container {
+      display: none;
+    }
+    .field-play .hero {
+        width: 40vh;
+        height: 40vh;
+    }
+    footer{
+        font-size: .5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .swiper-slide{
+        font-size: 1rem;
+    }
+    .costom-item {
+    width: 20px;
+    }
+    .shop_wrapper {
+    height: 55vh;
+    }
+    .stats {
+      font-size: 1rem;
+    }
+}
