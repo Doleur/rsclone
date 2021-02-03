@@ -1,8 +1,9 @@
 // web  audio api
+import {bgSound} from './bgSound.js'
+import {randomMonster} from './random.js'
 const sound = document.querySelector('.sound')
 const audio = document.querySelector('.audio')
 let soundPlayMute
-
 window.AudioContext = window.AudioContext || window.webkitAudioContext
 const audioPlay = async url => {
   const context = new AudioContext({ latencyHint: 'playback' })
@@ -45,6 +46,7 @@ const soundPlay = async url => {
   }
 }
 sound.addEventListener('click', () => {
+  randomMonster(bgSound)
   if (sound.classList.contains('unmute')) {
     soundPlayMute()
     sound.classList.remove('unmute')
@@ -53,7 +55,7 @@ sound.addEventListener('click', () => {
     music_off
     </span>`
   } else if (!sound.classList.contains('unmute')) {
-    soundPlay('assets/audio/arctic_sunrise.mp3')
+    soundPlay(bgSound[0])
     sound.classList.remove('mute')
     sound.classList.add('unmute')
     sound.innerHTML = `<span class="material-icons">

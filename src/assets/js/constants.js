@@ -8,12 +8,12 @@ export const gameStats = {
     abbreviation: ''
   },
   clickDamage: {
-    number: 99999,
+    number: 1,
     powerOfTen: 0,
     abbreviation: ''
   },
   DPS: {
-    number: 5000,
+    number: 0,
     powerOfTen: 0,
     abbreviation: ''
   },
