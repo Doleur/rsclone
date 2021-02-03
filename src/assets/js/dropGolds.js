@@ -14,8 +14,14 @@ async function dropGoldAnimation(goldDropped) {
   }
   let costCoins = goldDropped.number / numberCoins
   for (let i = 1; i <= numberCoins; i++) {
+    let numberCostCoins
+    if (numberCoins === 5) {
+      numberCostCoins = costCoins.toFixed(1)
+    } else {
+      numberCostCoins = costCoins
+    }
     const gold = createTagElement('div', `gold g${i}`, '', wrapperGolds)
-    const numberGold = createTagElement('div', `goldNumber gN${i}`, `${costCoins}${goldDropped.abbreviation}`, wrapperGolds)
+    const numberGold = createTagElement('div', `goldNumber gN${i}`, `${numberCostCoins}${goldDropped.abbreviation}`, wrapperGolds)
     gold.addEventListener('animationend', function() {
       gold.parentNode.removeChild(gold)
     })
