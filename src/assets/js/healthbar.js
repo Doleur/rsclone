@@ -94,6 +94,7 @@ function setMonsterHealth() {
     startCountdown()
   } else {
     isBoss = 0.1
+    randomMonster(monsters)
     stopCountdown()
     monstersProgressWrapper.classList.remove('disabled')
     hero.innerHTML = `<div class="hero-img">
