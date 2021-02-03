@@ -187,8 +187,8 @@ function setAutoDamage() {
 
     let sumDPS = sumNumbers(statistics.totalDPS, gameStats.DPS)
     let convertSumDPS = convertingNumbers(sumDPS.number)
-    statistics.totalDPS.number = convertSumDPS.number + convertSumDPS.powerOfTen
-    statistics.totalDPS.powerOfTen = sumDPS.powerOfTen
+    statistics.totalDPS.number = convertSumDPS.number
+    statistics.totalDPS.powerOfTen = sumDPS.powerOfTen + convertSumDPS.powerOfTen
     statistics.totalDPS.abbreviation = abbreviationBigNumber[`${statistics.totalDPS.powerOfTen}`]
   }, 1000)
 }

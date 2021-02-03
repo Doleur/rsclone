@@ -15,5 +15,5 @@ function swapTheme() {
   shop.style.background = theme[1].shopColor
 }
 
-const them2 = createTagElement('div', 'theme2', 'Theme 2', document.querySelector('body'), ['style', `position:absolute; right:20px; top:50%; background-color:${theme[1].shopHeroColor};color:#fff;font-size:25px`])
-them2.addEventListener('click', swapTheme)
+// const them2 = createTagElement('div', 'theme2', 'Theme 2', document.querySelector('body'), ['style', `position:absolute; right:20px; top:50%; background-color:${theme[1].shopHeroColor};color:#fff;font-size:25px`])
+// them2.addEventListener('click', swapTheme)
