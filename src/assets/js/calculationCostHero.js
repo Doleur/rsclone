@@ -12,7 +12,7 @@ export function calculationCostHero(numberHero) {
         heroesData[numberHero].cost.powerOfTen = 0
         heroesData[numberHero].cost.abbreviation = ''
       } else {
-        heroesData[numberHero].cost.number = Math.trunc((5 + heroLvl) * (1.07 ** (heroLvl - 1)))
+        heroesData[numberHero].cost.number = (5 + heroLvl) * (1.07 ** (heroLvl - 1))
         heroesData[numberHero].cost.powerOfTen = 0
         heroesData[numberHero].cost.abbreviation = ''
       }
@@ -34,7 +34,7 @@ export function calculationCostHero(numberHero) {
     resultPowerOfTen -= 3
   }
 
-  heroesData[numberHero].cost.number = Math.trunc(resultNumberCostHero)
+  heroesData[numberHero].cost.number = resultNumberCostHero
   heroesData[numberHero].cost.powerOfTen = resultPowerOfTen
   heroesData[numberHero].cost.abbreviation = abbreviationBigNumber[`${resultPowerOfTen}`]
 }
