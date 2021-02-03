@@ -282,7 +282,7 @@ shopWrapper.addEventListener('click', ({ target }) => {
   let isPurchaseMade
   let hero
   let targetClassName = target.classList[1]
-  let isAbility = /hero_[\d]_ability/.test(targetClassName)
+  let isAbility = /hero_[\d]+_ability/.test(targetClassName)
 
   if (isAbility) {
     let numberHeroAndAbility = targetClassName.match(/\d/g)

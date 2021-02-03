@@ -2,7 +2,7 @@ import createTagElement from './creatElement.js';
 import { gameStats, achievementsWrapper } from './constants.js';
 import { statistics } from './stats.js';
 import { saveAchievements } from './save-game.js';
-import { type } from 'jquery';
+import { convertingNumbers } from './convertingNumbers.js'
 
 export const achievementsArr = [{
     initWord: 'Achieve',
@@ -107,19 +107,26 @@ export function generateAchievements() {
 function createStars(length) {
   const starArr = [];
   for (let i = 0; i < length; i++) {
-    starArr.push(createTagElement('div', `star`, ``, ''),);
+    starArr.push(createTagElement('div', `star`, ``, ''), );
   }
   return starArr;
 }
 
 function checkifAchievementDone(num, stars) {
   const current = achievementsArr[num].currentValue;
-  const goal = achievementsArr[num].goalsArr;
-  if (+current >= +goal[achievementsArr[num].goalIndex]) {
-    achievementsArr[num].goalIndex += 1;
+  const goal = achievementsArr[num].goalsArr[achievementsArr[num].goalIndex];
+  let goalConvert = convertingNumbers(goal)
+  let currentNumber
+  if (typeof(current) === 'object') {
+    let differencePowerOfTen = current.powerOfTen - goalConvert.powerOfTen
+    if (differencePowerOfTen < 0) return
+    currentNumber = current.number
+    if (!differencePowerOfTen && currentNumber < +goalConvert.number) return
   } else {
-    achievementsArr[num].goalIndex = achievementsArr[num].goalIndex;
+    currentNumber = current
+    if (+currentNumber < +goalConvert.number) return
   }
+  achievementsArr[num].goalIndex += 1;
   stars.forEach((item, index) => {
     if (index < achievementsArr[num].goalIndex) {
       item.classList.add('star_active');

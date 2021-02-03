@@ -1363,7 +1363,7 @@ export const heroesData = [{
       },
       {
         name: 'Gold Blade',
-        requiresLvl: 75,
+        requiresLvl: 100,
         isPurchased: false,
         effect: 'Increases all gold found by 25%.',
         coefficient: 0.25,

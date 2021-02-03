@@ -3,17 +3,17 @@ export const achievementsWrapper = document.querySelector('.achievs_wrapper');
 export const numberHeroes = 40
 export const gameStats = {
   gold: {
-    number: 99999,
+    number: 0,
     powerOfTen: 0,
     abbreviation: ''
   },
   clickDamage: {
-    number: 99999,
+    number: 1,
     powerOfTen: 0,
     abbreviation: ''
   },
   DPS: {
-    number: 5000,
+    number: 0,
     powerOfTen: 0,
     abbreviation: ''
   },

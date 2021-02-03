@@ -81,7 +81,7 @@ export function calculationTotalDamage() {
   }
   let totalClickDamage = sumNumbers(heroesData[0].damage, bonusClickDamage)
   let convertTotalClickDamage = convertingNumbers(totalClickDamage.number)
-  convertTotalClickDamage.powerOfTen += convertTotalClickDamage.powerOfTen
+  convertTotalClickDamage.powerOfTen += totalClickDamage.powerOfTen
   if (convertTotalClickDamage.number < 100 && convertTotalClickDamage.powerOfTen > 0) {
     convertTotalClickDamage.number *= 1000
     convertTotalClickDamage.powerOfTen -= 3
