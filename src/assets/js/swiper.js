@@ -1,5 +1,5 @@
 import { gameStats } from './constants.js'
-import {audioPlay} from './setAudio.js'
+import { audioPlay } from './setAudio.js'
 
 
 let swiper
@@ -24,7 +24,7 @@ function createSlider() {
 function newLevelSlide() {
   swiper.appendSlide(`<div class="swiper-slide" data-level=${gameStats.arrLevel[gameStats.arrLevel.length - 1]} >
                         <div class = "swiper-slide-container">
-                          <span class = "swiper-slide-text"> Level ${gameStats.arrLevel[gameStats.arrLevel.length - 1]} </span>
+                          <span class = "swiper-slide-text text_theme"> Level ${gameStats.arrLevel[gameStats.arrLevel.length - 1]} </span>
                         </div>
                       </div>`)
 }
