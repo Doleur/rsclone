@@ -1,333 +1,333 @@
 export const languages = {
   ru: {
     heroes: [{
-      name: `Сид, полезная авантюристка`,
+      name: 'Сид, полезная авантюристка'
     },
     {
-      name: `Лесной кот`,
+      name: 'Лесной кот'
     },
     {
-      name: `Иван, дебошир`,
+      name: 'Иван, дебошир'
     },
     {
-      name: `Бриттани, королева пляжа`,
+      name: 'Бриттани, королева пляжа'
     },
     {
-      name: `Рыбак-странник`,
+      name: 'Рыбак-странник'
     },
     {
-      name: `Повариха Бетти`,
+      name: 'Повариха Бетти'
     },
     {
-      name: `Самурай в маске`,
+      name: 'Самурай в маске'
     },
     {
-      name: `Леон`,
+      name: 'Леон'
     },
     {
-      name: `Леший`,
+      name: 'Леший'
     },
     {
-      name: `Алекса, ассасин`,
+      name: 'Алекса, ассасин'
     },
     {
-      name: `Наталлья, ученица мага`,
+      name: 'Наталлья, ученица мага'
     },
     {
-      name: `Мерседес, королева мечей`,
+      name: 'Мерседес, королева мечей'
     },
     {
-      name: `Бобби, охотник за головами`,
+      name: 'Бобби, охотник за головами'
     },
     {
-      name: `Герострат Жарр, маг огня`,
+      name: 'Герострат Жарр, маг огня'
     },
     {
-      name: `Сэр Джордж II`,
+      name: 'Сэр Джордж II'
     },
     {
-      name: `Царь Мидас`,
+      name: 'Царь Мидас'
     },
     {
-      name: `Ледяная голова, маг льда`,
+      name: 'Ледяная голова, маг льда'
     },
     {
-      name: `Абадонна`,
+      name: 'Абадонна'
     },
     {
-      name: `Ма Чжу`,
+      name: 'Ма Чжу'
     },
     {
-      name: `Аменхотеп`,
+      name: 'Аменхотеп'
     },
     {
-      name: `Царь Зверей`,
+      name: 'Царь Зверей'
     },
     {
-      name: `Афина, Богиня Войны`,
+      name: 'Афина, Богиня Войны'
     },
     {
-      name: `Афродита, Богиня Любви`,
+      name: 'Афродита, Богиня Любви'
     },
     {
-      name: `Синатобе, Богиня Ветра`,
+      name: 'Синатобе, Богиня Ветра'
     },
     {
-      name: `Грант Генерал`,
+      name: 'Грант Генерал'
     },
     {
-      name: `Стужа`,
+      name: 'Стужа'
     },
     {
-      name: `Рыцарь Ужаса`,
+      name: 'Рыцарь Ужаса'
     },
     {
-      name: `Атлас`,
+      name: 'Атлас'
     },
     {
-      name: `Терра`,
+      name: 'Терра'
     },
     {
-      name: `Хлорофил`,
+      name: 'Хлорофил'
     },
     {
-      name: `Банана Оранж`,
+      name: 'Банана Оранж'
     },
     {
-      name: `Лилин`,
+      name: 'Лилин'
     },
     {
-      name: `Кадмиа`,
+      name: 'Кадмиа'
     },
     {
-      name: `Alabaster`,
+      name: 'Alabaster'
     },
     {
-      name: `Astraea`,
+      name: 'Astraea'
     },
     {
-      name: `Chiron`,
+      name: 'Chiron'
     },
     {
-      name: `Moloch`,
+      name: 'Moloch'
     },
     {
-      name: `Bomber Max`,
+      name: 'Bomber Max'
     },
     {
-      name: `Гог`,
+      name: 'Гог'
     },
     {
-      name: `Wepwawet`,
+      name: 'Wepwawet'
     },
     {
-      name: `Tsuchi`,
+      name: 'Tsuchi'
     },
     {
-      name: `Skogur`,
+      name: 'Skogur'
     },
     {
-      name: `Moeru`,
+      name: 'Moeru'
     },
     {
-      name: `Zilar`,
+      name: 'Zilar'
     },
     {
-      name: `Madzi`,
+      name: 'Madzi'
     },
     {
-      name: `Xavira`,
+      name: 'Xavira'
     },
     {
-      name: `Cadu, Tomb Guardian`,
+      name: 'Cadu, Tomb Guardian'
     },
     {
-      name: `Ceus, Tomb Guardian`,
+      name: 'Ceus, Tomb Guardian'
     },
     {
-      name: `Мау`,
+      name: 'Мау'
     },
     {
-      name: `Yachiyl, The Primordial Soul`,
+      name: 'Yachiyl, The Primordial Soul'
     },
     {
-      name: `Ace Scout Rose`,
+      name: 'Ace Scout Rose'
     },
     {
-      name: `Ace Scout Sophia`,
+      name: 'Ace Scout Sophia'
     },
     {
-      name: `Ace Scout Blanche`,
+      name: 'Ace Scout Blanche'
     },
     {
-      name: `Ace Scout Dorothy`,
-    },
-  ],
+      name: 'Ace Scout Dorothy'
+    }
+    ]
 
   },
   eng: {
     heroes: [{
-      name: `Cid, the Helpful Adventurer`,
+      name: 'Cid, the Helpful Adventurer'
     },
     {
-      name: `Treebeast`,
+      name: 'Treebeast'
     },
     {
-      name: `Ivan, the Drunken Brawler`,
+      name: 'Ivan, the Drunken Brawler'
     },
     {
-      name: `Brittany, Beach Princess`,
+      name: 'Brittany, Beach Princess'
     },
     {
-      name: `The Wandering Fisherman`,
+      name: 'The Wandering Fisherman'
     },
     {
-      name: `Betty Clicker`,
+      name: 'Betty Clicker'
     },
     {
-      name: `The Masked Samurai`,
+      name: 'The Masked Samurai'
     },
     {
-      name: `Leon`,
+      name: 'Leon'
     },
     {
-      name: `The Great Forest Seer`,
+      name: 'The Great Forest Seer'
     },
     {
-      name: `Alexa, Assassin`,
+      name: 'Alexa, Assassin'
     },
     {
-      name: `Natalia, Ice Apprentice`,
+      name: 'Natalia, Ice Apprentice'
     },
     {
-      name: `Mercedes, Duchess of Blades`,
+      name: 'Mercedes, Duchess of Blades'
     },
     {
-      name: `Bobby, Bounty Hunter`,
+      name: 'Bobby, Bounty Hunter'
     },
     {
-      name: `Broyle Lindeoven, Fire Mage`,
+      name: 'Broyle Lindeoven, Fire Mage'
     },
     {
-      name: `Sir George II, King's Guard`,
+      name: 'Sir George II, King\'s Guard'
     },
     {
-      name: `King Midas`,
+      name: 'King Midas'
     },
     {
-      name: `Referi Jerator, Ice Wizard`,
+      name: 'Referi Jerator, Ice Wizard'
     },
     {
-      name: `Abaddon`,
+      name: 'Abaddon'
     },
     {
-      name: `Ma Zhu`,
+      name: 'Ma Zhu'
     },
     {
-      name: `Amenhotep`,
+      name: 'Amenhotep'
     },
     {
-      name: `Beastlord`,
+      name: 'Beastlord'
     },
     {
-      name: `Athena, Goddess of War`,
+      name: 'Athena, Goddess of War'
     },
     {
-      name: `Aphrodite, Goddess of Love`,
+      name: 'Aphrodite, Goddess of Love'
     },
     {
-      name: `Shinatobe, Wind Deity`,
+      name: 'Shinatobe, Wind Deity'
     },
     {
-      name: `Grant, the General`,
+      name: 'Grant, the General'
     },
     {
-      name: `Frostleaf`,
+      name: 'Frostleaf'
     },
     {
-      name: `Dread Knight`,
+      name: 'Dread Knight'
     },
     {
-      name: `Atlas`,
+      name: 'Atlas'
     },
     {
-      name: `Terra`,
+      name: 'Terra'
     },
     {
-      name: `Phthalo`,
+      name: 'Phthalo'
     },
     {
-      name: `Orntchya Gladeye, Didensy Banana`,
+      name: 'Orntchya Gladeye, Didensy Banana'
     },
     {
-      name: `Lilin`,
+      name: 'Lilin'
     },
     {
-      name: `Cadmia`,
+      name: 'Cadmia'
     },
     {
-      name: `Alabaster`,
+      name: 'Alabaster'
     },
     {
-      name: `Astraea`,
+      name: 'Astraea'
     },
     {
-      name: `Chiron`,
+      name: 'Chiron'
     },
     {
-      name: `Moloch`,
+      name: 'Moloch'
     },
     {
-      name: `Bomber Max`,
+      name: 'Bomber Max'
     },
     {
-      name: `Gog`,
+      name: 'Gog'
     },
     {
-      name: `Wepwawet`,
+      name: 'Wepwawet'
     },
     {
-      name: `Tsuchi`,
+      name: 'Tsuchi'
     },
     {
-      name: `Skogur`,
+      name: 'Skogur'
     },
     {
-      name: `Moeru`,
+      name: 'Moeru'
     },
     {
-      name: `Zilar`,
+      name: 'Zilar'
     },
     {
-      name: `Madzi`,
+      name: 'Madzi'
     },
     {
-      name: `Xavira`,
+      name: 'Xavira'
     },
     {
-      name: `Cadu, Tomb Guardian`,
+      name: 'Cadu, Tomb Guardian'
     },
     {
-      name: `Ceus, Tomb Guardian`,
+      name: 'Ceus, Tomb Guardian'
     },
     {
-      name: `The Maw`,
+      name: 'The Maw'
     },
     {
-      name: `Yachiyl, The Primordial Soul`,
+      name: 'Yachiyl, The Primordial Soul'
     },
     {
-      name: `Ace Scout Rose`,
+      name: 'Ace Scout Rose'
     },
     {
-      name: `Ace Scout Sophia`,
+      name: 'Ace Scout Sophia'
     },
     {
-      name: `Ace Scout Blanche`,
+      name: 'Ace Scout Blanche'
     },
     {
-      name: `Ace Scout Dorothy`,
-    },
-  ],
+      name: 'Ace Scout Dorothy'
+    }
+    ]
   }
-};
+}

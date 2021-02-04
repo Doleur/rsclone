@@ -1,6 +1,6 @@
 // web  audio api
-import {bgSound} from './bgSound.js'
-import {randomMonster} from './random.js'
+import { bgSound } from './bgSound.js'
+import { randomMonster } from './random.js'
 const sound = document.querySelector('.sound')
 const audio = document.querySelector('.audio')
 let soundPlayMute
@@ -13,7 +13,7 @@ const audioPlay = async url => {
     .then(ArrayBuffer => context.decodeAudioData(ArrayBuffer))
 
   source.buffer = audioBuffer
-  var gainNode = context.createGain()
+  const gainNode = context.createGain()
   source.connect(gainNode)
   gainNode.connect(context.destination)
 
@@ -33,7 +33,7 @@ const soundPlay = async url => {
     .then(ArrayBuffer => context.decodeAudioData(ArrayBuffer))
 
   source.buffer = audioBuffer
-  var gainNode = context.createGain()
+  const gainNode = context.createGain()
   source.connect(gainNode)
   source.loop = true
   gainNode.connect(context.destination)
