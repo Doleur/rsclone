@@ -1,5 +1,4 @@
-// web  audio api
-import { bgSound } from './bgSound.js'
+import { bgSound } from './constants.js'
 import { randomMonster } from './random.js'
 const sound = document.querySelector('.sound')
 const audio = document.querySelector('.audio')
@@ -37,11 +36,10 @@ const soundPlay = async url => {
   source.connect(gainNode)
   source.loop = true
   gainNode.connect(context.destination)
-  // source.connect(context.destination);
   gainNode.gain.value = 0.5
   source.start(0)
 
-  soundPlayMute = function () {
+  soundPlayMute = function() {
     gainNode.gain.value = 0
   }
 }
@@ -79,4 +77,3 @@ audio.addEventListener('click', () => {
   }
 })
 export { audioPlay }
-//  api

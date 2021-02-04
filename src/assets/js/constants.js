@@ -52,3 +52,10 @@ export const mostersKilledStats = document.querySelector('.mosters_killed-stats'
 export const bossesKilledStats = document.querySelector('.bosses_killed-stats')
 export const timeInGameStats = document.querySelector('.total_time-stats')
 export const monstersProgressWrapper = document.querySelector('.monsters-progress-wrapper')
+export const bgSound = [
+  'assets/audio/arctic_sunrise.mp3',
+  'assets/audio/COMBAT01.MP3',
+  'assets/audio/COMBAT02.MP3',
+  'assets/audio/COMBAT03.MP3',
+  'assets/audio/COMBAT04.MP3'
+]
