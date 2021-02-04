@@ -1,6 +1,6 @@
-import { gameStats, totalClicksStats, currClickDamageStats, totalClickDamageStats, currDPSDamageStats, totalDPSDamageStats, currGoldStats, totalGoldStats, mostersKilledStats, bossesKilledStats, timeInGameStats } from './constants.js';
-import { saveStats } from './save-game.js';
-import { updateAchievements } from './achievements.js';
+import { gameStats, totalClicksStats, currClickDamageStats, totalClickDamageStats, currDPSDamageStats, totalDPSDamageStats, currGoldStats, totalGoldStats, mostersKilledStats, bossesKilledStats, timeInGameStats } from './constants.js'
+import { saveStats } from './save-game.js'
+import { updateAchievements } from './achievements.js'
 
 export const statistics = {
   clicksMade: 0,
@@ -38,11 +38,11 @@ export const statistics = {
   bossesKilled: 0,
   timeInGame: 0,
   gameStartTime: Date.parse(new Date())
-};
+}
 
-export let startTime;
+export let startTime
 
-export function updateStats() {
+export function updateStats () {
   totalClicksStats.innerText = statistics.clicksMade
 
   statistics.currentClickDamage = gameStats.clickDamage
@@ -66,43 +66,43 @@ export function updateStats() {
   updateAchievements()
 }
 
-function getCurrentTime() {
-  let currTime = null;
+function getCurrentTime () {
+  let currTime = null
   setInterval(() => {
-    currTime = Date.now();
-    statistics.timeInGame = +(currTime - statistics.gameStartTime);
-  }, 1000);
+    currTime = Date.now()
+    statistics.timeInGame = +(currTime - statistics.gameStartTime)
+  }, 1000)
 }
-getCurrentTime();
+getCurrentTime()
 
-function setTimeFigures() {
-  const seconds = Math.floor((statistics.timeInGame / 1000) % 60),
-    minutes = Math.floor((statistics.timeInGame / 1000 / 60) % 60),
-    hours = Math.floor((statistics.timeInGame / (1000 * 60 * 60)) % 24),
-    days = Math.floor(statistics.timeInGame / (1000 * 60 * 60 * 24));
+function setTimeFigures () {
+  const seconds = Math.floor((statistics.timeInGame / 1000) % 60)
+  const minutes = Math.floor((statistics.timeInGame / 1000 / 60) % 60)
+  const hours = Math.floor((statistics.timeInGame / (1000 * 60 * 60)) % 24)
+  const days = Math.floor(statistics.timeInGame / (1000 * 60 * 60 * 24))
   if (statistics.timeInGame / 1000 < 60) {
-    return (seconds === 1) ? `${seconds} second` : `${seconds} seconds`;
+    return (seconds === 1) ? `${seconds} second` : `${seconds} seconds`
   } else if (statistics.timeInGame / 1000 < 60 * 60) {
-    return (minutes === 1) ? `${minutes} minute` : `${minutes} minutes`;
+    return (minutes === 1) ? `${minutes} minute` : `${minutes} minutes`
   } else if (statistics.timeInGame / 1000 < 60 * 60 * 24) {
-    return (hours === 1) ? `${hours} hour` : `${hours} hours`;
+    return (hours === 1) ? `${hours} hour` : `${hours} hours`
   } else {
-    return (days === 1) ? `${days} day` : `${days} days`;
+    return (days === 1) ? `${days} day` : `${days} days`
   }
 }
 
-export function checkStats() {
+export function checkStats () {
   if (localStorage.getItem('statsSaved')) {
-    const savedStats = JSON.parse(localStorage.getItem('statsSaved'));
-    statistics.monstersKilled = savedStats.monstersKilled;
-    statistics.bossesKilled = savedStats.bossesKilled;
-    statistics.clicksMade = savedStats.clicksMade;
-    statistics.totalClicksDamage = savedStats.totalClicksDamage;
-    statistics.totalDPS = savedStats.totalDPS;
-    statistics.totalGold = savedStats.totalGold;
-    statistics.timeInGame = savedStats.timeInGame;
+    const savedStats = JSON.parse(localStorage.getItem('statsSaved'))
+    statistics.monstersKilled = savedStats.monstersKilled
+    statistics.bossesKilled = savedStats.bossesKilled
+    statistics.clicksMade = savedStats.clicksMade
+    statistics.totalClicksDamage = savedStats.totalClicksDamage
+    statistics.totalDPS = savedStats.totalDPS
+    statistics.totalGold = savedStats.totalGold
+    statistics.timeInGame = savedStats.timeInGame
   }
 }
 
-setInterval(updateStats, 1000);
-setInterval(saveStats, 1000);
+setInterval(updateStats, 1000)
+setInterval(saveStats, 1000)

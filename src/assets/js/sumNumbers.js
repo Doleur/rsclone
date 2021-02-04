@@ -1,4 +1,4 @@
-export function sumNumbers(number1, number2) {
+export function sumNumbers (number1, number2) {
   let sum
   let sumPowerOfTen
   let differencePowerOfTen = number1.powerOfTen - number2.powerOfTen

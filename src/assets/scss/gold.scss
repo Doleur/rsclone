@@ -15,6 +15,7 @@ $gold-size: 4em;
         background-size: cover;
         border-radius: 50%;
         z-index: 50;
+        user-select: none;
     }
     .goldNumber {
         position: absolute;

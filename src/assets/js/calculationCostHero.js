@@ -2,8 +2,8 @@ import { convertingNumbers } from './convertingNumbers.js'
 import { abbreviationBigNumber } from './abbreviationBigNumber.js'
 import { heroesData } from './heroesData.js'
 
-export function calculationCostHero(numberHero) {
-  let heroLvl = heroesData[numberHero].lvl
+export function calculationCostHero (numberHero) {
+  const heroLvl = heroesData[numberHero].lvl
   let convertBaseCost
   if (!+numberHero) {
     if (heroLvl <= 15) {
@@ -23,10 +23,10 @@ export function calculationCostHero(numberHero) {
     convertBaseCost = convertingNumbers(heroesData[numberHero].baseCost)
   }
 
-  let numberBaseCost = convertBaseCost.number
-  let coefficientPerGold = convertingNumbers(1.07 ** (heroLvl - 1))
-  let numberCoefficientPerGold = coefficientPerGold.number
-  let resultCostHero = convertingNumbers(numberBaseCost * numberCoefficientPerGold)
+  const numberBaseCost = convertBaseCost.number
+  const coefficientPerGold = convertingNumbers(1.07 ** (heroLvl - 1))
+  const numberCoefficientPerGold = coefficientPerGold.number
+  const resultCostHero = convertingNumbers(numberBaseCost * numberCoefficientPerGold)
   let resultPowerOfTen = convertBaseCost.powerOfTen + coefficientPerGold.powerOfTen + resultCostHero.powerOfTen
   let resultNumberCostHero = resultCostHero.number
   if (resultNumberCostHero < 100 && resultPowerOfTen > 0) {
